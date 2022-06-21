@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--poppins);
+    box-sizing:border-box;
+    color: #1b1c1a;
+}
+
+:root{
+    --poppins: 'Poppins', sans-serif;
+    --darkBlue: #264E86;
+    --cyan: #74DBEF;
+    --gray: #EFF0F4;
+    --red: #FF5959;
+}
+
+body {
+    color: #000;
+    overflow-x: hidden;
+    height: 100%;
+    background-image: url('../assets/fondo_body.png');
+}
+input, textarea {
+    background-color: #d5b7da;
+    border-radius: 50px !important;
+    padding: 12px 15px 12px 15px !important;
+    width: 100%;
+    box-sizing: border-box;
+    border: none !important;
+    border: 1px solid #F3E5F5 !important;
+    font-size: 16px !important;
+    color: #000 !important;
+    font-weight: 400;
+}
+input:focus, textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #D500F9 !important;
+    outline-width: 0;
+    font-weight: 400;
+}
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0;
+}
+nav{
+    border-bottom: solid 3px #a36ac9; 
+}
+a{
+text-decoration: none;
+}
+:placeholder-shown{
+    font-style: italic;
+    opacity: 90%;
+}
+.navbar{
+    background-color:#fff;
+}
+.card {
+    border-radius: 0;
+    border: none;
+
+}
+.bold{
+    font-weight: bold;
+}
+.purple_bold{
+    color: #a36ac9;
+    font-weight: bold;
+}
+#fila4{
+    height: 10%;
+    background-color: #1b1c1a;
+    padding: 1rem;
+}
+.card1 {
+    width: 50%;
+    padding: 40px 30px 10px 30px;
+}
+/*----------------------- SweetAlert Modal -----------------------*/
+.swal2-icon.swal2-warning {
+    border-color: #a36ac9 !important;
+    color: #a36ac9 !important;
+}
+.swal2-title {
+    font-weight: normal !important;
+}
+.swal2-icon .swal2-icon-content {
+    font-weight: bold;
+    color: #a36ac9 !important;
+}
+.swal2-icon.swal2-success [class^=swal2-success-line]{
+    background-color: #a36ac9 !important;
+}
+.swal2-container.swal2-center>.swal2-popup {
+    background-image: url(../assets/fondo_body.png);
+    box-shadow: 5px 5px 7px;
+}
+.swal2-icon.swal2-success .swal2-success-ring {
+    border: 0.25em solid rgba(216, 134, 220, 0.3) !important;
+}
+.swal2-styled.swal2-confirm{
+    background-color: #1b1c1a !important;
+}
+.card2 {
+    width: 50%;
+    background: linear-gradient(310deg, rgba(140,69,188,0.5) 3%, rgba(165,218,227,0.5) 97%);
+}
+#register_form{
+background-color: #a36ac9;
+}
+#logo {
+    width: 70px;
+    height: 60px;
+}
+.heading {
+    margin-bottom: 60px !important;
+}
+:-ms-input-placeholder {
+    color: #000 !important;
+}
+::-ms-input-placeholder {
+    color: #000 !important;
+}
+.form-control-label {
+    font-size: 12px;
+    margin-left: 15px;
+}
+.msg-info {
+    padding-left: 15px;
+    margin-bottom: 30px;
+}
+#email, .form-control{
+    background-color: #e7d8f2;
+}
+.login {
+color:#fff;
+    background-color:#1b1c1a;
+    padding: 15px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+.login:hover {
+color:#a36ac9;
+font-weight: bold;
+background-color: white;
+transition: background-color 0.5s , border 0.5s;
+}
+.btn-primary{
+color:#fff;
+background-color:#1b1c1a;
+border: none !important;
+font-size: small;
+}
+.btn-primary:hover{
+    color: #a36ac9;
+    font-weight: bold;
+    background-color:#fff;
+    transition: background-color 0.5s;
+}
+.btn-white {
+    border-radius: 50px;
+    color: #1b1c1a;
+    background-color: #fff;
+    padding: 8px 40px;
+    cursor: pointer;
+    border: 2px solid #1b1c1a !important;
+}
+.btn-white:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #FFD54F, #D500F9);
+}
+a {
+    color: #000;
+}
+a:hover {
+    color: #000;
+}
+.bottom {
+    width: 100%;
+    margin-top: 50px !important;
+}
+.sm-text {
+    font-size: 15px;
+}
+
+@media screen and (max-width: 992px) {
+    .card1 {
+        width: 100%;
+        padding: 40px 30px 10px 30px;
+    }
+    .card2 {
+        width: 100%;
+    }
+    .right {
+        margin-top: 100px !important;
+        margin-bottom: 100px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px !important;
+    }
+
+    .card2 {
+        padding: 50px;
+    }
+    .right {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+    }
+}

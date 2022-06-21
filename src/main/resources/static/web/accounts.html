@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+     <link rel=stylesheet href="./css/style.css" type="text/css">
+     <link rel="icon" href="./assets/favicon-01.png">
+     <title>My Accounts</title>
+</head>
+<body>
+
+<div id="app" class="container-fluid">
+
+<!------------------------------- HEADER ------------------------------->
+     <header id="fila_header" class="row row-cols-2">
+          <nav class="navbar navbar-expand-lg px-5 col-12">
+               <div class="container-fluid px-0">
+                    <a class="navbar-brand" href="#">
+                         <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
+                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                              <li class="nav-item">
+                                   <a class="nav-link active" aria-current="page" href="./accounts.html">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./accounts.html" id="pushed">Accounts</a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./cards.html">Cards</a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./transfers.html">Transfers</a>
+                              </li>
+                         </ul>
+                         <a href="./login.html">
+                              <button class="btn btn-primary d-flex align-items-center gap-2" type="button" v-on:click="logout()">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
+                                        <path d="M13 14h-9" />
+                                        <path d="M7 11l-3 3l3 3" />
+                                   </svg>
+                                   Logout
+                              </button>
+                         </a>
+                    </div>
+               </div>
+          </nav>
+     </header>
+
+<!------------------------------- MAIN ------------------------------->
+     <main id="fila3" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-5">
+          <!------------------------------- ACCOUNTS FRAME ------------------------------->
+          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-5">
+               <h3>This are your</h3><h3>personal <span class="bold">accounts</span></h3>
+          </div>
+          <div id="accounts_column1" class="col-12 d-flex flex-column align-items-center justify-content-center  px-5 py-5 h-75">
+               <div class="row justify-content-center h4 pt-5">
+                    Manage all your accounts from one place
+                    <p class="h6 d-flex justify-content-center pt-3">Request an account at the moment, up to a maximum of 3 per client</p>
+               </div>
+               <div class="row d-flex justify-content-center">
+                    <div v-for="account in accounts" class="card px-0" id="accounts_cards">
+                         <div class="card-header">{{account.number}}</div>
+                         <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Balance: {{"$" + account.balance}}</li>
+                              <li class="list-group-item">Creation Date: {{account.creationDate}}</li>
+                              <li class="list-group-item">
+                                   <p class="blockquote-footer m-0 pb-2">check your account's movements here</p>
+                                   <a :href=" `http://localhost:8080/web/account.html?id=` + account.id ">
+                                        <button type="button" class="btn btn-primary btn-sm">Transactions </button>
+                                   </a>
+                              </li>
+                              <li class="list-group-item">
+                                   <p class="blockquote-footer m-0 pb-2">want to make a transfer?</p>
+                                   <a href="./transfers.html">
+                                        <button type="button" class="btn btn-primary btn-sm">Transfers</button>
+                                   </a>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+               <div class="row"><button class="btn btn-primary" id="create_account_button" v-on:click="createAccount()">Button Create Account</button></div>
+          </div>
+          <!------------------------------- LOAN FRAME ------------------------------->
+          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-5">
+               <h3>This are your</h3><h3>personal <span class="bold">loans</span></h3>
+          </div>
+               <div id="columnaI" class="col-12 d-flex flex-column align-items-center justify-content-center py-5">
+                    <div class="row justify-content-center h4 pt-1">                    
+                         Learn about our loans that we offer so you can achieve your dreams
+                         <p class="h6 d-flex justify-content-center pt-3">All our loans are at a rate of 0% and with minimum requirement</p>
+                    </div>
+                    <div class="row d-flex justify-content-center mt-5">
+                         <div class="col d-flex justify-content-center" v-if="loans != []" id="card_loan">
+                              <div v-for="loan in loans"  class="card loan_card mx-2" style="width: 18rem;">
+                                   <img v-if="loan.name == 'Personal'" src="./assets/prestamo_personal-03.png" class="card-img-top" alt="..." >
+                                   <img v-if="loan.name == 'Automotive'" src="./assets/prestamo_automotriz-03.png" class="card-img-top" alt="..." >
+                                   <img v-if="loan.name == 'Mortgage'" src="./assets/prestamo_hipotecario-03.png" class="card-img-top" alt="..." >
+                                   <div class="card-body">
+                                        <h5 class="bold">Your <span class="purple_bold">{{loan.name}}</span> Loan</h5> 
+                                        <p class="card-text">This is your requested <span class="purple_italic">{{loan.name}}</span> loan, here you can find all the info
+                                        and features you need about this loan, as well as its term and conditions.</p>
+                                   </div>
+                                   <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Requested amount: ${{loan.amount}}</li>
+                                        <li class="list-group-item">Monthly fees: {{loan.payments}}</li>
+                                        <li class="list-group-item">A third item</li>
+                                   </ul>
+                                   <div class="card-body">
+                                        <a href="#" class="card-link loan_link">Terms & Conditions</a>
+                                   </div>
+                              </div>
+                         </div>
+                         <div v-else>
+                              <div v-for="loan in loans" class="list-group">
+                                   <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                                   <div class="d-flex w-100 justify-content-between">
+                                   <h5 class="mb-1">{{loan.name}}</h5>
+                                   <small>Available Loan</small>
+                                   </div>
+                                   <p class="mb-1">Requested amount: ${{loan.amount}}</p>
+                                   <p class="mb-1">Monthly fees: {{loan.payments}}</p>
+                                   <small>And some small print.</small>
+                                   </a>
+                              </div>
+                         </div>
+                         <!------------- Empty Loan ------------->
+                         <div class="card loan_card request px-0" style="width: 18rem;" id="create_loan">
+                              <a href="./loan-application.html"><button type="button" class="btn p-1" id="loan_button"><img src="./assets/loan_request-01-03.png" class="card-img-top" alt="..."></button></a>
+                              <div class="card-body">
+                              <h5 class="bold">Request a New Loan!</h5>
+                              <p class="card-text">Estimated monthly payments shown include principal, interest and (if applicable) any required mortgage insurance</p>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                              <li class="list-group-item request_ul">Up to $500.000</li>
+                              <li class="list-group-item request_ul">From 6 to 60 Monthly fees</li>
+                              <li class="list-group-item request_ul">interest rate 0%</li>
+                              </ul>
+                              <div class="card-body">
+                              <a href="#" class="card-link loan_link">What to know more...</a>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+     </main>
+     
+<!-------------------------------------- Footer -------------------------------------->  
+     <footer id="fila4" class="row row-cols-3 gap-4 d-flex justify-content-center">
+          <div id="columnaK" class="col-3 d-flex flex-column justify-content-center px-0">
+          <a href="./accounts.html"><p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p></a>
+          </div>
+          <div id="columnaL" class="col-4 d-flex justify-content-center align-items-center px-0">
+               <div class="row d-flex justify-content-center gap-4">
+                    <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">Security</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
+               </div>
+          </div>
+          <div id="columnaM" class="col-3 d-flex justify-content-end align-items-center gap-3 px-0">
+               <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <rect x="3" y="5" width="18" height="14" rx="2" />
+                         <polyline points="3 7 12 13 21 7" />
+                    </svg>
+               </a>
+               <!------------- Botón Facebook ------------->
+               <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                    </svg>
+               </a>
+               <!------------- Botón Instagram ------------->
+               <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <rect x="4" y="4" width="16" height="16" rx="4" />
+                         <circle cx="12" cy="12" r="3" />
+                         <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                    </svg>
+               </a>
+               <!------------- Botón Whatsapp ------------->
+               <a class="footer-icons" href="https://web.whatsapp.com/">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                         <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
+                    </svg>
+               </a>
+          </div>
+     </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <!--Etiqueta Bootstrap-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!--Etiqueta Axios-->
+<script src="https://unpkg.com/vue@3"></script> <!--Etiqueta Vue-->
+<script src="./js/accounts.js"></script> <!--Etiqueta js-->
+</body>
+</html>
