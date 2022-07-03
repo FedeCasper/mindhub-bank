@@ -12,11 +12,12 @@
 }
 body{
      background-image: url('../assets/fondo_body.png');
-     overflow: hidden;
+     width: 100%;
 }
 #app{
      height: 100vh;
      padding: 0px;
+     width: 100%;
 }
 a{
      text-decoration: none;
@@ -30,7 +31,58 @@ a:hover{
      font-style: italic;
      opacity: 70%;
 }
+
+/*------------------- Header & Nav -------------------*/
+.header{
+     height: fit-content;
+}
+h1{
+     margin-bottom: 0px;
+}
+.nav-index{
+     background-color: #fff;
+     border-bottom: solid 3px #a36ac9; 
+     display: flex;
+     justify-content: space-between;
+     padding: 1rem 3rem;
+     box-shadow: -1px 22px 17px -14px rgba(0,0,0,0.12);
+}
+.first-row{
+     min-height: 81vh;
+     height: fit-content;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     flex-wrap: wrap;
+     padding: 1rem 5rem;
+}
+.text-index-container{
+     width: 40%;
+     display: flex;
+     flex-direction: column;
+} 
+.h2-index{
+     font-size: 4.5rem;
+}
+.h4-index{
+margin-top: 2rem;
+}
+#register-btn-index{
+     margin-top: 1rem;
+}
+.img-cards-index{
+     width: 40%;
+}
+
+.btn-black{
+     color: white;
+     background-color: black;
+     border-radius: 10px;
+     padding: 1rem 1.5rem;
+}
+
 .nav-link{
+     background-color:white;
      color: #1b1c1a;
      transition:  color 0.2s ;
 }
@@ -38,18 +90,15 @@ a:hover{
      font-weight: bold;
      color:#a36ac9;
 }
-nav{
-     border-bottom: solid 3px #a36ac9; 
-}
+
 .expired{
      font-weight: bold;
      color: red;
 }
-
-#fila_header{
-     max-height: fit-content;
-     height: 10%;
+#img_login{
+     height: 30vw;
 }
+
 #fila2{
      height: 5%;
 }
@@ -71,11 +120,6 @@ nav{
 }
 .calculator{
      color: #1b1c1a !important;
-}
-/*#columnaA{}*/
-#columnaB, h1{
-     color: var(--gray);
-     text-align: center;
 }
 .mind_color{
      color: var(--cyan);
@@ -472,3 +516,41 @@ background-color:#f1f1f172;
           background-color: var(--gray);
      }
 
+     /*Desde 800 px a 600 px va a ser Verde*/
+     @media screen and (max-width: 1090px) {
+          .first-row {
+               display: flex;
+               flex-direction: column;
+               gap: 2rem;
+          }
+          .text-index-container{
+               width: 100%;
+          }
+          .img-cards-index{
+               width: 60%;
+               display: flex;
+               justify-content: center;
+          }
+     }
+
+/*
+Por defecto Rojo
+----------------
+p {
+     color: red;
+}
+Desde 800 px a 600 px va a ser Verde
+--------------------------------------
+@media screen and (max-width: 800px) {
+     p {
+          color: green;
+     }
+}
+Desde 600 a 0 px va a ser azul
+--------------------------------------
+@media screen and (max-width: 600px) {
+     p {
+          color: blue;
+     }
+}
+*/
