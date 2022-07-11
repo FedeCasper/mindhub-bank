@@ -12,7 +12,6 @@
 }
 body{
      background-image: url('../assets/fondo_body.png');
-     width: 100%;
 }
 #app{
      height: 100vh;
@@ -31,15 +30,26 @@ a:hover{
      font-style: italic;
      opacity: 70%;
 }
+button, input[type="submit"], input[type="reset"] {
+     background: none;
+     color: inherit;
+     border: none;
+     padding: 0;
+     font: inherit;
+     cursor: pointer;
+     outline: inherit;
+}
 
 /*------------------- Header & Nav -------------------*/
 .header{
-     height: fit-content;
+     height: 9vh;
+     max-height: fit-content;
 }
 h1{
      margin-bottom: 0px;
 }
 .nav-index{
+     height: 9vh;
      background-color: #fff;
      border-bottom: solid 3px #a36ac9; 
      display: flex;
@@ -71,14 +81,21 @@ margin-top: 2rem;
      margin-top: 1rem;
 }
 .img-cards-index{
-     width: 40%;
+     width: fit-content;
 }
 
 .btn-black{
      color: white;
      background-color: black;
      border-radius: 10px;
-     padding: 1rem 1.5rem;
+     padding: 0.5rem 1rem;
+     transition: all 0.3s;
+}
+
+.btn-black:hover{
+     color: white;
+     background-color:#a36ac9;
+     transform: scale(1.05);
 }
 
 .nav-link{
@@ -112,12 +129,19 @@ margin-top: 2rem;
      background-color: #1b1c1a;
      padding: 1rem;
 }
-#footer{
+
+/*------------------------------------ Footer ------------------------------------*/
+.footer{
      max-height: fit-content;
-     min-height: 10%;
+     height: 10vh;
      background-color: #1b1c1a;
      padding: 1rem;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
 }
+
+
 .calculator{
      color: #1b1c1a !important;
 }
@@ -516,14 +540,20 @@ background-color:#f1f1f172;
           background-color: var(--gray);
      }
 
-     /*Desde 800 px a 600 px va a ser Verde*/
-     @media screen and (max-width: 1090px) {
+
+     @media screen and (max-width: 1268px){
+          p{
+               color: red;
+          }
           .first-row {
                display: flex;
                flex-direction: column;
                gap: 2rem;
+               padding: 1rem 2rem;
           }
           .text-index-container{
+               display: flex;
+               align-items: center;
                width: 100%;
           }
           .img-cards-index{
@@ -533,24 +563,15 @@ background-color:#f1f1f172;
           }
      }
 
-/*
-Por defecto Rojo
-----------------
-p {
-     color: red;
-}
-Desde 800 px a 600 px va a ser Verde
---------------------------------------
-@media screen and (max-width: 800px) {
-     p {
-          color: green;
+     @media screen and (max-width: 800px){
+          p{
+               color: green;
+               font-weight: bold;
+          }
+          .text-index-container{
+               width: fit-content;
+          }
+
      }
-}
-Desde 600 a 0 px va a ser azul
---------------------------------------
-@media screen and (max-width: 600px) {
-     p {
-          color: blue;
-     }
-}
-*/
+
+
