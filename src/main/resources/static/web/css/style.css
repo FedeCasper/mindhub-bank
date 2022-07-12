@@ -100,11 +100,11 @@ margin-top: 2rem;
      width: fit-content;
 }
 #cards-index {
-     animation: rotate 2s ease-in-out infinite alternate;
+     animation: rotate 1.5s ease-in-out infinite alternate;
 }
 @keyframes rotate {
-0% {transform: rotate(5deg);}
-100% {transform: rotate(0deg);}
+0% {transform: rotate(3deg);}
+100% {transform: rotate(-3deg);}
 }
 
 

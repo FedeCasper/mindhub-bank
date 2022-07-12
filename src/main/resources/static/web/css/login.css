@@ -70,6 +70,11 @@ button, input[type="submit"], input[type="reset"] {
     cursor: pointer;
     outline: inherit;
 }
+#app{
+    height: 100vh;
+    padding: 0px;
+    width: 100%;
+}
 .btn-black{
     color: white;
     background-color: black;
@@ -232,7 +237,7 @@ font-size: small;
 @media screen and (max-width: 992px) {
     .card1 {
         width: 100%;
-        padding: 40px 30px 10px 30px;
+        padding: 40px 20px 10px 20px;
     }
     .card2 {
         width: 100%;
@@ -240,6 +245,9 @@ font-size: small;
     .right {
         margin-top: 100px !important;
         margin-bottom: 100px !important;
+    }
+    #login-paragraph{
+        font-size: large;
     }
 }
 
