@@ -51,14 +51,60 @@ nav{
     border-bottom: solid 3px #a36ac9; 
 }
 a{
-text-decoration: none;
+    text-decoration: none;
+    color: #fff;
+}
+a:hover{
+    color:#a36ac9;
 }
 :placeholder-shown{
     font-style: italic;
     opacity: 90%;
 }
-.navbar{
-    background-color:#fff;
+button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+.btn-black{
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+.btn-black:hover{
+    color: white;
+    background-color:#a36ac9;
+    transform: scale(1.05);
+}
+.header{
+    height: 9vh;
+    max-height: fit-content;
+}
+h1{
+    margin-bottom: 0px;
+}
+.nav-index{
+    height: 9vh;
+    background-color: #fff;
+    border-bottom: solid 3px #a36ac9; 
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    box-shadow: -1px 22px 17px -14px rgba(0,0,0,0.12);
+}
+.nav-index-logo{
+    display: flex;
+    align-items: center;
+}
+
+#login-form-container{
+    box-shadow: 8px 9px 5px -3px rgba(0,0,0,0.14);
 }
 .card {
     border-radius: 0;
@@ -174,12 +220,7 @@ font-size: small;
     color: #fff;
     background-image: linear-gradient(to right, #FFD54F, #D500F9);
 }
-a {
-    color: #000;
-}
-a:hover {
-    color: #000;
-}
+
 .bottom {
     width: 100%;
     margin-top: 50px !important;

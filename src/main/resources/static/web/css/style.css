@@ -6,10 +6,10 @@
      box-sizing:border-box;
      color: #1b1c1a;
 }
-
 :root{
      --poppins: 'Poppins', sans-serif;
 }
+
 body{
      background-image: url('../assets/fondo_body.png');
 }
@@ -39,8 +39,20 @@ button, input[type="submit"], input[type="reset"] {
      cursor: pointer;
      outline: inherit;
 }
+.btn-black{
+     color: white;
+     background-color: black;
+     border-radius: 10px;
+     padding: 0.5rem 1rem;
+     transition: all 0.3s;
+}
+.btn-black:hover{
+     color: white;
+     background-color:#a36ac9;
+     transform: scale(1.05);
+}
 
-/*------------------- Header & Nav -------------------*/
+/*------------------------------------ Header & Nav ------------------------------------*/
 .header{
      height: 9vh;
      max-height: fit-content;
@@ -56,6 +68,10 @@ h1{
      justify-content: space-between;
      padding: 1rem 3rem;
      box-shadow: -1px 22px 17px -14px rgba(0,0,0,0.12);
+}
+.nav-index-logo{
+     display: flex;
+     align-items: center;
 }
 .first-row{
      min-height: 81vh;
@@ -83,20 +99,14 @@ margin-top: 2rem;
 .img-cards-index{
      width: fit-content;
 }
-
-.btn-black{
-     color: white;
-     background-color: black;
-     border-radius: 10px;
-     padding: 0.5rem 1rem;
-     transition: all 0.3s;
+#cards-index {
+     animation: rotate 2s ease-in-out infinite alternate;
+}
+@keyframes rotate {
+0% {transform: rotate(5deg);}
+100% {transform: rotate(0deg);}
 }
 
-.btn-black:hover{
-     color: white;
-     background-color:#a36ac9;
-     transform: scale(1.05);
-}
 
 .nav-link{
      background-color:white;
@@ -115,6 +125,8 @@ margin-top: 2rem;
 #img_login{
      height: 30vw;
 }
+
+
 
 #fila2{
      height: 5%;
@@ -140,7 +152,12 @@ margin-top: 2rem;
      justify-content: space-around;
      align-items: center;
 }
-
+.footer-column-center{
+     display: flex;
+     justify-content: center;
+     gap: 1.5rem;
+     flex-wrap: wrap;
+}
 
 .calculator{
      color: #1b1c1a !important;
@@ -251,7 +268,7 @@ color: #a36ac9;
      font-weight: bold;
 }
 
-/*----------------------- SweetAlert Modal -----------------------*/
+/*------------------------------------ Sweet Alert Modal ------------------------------------*/
 .swal2-icon.swal2-warning {
      border-color: #a36ac9 !important;
      color: #a36ac9 !important;
@@ -340,7 +357,7 @@ background-color:#f1f1f172;
 }
 
 
-/*------------------------------------ CARDS DESIGN & BEHAVING ------------------------------------*/
+/*------------------------------------ Cards Design & Behaving ------------------------------------*/
 #accounts_cards{
      height: fit-content;
      width: fit-content;
@@ -541,6 +558,8 @@ background-color:#f1f1f172;
      }
 
 
+/*------------------------------------ Media Querys ------------------------------------*/
+
      @media screen and (max-width: 1268px){
           p{
                color: red;
@@ -563,15 +582,35 @@ background-color:#f1f1f172;
           }
      }
 
-     @media screen and (max-width: 800px){
-          p{
-               color: green;
-               font-weight: bold;
+     @media screen and (max-width: 630px){
+          .h2-index{
+               font-size: 3rem;
           }
-          .text-index-container{
-               width: fit-content;
+          .h4-index{
+               text-align: center;
           }
-
+          .img-fluid{
+               min-width: 290px;
+          }
+          .footer {
+               height: fit-content;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-around;
+               align-items: center;
+               gap: 1rem;
+          }
      }
 
+     @media screen and (max-width: 441px){
+          .nav-index {
+               padding: 1rem 1rem;
+          }
+          .h2-index{
+               font-size: 2rem;
+          }
+          .h4-index{
+               text-align: center;
+          }
+     }
 
