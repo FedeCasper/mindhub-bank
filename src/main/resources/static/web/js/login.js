@@ -48,7 +48,7 @@ Vue.createApp({
                axios.post('/api/login',`email=${this.email}&password=${this.password}`,
                     {headers:{'content-type':'application/x-www-form-urlencoded'}})
                     .then(response => 
-                         window.location.href = "http://localhost:8080/web/accounts.html",
+                         window.location.href = "/web/accounts.html",
                          console.log('signed in!!!'))
                     .catch(function(error){
                          window.alert("El correo no pertenece a un usuario del banco", error.message)
