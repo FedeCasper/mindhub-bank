@@ -201,18 +201,7 @@ font-weight: bold;
 background-color: white;
 transition: background-color 0.5s , border 0.5s;
 }
-.btn-primary{
-color:#fff;
-background-color:#1b1c1a;
-border: none !important;
-font-size: small;
-}
-.btn-primary:hover{
-    color: #a36ac9;
-    font-weight: bold;
-    background-color:#fff;
-    transition: background-color 0.5s;
-}
+
 .btn-white {
     border-radius: 50px;
     color: #1b1c1a;
@@ -265,11 +254,22 @@ font-size: small;
     :placeholder-shown{
         font-size: 1rem !important;
     }
+    .btn-black{
+        height: 3rem;
+    }
+    a{
+        height: fit-content;
+    }
+    .nav-index{
+        display: flex;
+        align-items: center;
+    }
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .container {
         padding: 10px !important;
+        margin: 2rem 1rem;
     }
 
     .card2 {
@@ -279,4 +279,7 @@ font-size: small;
         margin-top: 50px !important;
         margin-bottom: 50px !important;
     }
-}
+    #login-paragraph{
+        font-size: medium;
+    }
+} */

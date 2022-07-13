@@ -561,9 +561,6 @@ background-color:#f1f1f172;
 /*------------------------------------ Media Querys ------------------------------------*/
 
      @media screen and (max-width: 1268px){
-          p{
-               color: red;
-          }
           .first-row {
                display: flex;
                flex-direction: column;
