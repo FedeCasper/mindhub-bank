@@ -12,14 +12,14 @@ Vue.createApp({
 
      created(){
 
-          axios.get(`http://localhost:8080/api/clients/current`)
+          axios.get(`/api/clients/current`)
                .then(datos => {
                     this.client = datos.data
                     this.accounts = datos.data.accounts.sort((a, b) => {return a.id - b.id;})
                     this.loans = datos.data.clientLoans
                }),
 
-          axios.get('http://localhost:8080/api/clients/current/accounts')
+          axios.get('/api/clients/current/accounts')
                .then(data => {
                     addAccountButton = document.querySelector("#create_account_button")
                     this.currentClientAccounts = data.data.length
@@ -28,7 +28,7 @@ Vue.createApp({
                     }
                }),
 
-               axios.get('http://localhost:8080/api/clients/current/clientLoans')
+               axios.get('/api/clients/current/clientLoans')
                .then(data => {
                     addLoanButton = document.querySelector("#create_loan")
                     this.currentClientLoans = data.data.length
@@ -44,13 +44,13 @@ Vue.createApp({
           logout(){
                axios.post('/api/logout')
                     .then(response => 
-                         window.location.href = "http://localhost:8080/web/index.html",
+                         window.location.href = "/web/index.html",
                          console.log('You have successfully logged out!!!'))
                     .catch( error => error.message + "Oops! something happened, you couldn't log out" )
                },
 
           createAccount(){
-               axios.post('http://localhost:8080/api/clients/current/accounts')
+               axios.post('/api/clients/current/accounts')
                     .then(response =>
                          location.reload(),
                          console.log('The account was created successfully!!!'))
