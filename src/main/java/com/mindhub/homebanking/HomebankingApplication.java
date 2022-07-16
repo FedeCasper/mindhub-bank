@@ -33,10 +33,10 @@ public class HomebankingApplication {
 		public CommandLineRunner initData(ClientRepository clientRepository , AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
 			return (args) -> {
 
-				Client cliente1 = new Client("Melba","Morel", "melba@mindhub.com", passwordEncoder.encode("toto2021")); clientRepository.save(cliente1);
-				Client cliente2 = new Client( "Federico","Rouyere", "federicorouyere@gmail.com", passwordEncoder.encode("peka2022")); clientRepository.save(cliente2);
-				Client clientAdmin = new Client("admin", "admin", "admin@mindhub.com", passwordEncoder.encode("12345")); clientRepository.save(clientAdmin);
-				Client cliente4 = new Client("Federica", "Risso Patron", "federicarp@gmail.com", passwordEncoder.encode("11111")); clientRepository.save(cliente4);
+				Client cliente1 = new Client("Melba","Morel", "melba@mindhub.com", passwordEncoder.encode("1234")); clientRepository.save(cliente1);
+				Client cliente2 = new Client( "Federico","Rouyere", "federicorouyere@gmail.com", passwordEncoder.encode("1234")); clientRepository.save(cliente2);
+				Client clientAdmin = new Client("admin", "admin", "admin@mindhub.com", passwordEncoder.encode("1234")); clientRepository.save(clientAdmin);
+				Client cliente4 = new Client("Federica", "Risso Patron", "federicarp@gmail.com", passwordEncoder.encode("1234")); clientRepository.save(cliente4);
 
 				Account account1 = new Account("VIN001", LocalDateTime.now() , 5000.0 , cliente1); accountRepository.save(account1);
 				Account account2 = new Account("VIN002" , LocalDateTime.now().plusDays(1) , 7500.0 , cliente1); accountRepository.save(account2);

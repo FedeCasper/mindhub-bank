@@ -33,11 +33,6 @@ public class ClientController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    /*@RequestMapping("/clients/{id}")
-    public ClientDTO getClient(@PathVariable Long id) { // con path variable busco la variable dentro del cliente
-        return clientRepository.findById(id).map(client ->new ClientDTO(client)).orElse(null);
-    }*/
-
     @GetMapping("/clients")
     public List<ClientDTO> getClients() {
         return clientService.getClientsDTO();
