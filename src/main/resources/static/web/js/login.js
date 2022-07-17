@@ -24,11 +24,23 @@ Vue.createApp({
                          title: 'Oops...',
                          text: 'There are incomplete fields!',
                     })
+               }else if(this.password.length <= 4 || this.password.length >= 15){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'The password is either to short or too long!',
+                    })
+               }else if(!this.email.includes("@") || !this.email.includes(".") ){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'Please check the email!',
+                    })
                }else{
                axios.post('/api/clients',`firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`,
                {headers:{'content-type':'application/x-www-form-urlencoded'}})
                .then(response => 
-                    console.log(this.password.legth))
+                    console.log("Registered!"))
                .then(
                     Swal.fire({
                          position: 'center',
