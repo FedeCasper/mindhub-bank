@@ -56,13 +56,14 @@
           </nav>
      </header>
 
-     <!------------------------------- MAIN ------------------------------->
-     <main id="fila3" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-5">
-          <!------------------------------- ACCOUNTS FRAME ------------------------------->
-          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-5">
+     <!-------------------------------------- MAIN -------------------------------------->
+     <main id="main-accounts" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-5">
+          <!------------- Accounts Heading ------------->
+          <div id="accounts-heading">
                <h3>This are your</h3><h3>personal <span class="bold">accounts</span></h3>
           </div>
-          <div id="accounts_column1" class="col-12 d-flex flex-column align-items-center justify-content-center  px-5 py-5 h-75">
+          <!------------- Accounts Cards ------------->
+          <div id="accounts-cards-container">
                <div class="row justify-content-center h4 pt-5">
                     Manage all your accounts from one place
                     <p class="h6 d-flex justify-content-center pt-3">Request an account at the moment, up to a maximum of 3 per client</p>
@@ -90,10 +91,11 @@
                </div>
                <div class="row"><button class="btn btn-primary" id="create_account_button" v-on:click="createAccount()">Button Create Account</button></div>
           </div>
-          <!------------------------------- LOAN FRAME ------------------------------->
+          <!------------- Loan Heading ------------->
           <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-5">
                <h3>This are your</h3><h3>personal <span class="bold">loans</span></h3>
           </div>
+          <!------------- Loan Cards ------------->
                <div id="columnaI" class="col-12 d-flex flex-column align-items-center justify-content-center py-5">
                     <div class="row justify-content-center h4 pt-1">                    
                          Learn about our loans that we offer so you can achieve your dreams
@@ -154,19 +156,20 @@
      </main>
      
      <!-------------------------------------- Footer -------------------------------------->  
-     <footer id="fila4" class="row row-cols-3 gap-4 d-flex justify-content-center">
-          <div id="columnaK" class="col-3 d-flex flex-column justify-content-center px-0">
-          <a href="./accounts.html"><p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p></a>
+     <footer class="footer">
+          <!-- Logo Footer -->
+          <div class="footer-column-left">
+               <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
           </div>
-          <div id="columnaL" class="col-4 d-flex justify-content-center align-items-center px-0">
-               <div class="row d-flex justify-content-center gap-4">
+          <!-- Links Footer -->
+          <div class="footer-column-center">
                     <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
                     <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
                     <a class="footer-links col-12 col-xl-3" href="#">Security</a>
                     <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
-               </div>
           </div>
-          <div id="columnaM" class="col-3 d-flex justify-content-end align-items-center gap-3 px-0">
+          <!-- Social Footer -->
+          <div class="footer-column-right">
                <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -174,14 +177,14 @@
                          <polyline points="3 7 12 13 21 7" />
                     </svg>
                </a>
-               <!------------- Botón Facebook ------------->
+               <!------------- Btn Facebook ------------->
                <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
                     </svg>
                </a>
-               <!------------- Botón Instagram ------------->
+               <!------------- Btn Instagram ------------->
                <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -190,7 +193,7 @@
                          <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
                     </svg>
                </a>
-               <!------------- Botón Whatsapp ------------->
+               <!------------- Btn Whatsapp ------------->
                <a class="footer-icons" href="https://web.whatsapp.com/">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

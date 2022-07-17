@@ -15,77 +15,70 @@
      
      <div id="app">
           
-<!-------------------------------------- HEADER & NAV -------------------------------------->
-          <header>
-               <nav class="navbar navbar-expand-lg px-5 col-12">
-                    <div class="container-fluid px-0 gap-5">
-                         <!--Logo Banco-->
-                         <a class="navbar-brand" href="#"><p class="h4 mb-0">
-                              <span class="purple_bold">Mind</span>Hub Bank</p>
-                         </a>
-                         <!--Menú Hamburguesa Oculto-->
-                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                              <span class="navbar-toggler-icon"></span>
-                         </button>
-                         <!--Botón Go Back & Icono-->
-                         <div class="collapse navbar-collapse pl-5 d-flex justify-content-end" id="navbarSupportedContent">
-                              <a href="./index.html">
-                                   <button class="btn btn-primary" type="button">
-                                             <!--Icono-->
-                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                  <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
-                                             </svg>
-                                             Go Back
-                                   </button>
-                              </a>
-                         </div>
-                    </div>
-               </nav>
-          </header> 
+     <!-------------------------------------- HEADER & NAV -------------------------------------->
+     <header class="header">
+          <nav class="nav-index">
+               <a class="nav-index-logo" href="#" >
+                    <h1><span class="purple_bold">Mind</span>Hub Bank</h1>
+               </a>
+               <a href="./index.html">
+                    <button  class="btn-black" type="button">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" />
+                         </svg>
+                         Go Back
+                    </button>
+               </a>
+          </nav>
+     </header>
 
 
-<!-------------------------------------- MAIN -------------------------------------->
+          <!-------------------------------------- MAIN -------------------------------------->
+     
           <main>
-               <div class="container px-4 py-5 mx-auto">
-                    <div class="card card0">
+               <div class="container px-4 py-5 mx-auto mt-5">
+                    <div id="login-form-container" class="card card0">
                     <div class="d-flex flex-lg-row flex-column-reverse">
 
-                         <div class="card card1">
-                              <div class="row justify-content-center my-auto">
-                                   <div class="col-md-8 col-10 my-3">
+                         <div class="card card1" id="login-form">
+                              <div class="login-form-subcontainer">
+                                   <div class="login-form-items">
 
-                                        <h3 class="mb-5 text-center heading"><p>Welcome  we are</p><span class="purple_bold">Mind</span>Hub Bank</h3>
+                                        <h3 class="mb-5 text-center heading">We are <span class="purple_bold">Mind</span>Hub Bank</h3>
                
                                         <h6 class="msg-info">Please complete with your data</h6>
                
                                         <div class="form-group">
-                                        <label class="form-control-label text-muted">First Name</label>
-                                        <input type="text" id="firstName" name="fisrtName" placeholder="Enter your first name" class="form-control" v-model="firstName">
+                                             <label class="form-control-label text-muted">First Name</label>
+                                             <input type="text" id="firstName" name="fisrtName" placeholder="Enter your first name" class="form-control" v-model="firstName">
                                         </div>
                
                                         <div class="form-group">
-                                        <label class="form-control-label text-muted">Last Name</label>
-                                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" class="form-control" v-model="lastName">
+                                             <label class="form-control-label text-muted">Last Name</label>
+                                             <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" class="form-control" v-model="lastName">
                                         </div>
 
                                         <div class="form-group">
-                                        <label class="form-control-label text-muted">Email</label>
-                                        <input type="email" id="email" name="email" placeholder="Register a mail" class="form-control" v-model="email">
+                                             <label class="form-control-label text-muted">Email</label>
+                                             <input type="email" id="email" name="email" placeholder="Register a mail" class="form-control" v-model="email">
                                         </div>
 
                                         <div class="form-group">
-                                        <label class="form-control-label text-muted">Password</label>
-                                        <input type="password" id="psw" name="psw" placeholder="Create a password" class="form-control" v-model="password">
+                                             <label class="form-control-label text-muted">Password</label>
+                                             <input type="password" id="psw" name="psw" placeholder="Create a password" class="form-control" v-model="password">
                                         </div>
                
-                                        <div class="row justify-content-center my-3 px-3">
-                                        <button class="btn login" v-on:click="register()">Create User</button>
-                                        </div>
+                                        <button id="form-btn" class="btn-black" v-on:click="register()">Create User</button>
 
+                                        <div class="text-center my-4">
+                                             <small class="text-muted">Want to login?</small>
+                                             <a href="./login.html" class="sm-text">
+                                                  <button class="btn-black ms-3">Login</button>
+                                             </a>
+                                        </div>
                                    </div>
                               </div>
-
                          </div>
 
                          
@@ -108,7 +101,6 @@
 
 
           </main>
-          
 
           
      </div> <!--Cierre de etiqueta app-->

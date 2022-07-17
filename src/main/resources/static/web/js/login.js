@@ -41,6 +41,23 @@ Vue.createApp({
                {headers:{'content-type':'application/x-www-form-urlencoded'}})
                .then(response => 
                     console.log("Registered!"))
+               .catch(function(error){
+                    if (error.response.status === 403) {
+                         Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: 'There is already a user with that email!',
+                         })
+                         console.log('Error', error.message);
+                    }else {
+                         Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: 'Something went wrong!',
+                         })
+                         console.log('Error', error.message);
+                    }
+               })
                .then(
                     Swal.fire({
                          position: 'center',

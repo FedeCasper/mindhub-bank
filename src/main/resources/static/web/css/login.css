@@ -232,8 +232,9 @@ transition: background-color 0.5s , border 0.5s;
 .sm-text {
     font-size: 15px;
 }
-#form-btn-login{
-    margin-top: 2rem;
+#form-btn{
+    width: 100%;
+    margin: 2rem 0;
 }
 
 
@@ -288,9 +289,11 @@ transition: background-color 0.5s , border 0.5s;
     .text-muted{
         font-size: 1.5rem !important;
     }
-    #form-btn-login{
+    #form-btn{
+        width: 100%;
         height: 4rem;
         font-size: 1.5rem;
+        margin: 3rem 0;
     }
 }
 
