@@ -55,7 +55,16 @@
                
                                         <div class="form-group">
                                              <label class="form-control-label text-muted">Password</label>
-                                             <input type="password" id="psw" name="psw" placeholder="Password" class="form-control" v-model="password">
+                                             <div class="psw-input-container">
+                                                  <input type="password" id="psw" name="psw" placeholder="Password" class="form-control" v-model="password">
+                                                  <span id="pwd-eye" class="btn" v-on:click="show()">
+                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <circle cx="12" cy="12" r="2" />
+                                                            <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
+                                                       </svg>
+                                                  </span>
+                                             </div>
                                         </div>
 
                                         <button id="form-btn" class="btn-black" v-on:click="login()">Login</button>

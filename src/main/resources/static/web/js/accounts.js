@@ -59,6 +59,4 @@ Vue.createApp({
 
      }, // Cierre de (methods)
 
-
-     
      }).mount('#app')
