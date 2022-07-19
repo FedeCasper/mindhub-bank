@@ -22,7 +22,7 @@ Vue.createApp({
 
      created(){
 
-          axios.get("http://localhost:8080/api/clients/current")
+          axios.get('/api/clients/current')
                .then(datos => {
                     this.client = datos.data
                     this.cards = this.client.cards.sort((a, b) => {return a.id - b.id;})
@@ -31,7 +31,7 @@ Vue.createApp({
 
                })
 
-               axios.get('http://localhost:8080/api/clients/current/cards')
+               axios.get('/api/clients/current/cards')
                     .then(data => {
                          addCardsButton = document.querySelector("#createCardButton")
                          this.currentClient_Cards = data.data
@@ -70,7 +70,7 @@ Vue.createApp({
           logout(){
                axios.post('/api/logout')
                     .then(response => 
-                         window.location.href = "http://localhost:8080/web/index.html",
+                         window.location.href = '/web/index.html',
                          console.log('You have successfully logged out!!!'))
                     .catch( error => error.message + "Oops! something happened, you couldn't log out" )
           },
@@ -87,7 +87,7 @@ Vue.createApp({
                })
                .then((result) => {
                     if (result.isConfirmed) {   
-                         axios.delete(`http://localhost:8080/api/clients/current/cards/` + id)
+                         axios.delete(`/api/clients/current/cards/` + id)
                          Swal.fire(
                          'Card Canceled!',
                          'We remove this card from your wallet',

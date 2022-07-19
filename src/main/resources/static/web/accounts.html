@@ -3,6 +3,7 @@
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +14,21 @@
 </head>
 <body>
 
-<div id="app" class="container-fluid">
+<div id="app">
 
      <!------------------------------- HEADER ------------------------------->
-     <header id="fila_header" class="row row-cols-2">
+     <header class="header">
           <nav class="navbar navbar-expand-lg px-5 col-12">
                <div class="container-fluid px-0">
+                    <!------------- Brand Nav ------------->
                     <a class="navbar-brand" href="#">
                          <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
                     </a>
+                    <!------------- Burguer Button ------------->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="navbar-toggler-icon"></span>
                     </button>
+                    <!------------- Nav Links ------------->
                     <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
                          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
                               <li class="nav-item">
@@ -40,8 +44,9 @@
                                    <a class="nav-link" href="./transfers.html">Transfers</a>
                               </li>
                          </ul>
+                         <!------------- Logout Button ------------->
                          <a href="./login.html">
-                              <button class="btn btn-primary d-flex align-items-center gap-2" type="button" v-on:click="logout()">
+                              <button class="btn-black d-flex align-items-center gap-2" type="button" v-on:click="logout()">
                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
@@ -57,19 +62,21 @@
      </header>
 
      <!-------------------------------------- MAIN -------------------------------------->
-     <main id="main-accounts" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-5">
+     <main id="main-accounts">
+
           <!------------- Accounts Heading ------------->
-          <div id="accounts-heading">
-               <h3>This are your</h3><h3>personal <span class="bold">accounts</span></h3>
+          <div class="accounts-header">
+               <h3>This are your</h3>
+               <h3>personal <span class="bold">Accounts</span></h3>
           </div>
           <!------------- Accounts Cards ------------->
           <div id="accounts-cards-container">
-               <div class="row justify-content-center h4 pt-5">
-                    Manage all your accounts from one place
-                    <p class="h6 d-flex justify-content-center pt-3">Request an account at the moment, up to a maximum of 3 per client</p>
+               <div class="accounts-container-header">
+                    <p class="h4 text-center">Manage all your accounts from one place</p>
+                    <p class="h6 text-center">Request an account at the moment, up to a maximum of 3 per client.</p>
                </div>
-               <div class="row d-flex justify-content-center">
-                    <div v-for="account in accounts" class="card px-0" id="accounts_cards">
+               <div class="accounts-container">
+                    <div v-for="account in accounts" class="card" id="accounts_cards">
                          <div class="card-header">{{account.number}}</div>
                          <ul class="list-group list-group-flush">
                               <li class="list-group-item">Balance: {{"$" + account.balance}}</li>
@@ -89,21 +96,26 @@
                          </ul>
                     </div>
                </div>
-               <div class="row"><button class="btn btn-primary" id="create_account_button" v-on:click="createAccount()">Button Create Account</button></div>
+               <!------------- Accounts Create Button ------------->
+               <div class="row">
+                    <button class="btn btn-primary" id="create_account_button" v-on:click="createAccount()">Button Create Account</button>
+               </div>
           </div>
+
           <!------------- Loan Heading ------------->
-          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-5">
-               <h3>This are your</h3><h3>personal <span class="bold">loans</span></h3>
+          <div class="accounts-header">
+               <h3>This are your</h3>
+               <h3>personal <span class="bold">Loans</span></h3>
           </div>
           <!------------- Loan Cards ------------->
-               <div id="columnaI" class="col-12 d-flex flex-column align-items-center justify-content-center py-5">
-                    <div class="row justify-content-center h4 pt-1">                    
-                         Learn about our loans that we offer so you can achieve your dreams
-                         <p class="h6 d-flex justify-content-center pt-3">All our loans are at a rate of 0% and with minimum requirement</p>
+               <div id="accounts-loans-container">
+                    <div class="accounts-container-header">
+                         <p class="h4 text-center">Learn about our loans that we offer so you can achieve your dreams</p>
+                         <p class="h6 text-center">All our loans are at a rate of 0% and with minimum requirement.</p>
                     </div>
-                    <div class="row d-flex justify-content-center mt-5">
-                         <div class="col d-flex justify-content-center" v-if="loans != []" id="card_loan">
-                              <div v-for="loan in loans"  class="card loan_card mx-2" style="width: 18rem;">
+                    <div class="accounts-container">
+                         <div class="loans-container" v-if="loans != []" id="card_loan">
+                              <div v-for="loan in loans"  class="card loan-card">
                                    <img v-if="loan.name == 'Personal'" src="./assets/prestamo_personal-03.png" class="card-img-top" alt="..." >
                                    <img v-if="loan.name == 'Automotive'" src="./assets/prestamo_automotriz-03.png" class="card-img-top" alt="..." >
                                    <img v-if="loan.name == 'Mortgage'" src="./assets/prestamo_hipotecario-03.png" class="card-img-top" alt="..." >
@@ -136,7 +148,7 @@
                               </div>
                          </div>
                          <!------------- Empty Loan ------------->
-                         <div class="card loan_card request px-0" style="width: 18rem;" id="create_loan">
+                         <div class="card loan-card request px-0" id="create_loan">
                               <a href="./loan-application.html"><button type="button" class="btn p-1" id="loan_button"><img src="./assets/loan_request-01-03.png" class="card-img-top" alt="..."></button></a>
                               <div class="card-body">
                               <h5 class="bold">Request a New Loan!</h5>

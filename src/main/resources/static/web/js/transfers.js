@@ -12,7 +12,7 @@ Vue.createApp({
 
      created(){
 
-          axios.get('http://localhost:8080/api/clients/current/accounts')
+          axios.get('/api/clients/current/accounts')
           .then(data => {
                this.client_current_accounts = data.data.sort((a, b) => {return a.id - b.id})
           })
@@ -21,7 +21,8 @@ Vue.createApp({
      methods:{
 
           create_transaction(){
-               axios.post(`http://localhost:8080/api/transactions`,`amount=${this.amount}&description=${this.description}&sourceAccount=${this.sourceAccountNumber}&destinationAccount=${this.destinationAccountNumber}`,
+               axios.post(`/api/transactions`,
+               `amount=${this.amount}&description=${this.description}&sourceAccount=${this.sourceAccountNumber}&destinationAccount=${this.destinationAccountNumber}`,
                {headers:{'content-type':'application/x-www-form-urlencoded'}})
                .then(
                     Swal.fire({

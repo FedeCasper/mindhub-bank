@@ -13,11 +13,6 @@
 body{
      background-image: url('../assets/fondo_body.png');
 }
-#app{
-     height: 100vh;
-     padding: 0px;
-     width: 100%;
-}
 a{
      text-decoration: none;
      color: #fff;
@@ -25,7 +20,6 @@ a{
 a:hover{
      color:#a36ac9;
 }
-
 :placeholder-shown{
      font-style: italic;
      opacity: 70%;
@@ -133,9 +127,8 @@ margin-top: 2rem;
 /*------------------------------------ Accounts ------------------------------------*/
 #main-accounts{
      height: 80%;
-     overflow-y: scroll;
 }
-#accounts-heading{
+.accounts-header{
      width: 100%;
      height: fit-content;
      display: flex;
@@ -153,6 +146,53 @@ margin-top: 2rem;
      background: rgb(216,213,218);
      background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
 }
+.accounts-container-header{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding-top: 2rem;
+     gap: 1rem;
+}
+.accounts-container{
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+}
+#accounts_cards{
+     height: fit-content;
+     width: 375px;
+     margin: 2rem 1rem 2rem 1rem;
+}
+#accounts-loans-container{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     min-height: fit-content;
+     background: linear-gradient(264deg, rgba(140,69,188,0.5) 8%, rgba(165,218,227,0.5) 91%);
+     margin-bottom: 3rem;
+}
+.loan-card{
+     font-size: small;
+     height: fit-content !important;
+     width: 18rem;
+}
+.loans-container{
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 1rem;
+     margin-right: 1rem;
+}
+#loan_button{
+     width: 100%;
+     transition: border 0.3s;
+     opacity: 80%;
+}
+.request{
+     background-color:#f1f1f172;
+}
+
 #fila4{
      height: 10%;
      background-color: #1b1c1a;
@@ -184,6 +224,7 @@ margin-top: 2rem;
 }
 .navbar{
      background-color:#fff;
+     border-bottom: solid 3px #a36ac9; 
 }
 .h4{
      margin-bottom: 0;
@@ -200,10 +241,7 @@ margin-top: 2rem;
      height: fit-content;
      border-radius: 3px;
 }
-#columnaI{
-     min-height: fit-content;
-     background: linear-gradient(264deg, rgba(140,69,188,0.5) 8%, rgba(165,218,227,0.5) 91%);
-}
+
 .display-1{
      font-size: 12vh;
      margin-bottom: 0 !important;
@@ -329,26 +367,18 @@ color: #a36ac9;
 #card_column1{
      background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
 }
-.loan_card{
-     font-size: small;
-     height: fit-content !important;
-}
+
 .loan_link{
      color: #a36ac9;
 }
 .loan_link:hover{
      color:#1b1c1a;
 }
-.request{
-background-color:#f1f1f172;
-}
+
 .request_ul{
      background-color:#f1f1f100;
 }
-#loan_button{
-     transition: border 0.3s;
-     opacity: 80%;
-}
+
 #loan_button:hover{
      border: solid 5px #a36ac9;
 }
@@ -370,11 +400,7 @@ background-color:#f1f1f172;
 
 
 /*------------------------------------ Cards Design & Behaving ------------------------------------*/
-#accounts_cards{
-     height: fit-content;
-     width: fit-content;
-     margin: 2rem 1rem 2rem 1rem;
-}
+
      .h4_cards{
           display: flex;
           justify-content: center;

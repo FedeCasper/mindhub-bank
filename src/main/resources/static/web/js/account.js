@@ -12,7 +12,7 @@ Vue.createApp({
           const id = urlParams.get('id');
           console.log(id)
 
-          axios.get("http://localhost:8080/api/accounts/" + id)
+          axios.get('/api/accounts/' + id)
                .then(datos => {
                     this.account_vin001 = datos.data
                     console.log(this.account_vin001)

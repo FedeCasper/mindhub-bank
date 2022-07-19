@@ -29,7 +29,7 @@ Vue.createApp({
                console.log(this.available_loans)
           }),
 
-          axios.get('http://localhost:8080/api/clients/current/accounts')
+          axios.get('/api/clients/current/accounts')
           .then(data => {
                this.currentClientAccounts = data.data
                console.log(this.currentClientAccounts)
