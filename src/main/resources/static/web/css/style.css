@@ -128,14 +128,14 @@ margin-top: 2rem;
 #main-accounts{
      height: 80%;
 }
-.accounts-header{
+.stripe-header{
      width: 100%;
      height: fit-content;
      display: flex;
      flex-direction: column;
      justify-content: flex-start;
      padding: 0 0 0 2rem;
-     margin-top: 3rem;
+     margin: 3rem 0 1rem 0;
 }
 #accounts-cards-container{
      width: 100%;
@@ -145,6 +145,7 @@ margin-top: 2rem;
      justify-content: center;
      background: rgb(216,213,218);
      background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
+     padding: 0 2rem;
 }
 .accounts-container-header{
      display: flex;
@@ -171,6 +172,7 @@ margin-top: 2rem;
      min-height: fit-content;
      background: linear-gradient(264deg, rgba(140,69,188,0.5) 8%, rgba(165,218,227,0.5) 91%);
      margin-bottom: 3rem;
+     padding: 0 2rem;
 }
 .loan-card{
      font-size: small;
@@ -192,6 +194,30 @@ margin-top: 2rem;
 .request{
      background-color:#f1f1f172;
 }
+
+
+/*------------------------------------ Transfers ------------------------------------*/
+.transfers-stripe{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     gap: 2rem;
+     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
+     padding: 2rem 0;
+}
+#transfer-left-container{
+     width: 40%;
+}
+#transfer-right-container{
+     width: 30%;
+}
+.btn-transfer{
+margin: 2rem 0 1rem 0;
+width: 75%;
+}
+
+
+
 
 #fila4{
      height: 10%;
@@ -232,10 +258,6 @@ margin-top: 2rem;
 .bold{
      font-weight: bold;
 }
-#columnaC{background-color: coral;}
-#columnaD{background-color: cornflowerblue;}
-#columnaE{background-color: yellowgreen;}
-#columnaF{background-color: slateblue;}
 
 #columnaH{
      height: fit-content;
@@ -286,9 +308,6 @@ margin-top: 2rem;
 } 
 #index_business{
      font-weight:500;
-}
-#fila_transfer{
-     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
 }
 #pushed{
      font-size: larger;
@@ -615,6 +634,12 @@ color: #a36ac9;
                display: flex;
                justify-content: center;
           }
+          #transfer-left-container{
+               width: 50%;
+          }
+          #transfer-right-container{
+               width: 40%;
+          }
      }
 
      @media screen and (max-width: 630px){
@@ -635,6 +660,19 @@ color: #a36ac9;
                align-items: center;
                gap: 1rem;
           }
+          .transfers-stripe{
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+               gap: 3rem;
+          }
+          #transfer-left-container{
+               width: 80%;
+          }
+          #transfer-right-container{
+               width: 80%;
+          }
      }
 
      @media screen and (max-width: 441px){
@@ -646,6 +684,12 @@ color: #a36ac9;
           }
           .h4-index{
                text-align: center;
+          }
+          .h4{
+               font-size: medium;
+          }
+          .h6{
+               font-size: small;
           }
      }
 
