@@ -81,48 +81,52 @@
                                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                              <div class="accordion-body d-flex flex-column">
                                                   <!-- Source Account Select-->
-                                                  <label>Source Account
-                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-right mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                  <label>
+                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-right mx-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <path d="M20 12v-6a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v8" />
                                                             <path d="M4 18h17" />
                                                             <path d="M18 15l3 3l-3 3" />
                                                        </svg>
+                                                       Source Account
                                                   </label>
-                                                  <select v-model="ownSourceAccountNumber" class="w-75">
+                                                  <select v-model="ownSourceAccountNumber" class="select-input">
                                                        <option v-for="account in client_current_accounts" :disabled="ownDestinationAccountNumber == account.number"> {{account.number}} </option>
                                                   </select>
                                                   <!-- Destination Account Select-->
-                                                  <label class="pt-2">Destination Account
-                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-left mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                  <label class="pt-2">
+                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-left mx-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <path d="M4 12v-6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8" />
                                                             <path d="M20 18h-17" />
                                                             <path d="M6 15l-3 3l3 3" />
                                                        </svg>
+                                                       Destination Account
                                                   </label>
-                                                  <select v-model="ownDestinationAccountNumber" class="w-75">
+                                                  <select v-model="ownDestinationAccountNumber" class="select-input">
                                                        <option v-for="account in client_current_accounts" :disabled="ownSourceAccountNumber == account.number"> {{account.number}} </option>
                                                   </select>
                                                   <!-- Amount Input-->
-                                                  <label class="pt-2">Choose the amount desired
-                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                  <label class="pt-2">
+                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin mx-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <circle cx="12" cy="12" r="9" />
                                                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
                                                             <path d="M12 6v2m0 8v2" />
                                                        </svg>
+                                                       Choose the amount desired
                                                   </label>
-                                                  <input type="number" v-model="ownAmount" class="w-75" >
+                                                  <input type="number" v-model="ownAmount" class="select-input">
                                                   <!-- Description Input-->
-                                                  <label class="pt-2">Enter a small description
-                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                  <label class="pt-2">
+                                                       <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil mx-1 mb-1" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
                                                             <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
                                                        </svg>
+                                                       Enter a small description
                                                   </label>
-                                                  <input type="text" name="" id="" v-model="ownDescription" class="w-75" placeholder="food & fruits">
+                                                  <input type="text" name="" id="" v-model="ownDescription" class="select-input" placeholder="food & fruits">
                                                   <!-- Button Make Transfer-->
                                                   <button type="button" class="btn-black btn-transfer" v-on:click="create_own_transfer()">
                                                        Make a transfer
@@ -140,46 +144,50 @@
                                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                              <div class="accordion-body d-flex flex-column">
                                                   <!-- Source Account Select-->
-                                                  <label>Source Account
+                                                  <label>
                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-right mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <path d="M20 12v-6a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2v8" />
                                                             <path d="M4 18h17" />
                                                             <path d="M18 15l3 3l-3 3" />
                                                        </svg>
+                                                       Source Account
                                                   </label>
-                                                  <select v-model="elseSourceAccountNumber" class="w-75">
+                                                  <select v-model="elseSourceAccountNumber" class="select-input">
                                                        <option v-for="account in client_current_accounts">{{account.number}}</option>
                                                   </select>
                                                   <!-- Destination Account Select-->
-                                                  <label class="pt-2" id="destination_label">Destination Account
+                                                  <label class="pt-2" id="destination_label">
                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-autofit-left mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <path d="M4 12v-6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8" />
                                                             <path d="M20 18h-17" />
                                                             <path d="M6 15l-3 3l3 3" />
                                                        </svg>
+                                                       Destination Account
                                                   </label>
-                                                  <input class="w-75" type="text" v-model="elseDestinationAccountNumber">
+                                                  <input class="select-input" type="text" v-model="elseDestinationAccountNumber">
                                                   <!-- Amount Input-->
-                                                  <label class="pt-2">Choose the amount desired
+                                                  <label class="pt-2">
                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-coin mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <circle cx="12" cy="12" r="9" />
                                                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
                                                             <path d="M12 6v2m0 8v2" />
                                                        </svg>
+                                                       Choose the amount desired
                                                   </label>
-                                                  <input type="number" v-model="elseAmount" class="w-75" required>
+                                                  <input type="number" v-model="elseAmount" class="select-input" required>
                                                   <!-- Description Input-->
-                                                  <label class="pt-2">Enter a small description
+                                                  <label class="pt-2">
                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil mx-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
                                                             <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
                                                        </svg>
+                                                       Enter a small description
                                                   </label>
-                                                  <input type="text" name="" id="" v-model="elseDescription" class="w-75" placeholder="food & fruits">
+                                                  <input type="text" name="" id="" v-model="elseDescription" class="select-input" placeholder="food & fruits">
                                                   <!-- Button Make Transfer-->
                                                   <button type="button" class="btn-black btn-transfer" v-on:click="create_else_transfer()">
                                                        Make a transfer

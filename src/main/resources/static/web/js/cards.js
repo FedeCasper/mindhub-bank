@@ -17,6 +17,9 @@ Vue.createApp({
 
           id: [],
 
+          client_debit_cards: [],
+          client_credit_cards: [],
+
           }
      },
 
@@ -36,8 +39,12 @@ Vue.createApp({
                          addCardsButton = document.querySelector("#createCardButton")
                          this.currentClient_Cards = data.data
                          this.currentClient_Cards_Length = data.data.length
-                         this.currentClient_Cards_Type = this.currentClient_Cards.map(card => card.type).length
-                              if(this.currentClient_Cards_Type >= 6){
+                         this.client_credit_cards = this.currentClient_Cards.filter(card => card.type === 'CREDIT')
+                         console.log(this.client_credit_cards)
+                         this.client_debit_cards = this.currentClient_Cards.filter(card => card.type === 'DEBIT')
+                         console.log(this.client_debit_cards)
+                         this.currentClient_Cards_Type_Length = this.currentClient_Cards.map(card => card.type).length
+                              if(this.currentClient_Cards_Type_Length >= 6){
                               addCardsButton.style.display = "none";}
                })
      },
