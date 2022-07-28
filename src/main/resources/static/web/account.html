@@ -3,6 +3,7 @@
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +14,14 @@
 </head>
 <body>
 
-<div id="app" class="container-fluid">
+<div id="app">
 
      <!------------------------------- HEADER ------------------------------->
      <header id="fila_header" class="row row-cols-2">
           <nav class="navbar navbar-expand-lg px-5 col-12">
                <div class="container-fluid px-0">
                     <a class="navbar-brand" href="#">
-                         <p class="h4"><span class="bold">Mind</span>Hub</p>
-                         <p class="h4">Bank</p>
+                         <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="navbar-toggler-icon"></span>
@@ -35,17 +35,11 @@
                                    <a class="nav-link" href="./accounts.html">Accounts</a>
                               </li>
                               <li class="nav-item">
-                                   <a class="nav-link" href="./cards.html" >Cards</a>
+                                   <a class="nav-link" href="./cards.html">Cards</a>
                               </li>
-                              <!-- <li class="nav-item">
-                                   <a class="nav-link" href="./create-cards.html">Create Card</a>
-                              </li> -->
                               <li class="nav-item">
                                    <a class="nav-link" href="./transfers.html" >Transfers</a>
                               </li>
-                              <!-- <li class="nav-item">
-                                   <a class="nav-link" href="#" id="pushed">Transactions</a>
-                              </li> -->
                          </ul>
                          <a href="./login.html">
                               <button class="btn btn-primary d-flex align-items-center gap-2" type="button" v-on:click="logout()">
@@ -63,51 +57,56 @@
           </nav>
      </header>
      
-<!------------------------------- MAIN ------------------------------->
-     <main id="fila3" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-5">
-          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-3">
-               <h3>Check here all</h3><h3>your<span class="bold"> transactions</span></h3>
+     <!------------------------------- MAIN ------------------------------->
+     <main id="main-transactions">
+          <div class="stripe-header">
+               <h3>Check here all</h3>
+               <h3>your <span class="bold">Transactions</span></h3>
           </div>
-          <div id="accounts_column1" class="col-12 d-flex flex-column align-items-center justify-content-center  px-5 py-5 h-75">
-          <div id="columnaH" class="col-12  px-5 py-2">
-               <div class="row">
-                    <table class="table table-striped table-hover">
-                         <thead>
-                              <th>Id</th>
-                              <th>Date</th>
-                              <th>Payment</th>
-                              <th>Amount</th>
-                              <th>Description</th>
-                         </thead>
-                         <tbody>
-                              <tr v-for="transaction in transactions_vin001">
-                                   <td>{{transaction.id}}</td>
-                                   <td>{{transaction.date}}</td>
-                                   <td :class="{'bg-danger bg-gradient text-white': transaction.type == 'DEBITO', 'bg-success bg-gradient text-white' : transaction.type != 'DEBITO' }">{{transaction.type}}</td>
-                                   <td>${{transaction.amount}}</td>
-                                   <td>{{transaction.description}}</td>
-                         </tbody>
-                    </table>
+               <div class="transaction-stripe">
+                    <div v-for="account in client_accounts" id="transaction-table-container">
+                         <h5 class="mb-3">Account number <span class="bold">{{account.number}}</span></h5>
+                         <table class="table table-striped table-hover">
+                              <thead v-if="account.transactions != 0">
+                                   <th>Id</th>
+                                   <th>Date</th>
+                                   <th>Payment</th>
+                                   <th>Amount</th>
+                                   <th>Description</th>
+                              </thead>
+                              <tbody>
+                                   <tr v-for="transaction in account.transactions">
+                                        <div v-if="account.transactions == 0" class="transaction-moves"> You have no movements in this account yet</div>
+                                        <div v-else>
+                                             <td>{{transaction.id}}</td>
+                                             <td>{{formatearFecha(transaction.date)}}</td>
+                                             <td :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">{{transaction.type}}</td>
+                                             <td :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">${{transaction.amount}}</td>
+                                             <td>{{transaction.description}}</td>
+                                        </div>
+                              </tbody>
+                         </table>
+                    </div>
+                    <a href="./transfers.html" class="row d-flex justify-content-center"><div class="btn-black" id="create_account_button">Create a transaction</div></a>
                </div>
-               <a href="./transfers.html" class="row d-flex justify-content-center mt-4"><div class="btn btn-primary mt-2 w-25 " id="create_account_button">Create a transaction</div></a>
-          </div>
-     </div>
+
      </main>
      
-<!-------------------------------------- Footer -------------------------------------->  
-     <footer id="fila4" class="row row-cols-3 gap-4 d-flex justify-content-center">
-          <div id="columnaK" class="col-3 d-flex flex-column justify-content-center px-0">
+     <!-------------------------------------- Footer -------------------------------------->  
+     <footer class="footer">
+          <!-- Logo Footer -->
+          <div class="footer-column-left">
                <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
           </div>
-          <div id="columnaL" class="col-4 d-flex justify-content-center align-items-center px-0">
-               <div class="row d-flex justify-content-center gap-4">
-                    <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
-                    <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
-                    <a class="footer-links col-12 col-xl-3" href="#">Security</a>
-                    <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
-               </div>
+          <!-- Links Footer -->
+          <div class="footer-column-center">
+               <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
+               <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
+               <a class="footer-links col-12 col-xl-3" href="#">Security</a>
+               <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
           </div>
-          <div id="columnaM" class="col-3 d-flex justify-content-end align-items-center gap-3 px-0">
+          <!-- Social Footer -->
+          <div class="footer-column-right">
                <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -115,14 +114,14 @@
                          <polyline points="3 7 12 13 21 7" />
                     </svg>
                </a>
-               <!------------- Botón Facebook ------------->
+               <!------------- Btn Facebook ------------->
                <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
                     </svg>
                </a>
-               <!------------- Botón Instagram ------------->
+               <!------------- Btn Instagram ------------->
                <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -131,7 +130,7 @@
                          <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
                     </svg>
                </a>
-               <!------------- Botón Whatsapp ------------->
+               <!------------- Btn Whatsapp ------------->
                <a class="footer-icons" href="https://web.whatsapp.com/">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

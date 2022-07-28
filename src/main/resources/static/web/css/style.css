@@ -163,6 +163,7 @@ margin-top: 2rem;
      height: fit-content;
      width: 375px;
      margin: 2rem 1rem 2rem 1rem;
+     background: linear-gradient(145deg, rgba(140, 69, 188, 0.244) 8%, rgba(165, 218, 227, 0.244) 91%);
 }
 #accounts-loans-container{
      display: flex;
@@ -224,12 +225,20 @@ width: 75%;
 
 
 /*------------------------------------ Cards ------------------------------------*/
-#cards-stripe{
+#credit-cards-stripe{
      display: flex;
      flex-direction: column;
      align-items: center;
      gap: 3rem;
-     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
+     background: linear-gradient(145deg, rgba(140, 69, 188, 0.244) 8%, rgba(165, 218, 227, 0.244) 91%);
+}
+#debit-cards-stripe{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 3rem;
+     background: linear-gradient(145deg, rgba(165, 218, 227, 0.244) 20%,  rgba(140, 69, 188, 0.244) 91%);
+     margin-bottom: 3rem;
 }
 .cards-stripe-header{
      display: flex;
@@ -245,11 +254,24 @@ width: 75%;
      flex-wrap: wrap;
 }
 
+/*------------------------------------ Transactions ------------------------------------*/
+#main-transactions{
+     height: fit-content;
 
-#fila4{
-     height: 10%;
-     background-color: #1b1c1a;
-     padding: 1rem;
+}
+.transaction-stripe{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
+     padding: 2rem 0;
+     gap: 4rem;
+}
+#transaction-table-container{
+     width: 80%;     
+}
+.transaction-moves{
+     font-style: italic;
 }
 
 /*------------------------------------ Footer ------------------------------------*/
@@ -728,6 +750,9 @@ color: #a36ac9;
                font-size: medium;
           }
           .h6{
+               font-size: small;
+          }
+          table{
                font-size: small;
           }
      }

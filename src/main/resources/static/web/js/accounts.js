@@ -41,6 +41,19 @@ Vue.createApp({
 
      methods:{
 
+          formatearFecha(fecha){
+               let date = new Date (fecha)
+               let year = date.getFullYear()  
+               let day = date.getDay() 
+               let array_year = Array.from(year.toString()).slice(-2).join("")
+               let month = date.getMonth() +1
+               if(month < 10){
+                    month = "0" + month
+               }
+               let day_month_year = day + "/" + month + "/" + array_year
+               return day_month_year
+          },
+
           logout(){
                axios.post('/api/logout')
                     .then(response => 

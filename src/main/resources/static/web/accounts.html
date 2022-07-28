@@ -80,17 +80,17 @@
                          <div class="card-header">{{account.number}}</div>
                          <ul class="list-group list-group-flush">
                               <li class="list-group-item">Balance: {{"$" + account.balance}}</li>
-                              <li class="list-group-item">Creation Date: {{account.creationDate}}</li>
+                              <li class="list-group-item">Creation Date: {{formatearFecha(account.creationDate)}}</li>
                               <li class="list-group-item">
                                    <p class="blockquote-footer m-0 pb-2">check your account's movements here</p>
-                                   <a :href=" `http://localhost:8080/web/account.html?id=` + account.id ">
-                                        <button type="button" class="btn btn-primary btn-sm">Transactions </button>
+                                   <a :href=" `/web/account.html?id=` + account.id ">
+                                        <button type="button" class="btn-black btn-sm">Movements</button>
                                    </a>
                               </li>
                               <li class="list-group-item">
                                    <p class="blockquote-footer m-0 pb-2">want to make a transfer?</p>
                                    <a href="./transfers.html">
-                                        <button type="button" class="btn btn-primary btn-sm">Transfers</button>
+                                        <button type="button" class="btn-black btn-sm">Transfers</button>
                                    </a>
                               </li>
                          </ul>

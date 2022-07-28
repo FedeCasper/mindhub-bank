@@ -2,7 +2,7 @@ Vue.createApp({
 
      data() {
           return {
-               client_current_accounts: [],
+               client_accounts: [],
                ownAmount: 0,
                ownDescription: '',
                ownSourceAccountNumber: '',
@@ -18,11 +18,24 @@ Vue.createApp({
 
           axios.get('/api/clients/current/accounts')
           .then(data => {
-               this.client_current_accounts = data.data.sort((a, b) => {return a.id - b.id})
+               this.client_accounts = data.data.sort((a, b) => {return a.id - b.id})
           })
      },
 
      methods:{
+
+          formatearFecha(fecha){
+               let date = new Date (fecha)
+               let year = date.getFullYear()  
+               let day = date.getDay() 
+               let array_year = Array.from(year.toString()).slice(-2).join("")
+               let month = date.getMonth() +1
+               if(month < 10){
+                    month = "0" + month
+               }
+               let day_month_year = day + "/" + month + "/" + array_year
+               return day_month_year
+          },
 
           create_own_transfer(){
                if(this.ownSourceAccountNumber == 0 || this.ownDestinationAccountNumber == 0 || this.ownAmount == 0 || this.ownDescription == 0){
