@@ -3,6 +3,7 @@
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,82 +14,86 @@
 </head>
 <body>
 
-<div id="app" class="container-fluid">
+<div id="app">
 
-<!------------------------------- HEADER ------------------------------->
-     <header id="fila_header" class="row row-cols-2">
+     <!------------------------------- HEADER ------------------------------->
+     <header class="header">
           <nav class="navbar navbar-expand-lg px-5 col-12">
                <div class="container-fluid px-0">
+                    <!------------- Brand Nav ------------->
                     <a class="navbar-brand" href="#">
-                         <p class="h4"><span class="bold">Mind</span>Hub</p>
-                         <p class="h4">Bank</p>
+                         <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
                     </a>
+                    <!------------- Burguer Button ------------->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                          <span class="navbar-toggler-icon"></span>
                     </button>
+                    <!------------- Nav Links ------------->
                     <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
                          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
                               <li class="nav-item">
                                    <a class="nav-link active" aria-current="page" href="./accounts.html">Home</a>
                               </li>
                               <li class="nav-item">
-                                   <a class="nav-link" href="./accounts.html">Accounts</a>
+                                   <a class="nav-link" href="./accounts.html">Accounts & Loans</a>
                               </li>
                               <li class="nav-item">
-                                   <a class="nav-link" href="./cards.html" >Cards</a>
+                                   <a class="nav-link" href="./cards.html" id="pushed">Cards</a>
                               </li>
                               <li class="nav-item">
                                    <a class="nav-link" href="./transfers.html">Transfers</a>
                               </li>
                          </ul>
-                         <a href="./login.html">
-                              <button class="btn btn-primary d-flex align-items-center gap-2" type="button" v-on:click="logout()">
-                                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
-                                        <path d="M13 14h-9" />
-                                        <path d="M7 11l-3 3l3 3" />
-                                   </svg>
-                                   Logout
-                              </button>
-                         </a>
+                         <!------------- Logout Button ------------->
+                         <button class="btn-black d-flex align-items-center gap-2" v-on:click="logout()">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                   <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
+                                   <path d="M13 14h-9" />
+                                   <path d="M7 11l-3 3l3 3" />
+                              </svg>
+                              Logout
+                         </button>
                     </div>
                </div>
           </nav>
      </header>
+
      
 <!------------------------------- MAIN ------------------------------->
-     <main id="fila3" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-5">
-          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-3 ">
-               <h3>Here you can request</h3><h3>a new credit or debit <span class="bold">card</span></h3>
+     <main id="create-card-main">
+          <div class="stripe-header">
+               <h3>Here you can</h3>
+               <h3>request a new <span class="bold">Card</span></h3>
           </div>
-          <div id="columnaH" class="col-12 col-xs-12 col-sm-12 col-md-10 col-xl-6 col-xl-6 px-5 py-2 ">
-               <div class="row"><h4>Please select the disered card</h4></div>
-                    <div class="row form_div p-3 w-75 rounded" id="create_card_form">
-                         <form class="d-flex flex-column gap-2">
-                              <label class="pt-3">Select your card type</label>
-                              <select v-model="cardType"> 
-                                   <option value="DEBIT">Debit</option>
-                                   <option value="CREDIT">Credit</option>
-                              </select>
-                              <label class="pt-3">Select your card style</label>
-                              <select v-model="cardColor">
-                                   <option value="GOLD">Gold</option>
-                                   <option value="SILVER">Silver</option>
-                                   <option value="TITANIUM">Titanium</option>
-                              </select>
-                              <p class="mt-3">
-                                   <ul>
-                                        <li>Your selected card type is: <span class="purple_italic"> {{cardType}}</span></li>
-                                        <li>Your selected card style is: <span class="purple_italic">{{cardColor}}</span></li> 
-                                   </ul>
-                              </p>
-                              <button type="button" class="btn btn-primary w-75 align-self-center" id="create_card_button" v-on:click="createCard()">Confirm</button>
-                         </form>
-                    </div>
-               </div>
-               <div id="columnaJ" class="col-5 d-none d-sm-none d-md-none d-lg-none d-xl-block px-0">
-                    <h4>Your current cards</h4>
+          <div id="create-cards-stripe">
+               <form id="create-card-left-container">
+                    <div>
+                         <p class="h4 mb-4">Please choose the desired card.</p>
+                    </div>   
+                    <label>Select your card type</label>
+                    <select v-model="cardType"> 
+                         <option value="DEBIT">Debit</option>
+                         <option value="CREDIT">Credit</option>
+                    </select>
+                    <label class="pt-3">Select your card style</label>
+                    <select v-model="cardColor">
+                         <option value="GOLD">Gold</option>
+                         <option value="SILVER">Silver</option>
+                         <option value="TITANIUM">Titanium</option>
+                    </select>
+                    <p class="mt-3">
+                         <ul>
+                              <li>Your selected card type is: <span class="purple_italic"> {{cardType}}</span></li>
+                              <li>Your selected card style is: <span class="purple_italic">{{cardColor}}</span></li> 
+                         </ul>
+                    </p>
+                    <button type="button" class="btn-black" v-on:click="createCard()">Confirm</button>
+               </form>
+               <div id="create-card-right-container">
+                    <div>
+                         <p class="h4 mb-4">Your current cards.</p>
+                    </div>   
                     <ul class="list-group list-group-flush">
                          <li v-for="card in currentClient_Cards" class="list-group-item" id="li_cards">
                               <a href="./cards.html" id="a_li_cards">
@@ -107,22 +112,24 @@
                          </li>
                     </ul>
                </div>
+          </div>
      </main>
      
-<!-------------------------------------- Footer -------------------------------------->  
-     <footer id="fila4" class="row row-cols-3 gap-4 d-flex justify-content-center">
-          <div id="columnaK" class="col-3 d-flex flex-column justify-content-center px-0">
+     <!-------------------------------------- Footer -------------------------------------->  
+     <footer class="footer">
+          <!-- Logo Footer -->
+          <div class="footer-column-left">
                <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
           </div>
-          <div id="columnaL" class="col-4 d-flex justify-content-center align-items-center px-0">
-               <div class="row d-flex justify-content-center gap-4">
-                    <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
-                    <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
-                    <a class="footer-links col-12 col-xl-3" href="#">Security</a>
-                    <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
-               </div>
+          <!-- Links Footer -->
+          <div class="footer-column-center">
+               <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
+               <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
+               <a class="footer-links col-12 col-xl-3" href="#">Security</a>
+               <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
           </div>
-          <div id="columnaM" class="col-3 d-flex justify-content-end align-items-center gap-3 px-0">
+          <!-- Social Footer -->
+          <div class="footer-column-right">
                <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -130,14 +137,14 @@
                          <polyline points="3 7 12 13 21 7" />
                     </svg>
                </a>
-               <!------------- Botón Facebook ------------->
+               <!------------- Btn Facebook ------------->
                <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
                     </svg>
                </a>
-               <!------------- Botón Instagram ------------->
+               <!------------- Btn Instagram ------------->
                <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -146,7 +153,7 @@
                          <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
                     </svg>
                </a>
-               <!------------- Botón Whatsapp ------------->
+               <!------------- Btn Whatsapp ------------->
                <a class="footer-icons" href="https://web.whatsapp.com/">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

@@ -26,13 +26,11 @@ Vue.createApp({
           axios.get('/api/loans')
           .then(data => {
                this.available_loans = data.data
-               console.log(this.available_loans)
           }),
 
           axios.get('/api/clients/current/accounts')
           .then(data => {
                this.currentClientAccounts = data.data
-               console.log(this.currentClientAccounts)
           })
      },
 
@@ -40,9 +38,7 @@ Vue.createApp({
      methods:{
           filtro(){
                this.filtered_loan = this.available_loans.filter(prestamos => prestamos.id == this.loan_selected)
-               console.log(this.filtered_loan)
                this.loan_payments = this.filtered_loan[0].payments
-               console.log(this.loan_payments)
           },
 
           confirmLoan(){
@@ -56,7 +52,7 @@ Vue.createApp({
                     Swal.fire({
                          icon: 'error',
                          title: 'Oops...',
-                         text: 'The requested amount cannot be a negative value!',
+                         text: 'The amount cannot be less than or equal to 0!',
                     })
                }
                else{
@@ -95,9 +91,41 @@ Vue.createApp({
           },
 
           calculateTaxes(){
-               this.taxes = this.amount * 1.20 / this.payment_selected
-          }
+               if(this.amount == 0 || this.payment_selected == 0 || this.destination_account == 0){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'There are incomplete fields!',
+                    })
+               }else if(this.amount <= 0){
+                         Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: 'The amount cannot be less than or equal to 0!',
+                         })
+               }else{
+                    this.taxes = this.amount * 1.20 / this.payment_selected
+               }
+          },
 
+          logout(){
+               Swal.fire({
+                    title: 'Do you want to leave the site?',
+                    text: "This will close your session",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1b1c1a',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirm!'
+               })
+               .then((result) => {
+                    if (result.isConfirmed) {   
+                         axios.post('/api/logout')
+                         .then(window.location.href = '/web/index.html')
+                    }
+               })
+               .catch( error => error.message + "Oops! something happened, you couldn't log out" )
+          },
 
      }, // Cierre de (methods)
 

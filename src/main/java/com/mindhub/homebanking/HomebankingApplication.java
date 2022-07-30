@@ -38,9 +38,9 @@ public class HomebankingApplication {
 				Client clientAdmin = new Client("admin", "admin", "admin@mindhub.com", passwordEncoder.encode("123456")); clientRepository.save(clientAdmin);
 				Client cliente4 = new Client("Federica", "Risso Patron", "federicarp@gmail.com", passwordEncoder.encode("123456")); clientRepository.save(cliente4);
 
-				Account account1 = new Account("VIN001", LocalDateTime.now() , 5000.0 , cliente1); accountRepository.save(account1);
+				Account account1 = new Account("VIN001", LocalDateTime.now() , 270725.2 , cliente1); accountRepository.save(account1);
 				Account account2 = new Account("VIN002" , LocalDateTime.now().plusDays(1) , 7500.0 , cliente1); accountRepository.save(account2);
-				Account account3 = new Account("VIN003" , LocalDateTime.now().plusMonths(1) , 3910.70 , cliente1); accountRepository.save(account3);
+				Account account3 = new Account("VIN003" , LocalDateTime.now().plusMonths(1) , 15950.0 , cliente1); accountRepository.save(account3);
 				Account account4 = new Account("VIN004" , LocalDateTime.now().plusMonths(5) , 9243.75 , cliente2); accountRepository.save(account4);
 				Account accountTest = new Account("TEST-VIN024" , LocalDateTime.now().plusMonths(5) , 1000 , clientAdmin); accountRepository.save(accountTest);
 				Account accountTest1 = new Account("TEST-VIN034" , LocalDateTime.now().plusMonths(5) , 1000 , clientAdmin); accountRepository.save(accountTest1);
@@ -50,6 +50,10 @@ public class HomebankingApplication {
 				Transaction transaction2 = new Transaction(253451.65, "maderas", CREDITO, LocalDateTime.now().plusMonths(1), account1); transactionRepository.save(transaction2);
 				Transaction transaction3 = new Transaction(-20.50, "chicles", DEBITO, LocalDateTime.now(), account1); transactionRepository.save(transaction3);
 				Transaction transaction4 = new Transaction(17850.70, "zapatillas", CREDITO, LocalDateTime.now().plusMonths(5), account1); transactionRepository.save(transaction4);
+				Transaction transaction5 = new Transaction(-674.00, "cuadernos", DEBITO, LocalDateTime.now().plusMonths(2), account2); transactionRepository.save(transaction5);
+				Transaction transaction6 = new Transaction(-135.20, "pan", DEBITO, LocalDateTime.now().plusMonths(3), account2); transactionRepository.save(transaction6);
+				Transaction transaction7 = new Transaction(950.00, "impresiones", CREDITO, LocalDateTime.now().plusMonths(1), account3); transactionRepository.save(transaction7);
+				Transaction transaction8 = new Transaction(15000, "remera", CREDITO, LocalDateTime.now().plusMonths(2), account3); transactionRepository.save(transaction8);
 
 				Loan loan1 = new Loan("Mortgage", 500000, List.of(12,24,36,48,60)); loanRepository.save(loan1);
 				Loan loan2 = new Loan("Personal", 100000, List.of(6,12,24)); loanRepository.save(loan2);

@@ -24,10 +24,7 @@ Vue.createApp({
                     this.account_vin001 = datos.data
                     console.log(this.account_vin001)
                     this.transactions_vin001 = datos.data.transactions.sort((a, b) => {return a.id - b.id;})
-
                })
-
-     
      },
 
 
@@ -44,6 +41,25 @@ Vue.createApp({
                }
                let day_month_year = day + "/" + month + "/" + array_year
                return day_month_year
+          },
+
+          logout(){
+               Swal.fire({
+                    title: 'Do you want to leave the site?',
+                    text: "This will close your session",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1b1c1a',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirm!'
+               })
+               .then((result) => {
+                    if (result.isConfirmed) {   
+                         axios.post('/api/logout')
+                         .then(window.location.href = '/web/index.html')
+                    }
+               })
+               .catch( error => error.message + "Oops! something happened, you couldn't log out" )
           },
 
      }, // Cierre de (methods)

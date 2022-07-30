@@ -3,6 +3,7 @@
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,42 +14,38 @@
 </head>
 <body>
 
-     <div id="app" class="container-fluid">
+     <div id="app">
 
-<!------------------------------- HEADER ------------------------------->
-
-<header id="fila_header" class="row row-cols-2">
-     <nav class="navbar navbar-expand-lg px-5 col-12">
-          <div class="container-fluid px-0">
-               <a class="navbar-brand" href="#">
-                    <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
-               </a>
-               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
-                         <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="./accounts.html">Home</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="./accounts.html">Accounts</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="#" >Cards</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="./create-cards.html">Create Card</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="./transfers.html" id="pushed">Transfers</a>
-                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link" href="./account.html">Transactions</a>
-                         </li>
-                    </ul>
-                    <a href="./login.html">
-                         <button class="btn btn-primary d-flex align-items-center gap-2" type="button" v-on:click="logout()">
+     <!------------------------------- HEADER ------------------------------->
+     <header class="header">
+          <nav class="navbar navbar-expand-lg px-5 col-12">
+               <div class="container-fluid px-0">
+                    <!------------- Brand Nav ------------->
+                    <a class="navbar-brand" href="#">
+                         <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
+                    </a>
+                    <!------------- Burguer Button ------------->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!------------- Nav Links ------------->
+                    <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
+                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                              <li class="nav-item">
+                                   <a class="nav-link active" aria-current="page" href="./accounts.html">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./accounts.html">Accounts & Loans</a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./cards.html">Cards</a>
+                              </li>
+                              <li class="nav-item">
+                                   <a class="nav-link" href="./transfers.html">Transfers</a>
+                              </li>
+                         </ul>
+                         <!------------- Logout Button ------------->
+                         <button class="btn-black d-flex align-items-center gap-2" v-on:click="logout()">
                               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                    <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
@@ -57,93 +54,61 @@
                               </svg>
                               Logout
                          </button>
-                    </a>
+                    </div>
                </div>
-          </div>
-     </nav>
-</header>
+          </nav>
+     </header>
      
 
-<!------------------------------- MAIN ------------------------------->
-     <main id="fila3" class="row row-cols-3 gap-4 d-flex justify-content-center align-items-start pt-4">
-
-          <!------------- COLUMN TITLE ------------->
-          <div id="columnaG" class="col-12 d-flex flex-column justify-content-start ps-4 mt-3">
-               <h3>Aplly for </h3><h3>a new<span class="bold"> loan</span></h3>
+     <!------------------------------- MAIN ------------------------------->
+     <main>
+          <div class="stripe-header">
+               <h3>Apply for</h3>
+               <h3>a new <span class="bold">Loan</span></h3>
           </div>
 
-          <!------------- COLUMN CARDS ------------->     
-               <div id="columnaH_transfer" class="col-12 col-xs-12 col-sm-12 col-md-6 col-xl-6 px-5 py-2 ">
-
-               <!------------- ROW TITLE ------------->        
-                    <div class="row"><h4>Please select the disered loan.</h4></div>
-
-               <!------------- ROW CARDS ------------->      
-               
-               <!-- Modal -->
-               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                         Confirm?
-                    </div>
-                    <div class="modal-footer">
-                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel_button">Cancel</button>
-                         <button type="button" class="btn btn-primary" id="confirm_button" v-on:click="requestLoan()">Yes</button>
-                    </div>
-                    </div>
-                    </div>
-               </div>
-
-                    <div class="row form_div px-5 py-5 w-100 rounded">
-                    
-                         <form class="d-flex flex-column">
-
-                              <div v-for="loan in available_loans" class="d-flex align-items-center">
-
-                              <!---------------------------- HIPOTECARIO ---------------------------->     
+          <div id="loan-app-stripe">
+                    <div id="loan-app-left-container">
+                         <div>
+                              <p class="h4 mb-4">Please choose the desired loans.</p>
+                         </div>   
+                         <form>
+                              <div v-for="loan in available_loans" class="loan-app-checkbox-container">
+                                   <!------------- Mortage Checkbox ------------->     
                                    <div v-if="loan.name == 'Mortgage'">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home mx-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                              <polyline points="5 12 3 12 12 3 21 12 19 12" />
                                              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                                              <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
                                         </svg>
                                         <input type="radio" name="loan_type" :value="loan.id" v-model="loan_selected" v-on:change="filtro()">
-                                        <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small">(*Max amount permited ${{loan.maxAmount}})</span></label>
+                                        <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small fst-italic max-amount">(*Max amount permited ${{loan.maxAmount}})</span></label>
                                    </div>
-
-                                   <!---------------------------- AUTOMOTRIZ ---------------------------->   
+                                   <!------------- Automotive Checkbox ------------->  
                                    <div v-if="loan.name == 'Automotive'">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car mx-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                              <circle cx="7" cy="17" r="2" />
                                              <circle cx="17" cy="17" r="2" />
                                              <path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />
                                         </svg>
                                         <input type="radio" name="loan_type" :value="loan.id" v-model="loan_selected" v-on:change="filtro()">
-                                        <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small">(*Max amount permited ${{loan.maxAmount}})</span></label>
+                                        <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small fst-italic max-amount">(*Max amount permited ${{loan.maxAmount}})</span></label>
                                    </div>
-
-                                   <!---------------------------- PERSONAL ---------------------------->   
+                                   <!------------- Personal Checkbox -------------> 
                                    <div v-if="loan.name == 'Personal'">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle mx-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                              <circle cx="12" cy="12" r="9" />
                                              <circle cx="12" cy="10" r="3" />
                                              <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
                                         </svg>
                                         <input type="radio" name="loan_type" :value="loan.id" v-model="loan_selected" v-on:change="filtro()">
-                                        <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small">(*Max amount permited ${{loan.maxAmount}})</span></label>
+                                        <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small fst-italic max-amount">(*Max amount permited ${{loan.maxAmount}})</span></label>
                                    </div>
-
                               </div>
-
-                              
+                              <!------------- Payments Select ------------->
                               <div>
                                    <label class="pt-3">Enter the number of payments.<span class="text-danger">*</span></label>
                                    <select class="w-100 mt-1" v-model="payment_selected">
@@ -151,11 +116,10 @@
                                         <option v-for="payment in loan_payments" required>{{payment}}</option>
                                    </select>
                               </div>
-
+                              <!------------- Amount Input ------------->
                               <label class="pt-3">Enter the desired amount.<span class="text-danger">*</span></label>
                               <input type="number" name="" id=""  class="w-100 mt-1" placeholder="$100.000" v-model="amount" required>
-
-
+                              <!------------- Destination Select ------------->
                               <div>
                                    <label class="pt-3">Destination Account.<span class="text-danger">*</span></label>
                                    <select class="w-100 mt-1" v-model="destination_account">
@@ -163,133 +127,105 @@
                                         <option v-for="account in currentClientAccounts">{{account.number}}</option>
                                    </select>
                               </div>
-
+                              <!------------- Description Input ------------->
                               <label class="pt-3">Enter a small description.</label>
                               <input type="text" name="" id=""  class="w-100 mt-1" placeholder="work fees" v-model="description" required>
-
-                              <p class="mt-3">
-                                   <ul>
-                                        <li>Your chosen loan is: <span class="purple_italic">ID# {{loan_selected}}</span></li>
-                                        <li>Funded in: <span class="purple_italic">{{payment_selected}} installments</span></li> 
-                                        <li>The requested the amout is: <span class="purple_italic">${{amount}} dollars</span></li> 
-                                        <li>The amount will be credited: <span class="purple_italic">account number {{destination_account}}</span></li> 
-                                        <li>You future payments: <span class="purple_italic">${{taxes}}</span> per month</li>
-                                   </ul>
-                              </p>
-
-
-                              <div class="row ">
-                                   <div class="card h-75">
-                                        <div class="card-body ">
-                                             <h6 class="card-title calculator">According to your preferences.</h6>
-                                             <p class="card-text small">Calculate the number of payments with taxes included.</p>
-                                             <p><a href="#" class="btn btn-primary btn-sm mx-2" v-on:click="calculateTaxes()">Calculate</a></p>
-                                        </div>
+                         </form>
+                         <!------------- Calculator ------------->
+                         <div>
+                              <div id="calculator">
+                                   <h6 class="card-title calculator">According to your preferences.</h6>
+                                   <p class="card-text small">Calculate your payments with taxes included.</p>
+                                   <div>
+                                        <p class="card-text small">Future payments: <span class="purple_italic">${{taxes}}</span></p>
+                                        <button class="btn-black" v-on:click="calculateTaxes()">Calculate</button>
                                    </div>
                               </div>
-
-
-
-                              <button type="button" class="btn btn-primary mt-3 w-50" v-on:click="confirmLoan()">
-                                   Request your loan now
-                              </button>
-
-                              <span class="text-danger mt-3 small">Fields marked with (*) are required</span>
-
-                         </form>
-
+                         </div>
+                         <button type="button" class="btn-black" v-on:click="confirmLoan()">Request now</button>
+                         <span class="text-danger mt-3 small">Fields marked with (*) are required</span>
                     </div>
-                    
 
-               </div>
-          <!------------- COLUMN IMAGES ------------->       
-               <div id="columnaJ" class="col-4 d-none d-sm-none d-md-none d-lg-none d-xl-block px-0">
-                    <h4>Requeriments</h4>
-
-                    <p class="small">To get pre-approved for a loan, you'll need five things—proof of assets and income,
+          <div id="loan-app-right-container">
+               <p class="h4 mb-4">Resume of your current loan.</p>
+                    <!------------- Resume ------------->
+                         <ul id="resume-ul">
+                              <li>Loan type: <span class="purple_italic">ID# {{loan_selected}}</span></li>
+                              <li>Payments selected: <span class="purple_italic">{{payment_selected}}</span></li> 
+                              <li>Amount requested: <span class="purple_italic">US$ {{amount}}</span></li> 
+                              <li>Account selected: <span class="purple_italic">{{destination_account}}</span></li> 
+                              <li>Payments p/month: <span class="purple_italic">${{taxes}}</span></li>
+                         </ul>
+                    <p class="h4 mb-4">Requeriments</p>
+                    <p class="requirements">To get pre-approved for a loan, you'll need five things—proof of assets and income,
                          good credit, employment verification, and other types of documentation your lender may require.</p>
                     <ul>
                          <li class="h6">Proof of Income</li>
-                         <p class="small">Buyers generally must produce W-2 wage statements from the past two years, recent pay stubs
+                         <p class="requirements">Buyers generally must produce W-2 wage statements from the past two years, recent pay stubs
                          that show income as well as year-to-date income, proof of any additional income such as alimony or bonuses,
                          and the two most recent years' tax returns.</p>
 
                     <li class="h6">Proof of Assets</li>
-                    <p class="small">The borrower needs bank statements and investment account statements to prove that they have 
+                    <p class="requirements">The borrower needs bank statements and investment account statements to prove that they have 
                          funds for the down payment and closing costs, as well as cash reserves.</p>
                     <li class="h6">Good Credit</li>
-                    <p class="small">Most lenders require a FICO score of 620 or higher to approve a conventional loan, 
+                    <p class="requirements">Most lenders require a FICO score of 620 or higher to approve a conventional loan, 
                          and some even require that score for a Federal Housing Administration loan.</p>
-                    <li class="h6">Employment Verification</li>
-                    <p class="small">enders want to make sure they lend only to borrowers with stable employment. 
-                         A lender will not only want to see a buyer's pay stubs but also will likely call the employer
-                         to verify employment and salary.</p>
                          <a  href="#"><p class="h6 loan_link">I want to know more...</p></a>
                     <img src="" class="img-fluid " alt="">
                </div>
-               
+          </div>
           </main>
      
 
-<!-------------------------------------- Footer -------------------------------------->  
-
-<footer id="fila4" class="row row-cols-3 gap-4 d-flex justify-content-center">
-     <div id="columnaK" class="col-3 d-flex flex-column justify-content-center px-0">
-          <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
-     </div>
-     <div id="columnaL" class="col-4 d-flex justify-content-center align-items-center px-0">
-          <div class="row d-flex justify-content-center gap-4">
-               <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
-               <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
-               <a class="footer-links col-12 col-xl-3" href="#">Security</a>
-               <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
+     <!-------------------------------------- Footer -------------------------------------->  
+     <footer class="footer">
+          <!-- Logo Footer -->
+          <div class="footer-column-left">
+               <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
           </div>
-     </div>
-     <div id="columnaM" class="col-3 d-flex justify-content-end align-items-center gap-3 px-0">
-
-
-                    <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <rect x="3" y="5" width="18" height="14" rx="2" />
-                              <polyline points="3 7 12 13 21 7" />
-                         </svg>
-                    </a>
-
-<!------------- Botón Facebook ------------->
-
-                    <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                         </svg>
-                    </a>
-
-<!------------- Botón Instagram ------------->
-
-                    <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <rect x="4" y="4" width="16" height="16" rx="4" />
-                              <circle cx="12" cy="12" r="3" />
-                              <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-                         </svg>
-                    </a>
-
-<!------------- Botón Whatsapp ------------->
-
-                    <a class="footer-icons" href="https://web.whatsapp.com/">
-                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                              <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
-                         </svg>
-                    </a>
-
+          <!-- Links Footer -->
+          <div class="footer-column-center">
+                    <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">Security</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
           </div>
-
-     </div>
-</footer>
+          <!-- Social Footer -->
+          <div class="footer-column-right">
+               <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <rect x="3" y="5" width="18" height="14" rx="2" />
+                         <polyline points="3 7 12 13 21 7" />
+                    </svg>
+               </a>
+               <!------------- Btn Facebook ------------->
+               <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                    </svg>
+               </a>
+               <!------------- Btn Instagram ------------->
+               <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <rect x="4" y="4" width="16" height="16" rx="4" />
+                         <circle cx="12" cy="12" r="3" />
+                         <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                    </svg>
+               </a>
+               <!------------- Btn Whatsapp ------------->
+               <a class="footer-icons" href="https://web.whatsapp.com/">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                         <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                         <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
+                    </svg>
+               </a>
+          </div>
+     </footer>
 </div>        
 
           

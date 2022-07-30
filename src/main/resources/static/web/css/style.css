@@ -254,6 +254,38 @@ width: 75%;
      flex-wrap: wrap;
 }
 
+/*------------------------------------ Create Cards ------------------------------------*/
+#create-card-main{
+     min-height: 80vh;
+     max-height: max-content;
+}
+#create-cards-stripe{
+     display: flex;
+     justify-content: center;
+     gap:4rem;
+     flex-wrap: wrap;
+     padding: 2rem 0;
+     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
+}
+#create-card-left-container{
+     display: flex;
+     flex-direction: column;
+     width: 27rem;
+}
+#create-card-right-container{
+     display: flex;
+     flex-direction: column;
+     width: 27rem;
+}
+.cvv{
+     background-color: #1b1c1a;
+     transition: all 0.3s;
+}
+.cvv:hover{
+     color: #fff;
+     background-color:#a36ac9;
+}
+
 /*------------------------------------ Transactions ------------------------------------*/
 #main-transactions{
      height: fit-content;
@@ -273,6 +305,41 @@ width: 75%;
 .transaction-moves{
      font-style: italic;
 }
+
+/*------------------------------------ Loan-Application ------------------------------------*/
+#loan-app-stripe{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     flex-wrap: wrap;
+     gap: 4rem;
+     padding: 2rem 0;
+     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
+     margin-bottom: 3rem;
+}
+#loan-app-left-container{
+     display: flex;
+     flex-direction: column;
+     width: 27rem;
+}
+.loan-app-checkbox-container{
+     margin: 5px;
+}
+#loan-app-right-container{
+     width: 27rem;
+}
+#calculator{
+     height: fit-content;
+     width: 100%;
+     padding: 1rem;
+     margin: 2rem 0;
+     border-radius: 10px;
+     background: linear-gradient(145deg, rgba(165, 218, 227, 0.244) 20%,  rgba(140, 69, 188, 0.244) 91%);
+}
+.requirements{
+     font-size: small;
+}
+
 
 /*------------------------------------ Footer ------------------------------------*/
 .footer{
@@ -424,13 +491,7 @@ color: #a36ac9;
 #li_cards{
      background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
  }
- .cvv{
-     background-color: #1b1c1a;
- }
- .cvv:hover{
-     color: #fff;
-     background-color:#a36ac9;
- }
+
 
 
 
@@ -447,12 +508,6 @@ color: #a36ac9;
 
 #loan_button:hover{
      border: solid 5px #a36ac9;
-}
-/* .form_div{
-     background: linear-gradient(264deg, rgba(216,213,218,0.3) 8%, rgba(230,230,230,0.3) 91%);
-} */
-#create_card_form{
-     background: linear-gradient(145deg, rgba(140,69,188,0.5) 8%, rgba(165,218,227,0.5) 91%);
 }
 .hipotecario{
      background-image: url(./assets/prestamo_hipotecario.png);
@@ -734,6 +789,12 @@ color: #a36ac9;
           .form_div{
                margin: 0px;
           }
+          #loan-app-left-container{
+               width: 80%;
+          }
+          #loan-app-right-container{
+               width: 80%;
+          }
      }
 
      @media screen and (max-width: 441px){
@@ -754,6 +815,18 @@ color: #a36ac9;
           }
           table{
                font-size: small;
+          }
+          .max-amount{
+               display: none;
+          }
+          #resume-ul{
+               font-size: small;
+          }
+          #create-card-left-container{
+               width: 80%
+          }
+          #create-card-right-container{
+               width: 80%
           }
      }
 
