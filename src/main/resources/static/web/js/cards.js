@@ -6,7 +6,8 @@
 Vue.createApp({
      data() {
           return {
-     
+          charging: true,
+
           client:[],
           cards: [],
           card_color: [],
@@ -29,28 +30,28 @@ Vue.createApp({
                .then(datos => {
                     this.client = datos.data
                     this.cards = this.client.cards.sort((a, b) => {return a.id - b.id;})
-                    console.log(this.cards)
                     this.card_color = this.cards.map(card => card.color)
 
                })
 
-               axios.get('/api/clients/current/cards')
-                    .then(data => {
-                         addCardsButton = document.querySelector("#createCardButton")
-                         this.currentClient_Cards = data.data
-                         this.currentClient_Cards_Length = data.data.length
-                         this.client_credit_cards = this.currentClient_Cards.filter(card => card.type === 'CREDIT')
-                         console.log(this.client_credit_cards)
-                         this.client_debit_cards = this.currentClient_Cards.filter(card => card.type === 'DEBIT')
-                         console.log(this.client_debit_cards)
-                         this.currentClient_Cards_Type_Length = this.currentClient_Cards.map(card => card.type).length
-                              if(this.currentClient_Cards_Type_Length >= 6){
-                              addCardsButton.style.display = "none";}
-               })
+          axios.get('/api/clients/current/cards')
+               .then(data => {
+                    addCardsButton = document.querySelector("#createCardButton")
+                    this.currentClient_Cards = data.data
+                    this.currentClient_Cards_Length = data.data.length
+                    this.client_credit_cards = this.currentClient_Cards.filter(card => card.type === 'CREDIT')
+                    this.client_debit_cards = this.currentClient_Cards.filter(card => card.type === 'DEBIT')
+                    this.currentClient_Cards_Type_Length = this.currentClient_Cards.map(card => card.type).length
+                         if(this.currentClient_Cards_Type_Length >= 6){
+                         addCardsButton.style.display = "none";}
+          })
+
+          setTimeout(() => { this.charging = false }, 2000)
      },
 
 
      methods:{
+
           
           formatearFecha(fecha){
                let date = new Date (fecha)

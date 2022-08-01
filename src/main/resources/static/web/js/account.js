@@ -2,6 +2,7 @@ Vue.createApp({
      data() {
           return {
      
+               charging: true,
                account_vin001: [],
                transactions_vin001: [],
                client_accounts: [],
@@ -16,15 +17,15 @@ Vue.createApp({
           axios.get('/api/clients/current/accounts')
                .then(data => {
                     this.client_accounts = data.data.sort((a, b) => {return a.id - b.id;})
-                    console.log(this.client_accounts)
                }),
 
           axios.get('/api/accounts/' + id)
                .then(datos => {
                     this.account_vin001 = datos.data
-                    console.log(this.account_vin001)
                     this.transactions_vin001 = datos.data.transactions.sort((a, b) => {return a.id - b.id;})
                })
+               
+          setTimeout(() => { this.charging = false }, 2000)
      },
 
 

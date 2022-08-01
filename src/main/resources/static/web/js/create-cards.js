@@ -2,6 +2,7 @@ Vue.createApp({
 
      data() {
           return {
+          charging: true,
           cardType:'',
           cardColor: '',
           currentClient_Cards: [],
@@ -14,6 +15,8 @@ Vue.createApp({
           .then(data => {
                this.currentClient_Cards = data.data
           })
+
+          setTimeout(() => { this.charging = false }, 2000)
      },
 
 
@@ -38,7 +41,7 @@ Vue.createApp({
                          'Your new card is available un cards section',
                          'success'
                          )
-                         .then(setTimeout('document.location.reload()',5000))
+                         .then(setTimeout('document.location.reload()',3000))
                     }
                })
           },

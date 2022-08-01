@@ -16,8 +16,25 @@
 
      <div id="app">
 
+     <!------------------------------- Preloader ------------------------------->
+     <div v-if="charging==true" class="main-preloader container">
+          <div class="row">
+               <div id="loader">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="lading"></div>
+               </div>
+          </div>
+     </div>
+
      <!------------------------------- HEADER ------------------------------->
-     <header class="header">
+     <header v-if="charging==false" class="header">
           <nav class="navbar navbar-expand-lg px-5 col-12">
                <div class="container-fluid px-0">
                     <!------------- Brand Nav ------------->
@@ -32,16 +49,16 @@
                     <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
                          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
                               <li class="nav-item">
-                                   <a class="nav-link active" aria-current="page" href="./accounts.html">Home</a>
+                                   <a class="nav-link underline-hover-effect mx-3" href="./accounts.html">Home</a>
                               </li>
                               <li class="nav-item">
-                                   <a class="nav-link" href="./accounts.html">Accounts & Loans</a>
+                                   <a class="nav-link underline-hover-effect mx-3" href="./accounts.html">Accounts & Loans</a>
                               </li>
                               <li class="nav-item">
-                                   <a class="nav-link" href="./cards.html">Cards</a>
+                                   <a class="nav-link" href="./cards.html" id="pushed">Cards</a>
                               </li>
                               <li class="nav-item">
-                                   <a class="nav-link" href="./transfers.html">Transfers</a>
+                                   <a class="nav-link underline-hover-effect mx-3" href="./transfers.html">Transfers</a>
                               </li>
                          </ul>
                          <!------------- Logout Button ------------->
@@ -61,7 +78,7 @@
      
 
      <!------------------------------- MAIN ------------------------------->
-     <main>
+     <main v-if="charging==false">
           <div class="stripe-header">
                <h3>Apply for</h3>
                <h3>a new <span class="bold">Loan</span></h3>
@@ -134,7 +151,7 @@
                          <!------------- Calculator ------------->
                          <div>
                               <div id="calculator">
-                                   <h6 class="card-title calculator">According to your preferences.</h6>
+                                   <h6 class="card-title calculator-title">According to your preferences.</h6>
                                    <p class="card-text small">Calculate your payments with taxes included.</p>
                                    <div>
                                         <p class="card-text small">Future payments: <span class="purple_italic">${{taxes}}</span></p>
@@ -179,7 +196,7 @@
      
 
      <!-------------------------------------- Footer -------------------------------------->  
-     <footer class="footer">
+     <footer v-if="charging==false" class="footer">
           <!-- Logo Footer -->
           <div class="footer-column-left">
                <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>

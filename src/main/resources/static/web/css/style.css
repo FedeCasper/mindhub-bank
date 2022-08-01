@@ -13,13 +13,6 @@
 body{
      background-image: url('../assets/fondo_body.png');
 }
-a{
-     text-decoration: none;
-     color: #fff;
-}
-a:hover{
-     color:#a36ac9;
-}
 :placeholder-shown{
      font-style: italic;
      opacity: 70%;
@@ -32,6 +25,9 @@ button, input[type="submit"], input[type="reset"] {
      font: inherit;
      cursor: pointer;
      outline: inherit;
+}
+a{
+     text-decoration: none;
 }
 .btn-black{
      color: white;
@@ -101,17 +97,14 @@ margin-top: 2rem;
 100% {transform: rotate(-3deg);}
 }
 
-
 .nav-link{
      background-color:white;
      color: #1b1c1a;
      transition:  color 0.2s ;
 }
 .nav-link:hover{
-     font-weight: bold;
-     color:#a36ac9;
+     color: #1b1c1a;
 }
-
 .expired{
      font-weight: bold;
      color: red;
@@ -119,7 +112,25 @@ margin-top: 2rem;
 #img_login{
      height: 30vw;
 }
-
+.underline-hover-effect {
+     position: relative;
+}
+.underline-hover-effect::after {
+     content: '';
+     background-color:#a36ac9;
+     position: absolute;
+     left: 0;
+     bottom: -1px;
+     height: 3px;
+     width: 100%;
+     border-radius: 2px; 
+     transform: scaleX(0);
+     transform-origin: left;
+     transition: transform ease-in-out 250ms;
+} 
+.underline-hover-effect:hover::after{
+     transform: scaleX(1);
+}
 
 #fila2{
      height: 5%;
@@ -328,6 +339,9 @@ width: 75%;
 #loan-app-right-container{
      width: 27rem;
 }
+.calculator-title{
+     color: #1b1c1a !important;
+}
 #calculator{
      height: fit-content;
      width: 100%;
@@ -357,10 +371,11 @@ width: 75%;
      gap: 1.5rem;
      flex-wrap: wrap;
 }
-
-.calculator{
-     color: #1b1c1a !important;
+footer a{
+     color: #ededed;
 }
+
+
 .mind_color{
      color: var(--cyan);
 }
@@ -435,7 +450,7 @@ width: 75%;
      padding: 0;
 }
 .footer-links:hover{
-color: #a36ac9;
+     color: #a36ac9;
 }
 .footer-icons:hover{
      border-bottom: #ffffff solid 1px;
@@ -454,6 +469,132 @@ color: #a36ac9;
 .white_bold{
      color:#fff;
      font-weight: bold;
+}
+
+/*------------------------------------ Loader ------------------------------------*/
+.main-preloader{
+     height: 100vh;
+     background-color:white;
+}
+
+#loader {
+     bottom: 0;
+     height: 175px;
+     left: 0;
+     margin: auto;
+     position: absolute;
+     right: 0;
+     top: 0;
+     width: 175px;
+}
+#loader {
+     bottom: 0;
+     height: 175px;
+     left: 0;
+     margin: auto;
+     position: absolute;
+     right: 0;
+     top: 0;
+     width: 175px;
+}
+#loader .dot {
+     bottom: 0;
+     height: 100%;
+     left: 0;
+     margin: auto;
+     position: absolute;
+     right: 0;
+     top: 0;
+     width: 90px;
+}
+#loader .dot::before {
+     border-radius: 100%;
+     content: "";
+     height: 90px;
+     left: 0;
+     position: absolute;
+     right: 0;
+     top: 0;
+     transform: scale(0);
+     width: 87.5px;
+}
+#loader .dot:nth-child(7n+1) {
+     transform: rotate(45deg);
+}
+#loader .dot:nth-child(7n+1)::before {
+     animation: 2s linear 0.3s normal none infinite running load;
+     background: #EE82EE none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+2) {
+     transform: rotate(90deg);
+}
+#loader .dot:nth-child(7n+2)::before {
+     animation: 2s linear 0.3s normal none infinite running load;
+     background: #DA70D6  none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+3) {
+     transform: rotate(135deg);
+}
+#loader .dot:nth-child(7n+3)::before {
+     animation: 2s linear 0.4s normal none infinite running load;
+     background: #FF00FF none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+4) {
+     transform: rotate(180deg);
+}
+#loader .dot:nth-child(7n+4)::before {
+     animation: 2s linear 0.5s normal none infinite running load;
+     background: #BA55D3 none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+5) {
+     transform: rotate(225deg);
+}
+#loader .dot:nth-child(7n+5)::before {
+     animation: 2s linear 0.6s normal none infinite running load;
+     background: #9400D3 none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+6) {
+     transform: rotate(270deg);
+}
+#loader .dot:nth-child(7n+6)::before {
+     animation: 2s linear 0.7s normal none infinite running load;
+     background: #9932CC none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+7) {
+     transform: rotate(315deg);
+}
+#loader .dot:nth-child(7n+7)::before {
+     animation: 2s linear 0.8s normal none infinite running load;
+     background: #8B008B none repeat scroll 0 0;
+}
+#loader .dot:nth-child(7n+8) {
+     transform: rotate(360deg);
+}
+#loader .dot:nth-child(7n+8)::before {
+     animation: 2s linear 0.9s normal none infinite running load;
+     background: #800080 none repeat scroll 0 0;
+}
+#loader .lading {
+     background-position: 50% 50%;
+     background-repeat: no-repeat;
+     bottom: -40px;
+     height: 20px;
+     left: 0;
+     position: absolute;
+     right: 0;
+     width: 180px;
+}
+@keyframes load {
+     100% {
+     opacity: 0;
+     transform: scale(1);
+     }
+}
+@keyframes load {
+     100% {
+     opacity: 0;
+     transform: scale(1);
+     }
 }
 
 /*------------------------------------ Sweet Alert Modal ------------------------------------*/

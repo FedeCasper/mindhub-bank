@@ -2,6 +2,7 @@ Vue.createApp({
 
      data() {
           return {
+               charging: true,
                client_accounts: [],
                ownAmount: 0,
                ownDescription: '',
@@ -20,6 +21,8 @@ Vue.createApp({
           .then(data => {
                this.client_accounts = data.data.sort((a, b) => {return a.id - b.id})
           })
+
+          setTimeout(() => { this.charging = false }, 2000)
      },
 
      methods:{

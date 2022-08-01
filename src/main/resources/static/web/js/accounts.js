@@ -2,11 +2,13 @@ Vue.createApp({
 
      data() {
           return {
+               charging: true,
                client: [],
                clients: [],
                clients_sort: [],
                accounts: [],
                loans:[],
+               currentClientAccounts: [],
           }
      },
 
@@ -19,14 +21,22 @@ Vue.createApp({
                     this.loans = datos.data.clientLoans
                }),
 
-          axios.get('/api/clients/current/accounts')
+          setTimeout(() => { this.charging = false }, 2000)
+     },
+
+
+     methods:{
+
+          checkButtons(){
+               axios.get('/api/clients/current/accounts')
                .then(data => {
                     addAccountButton = document.querySelector("#create_account_button")
                     this.currentClientAccounts = data.data.length
+                    console.log(this.currentClientAccounts)
                          if(this.currentClientAccounts == 3){
                          addAccountButton.style.visibility = "hidden";
                     }
-               }),
+               })
 
                axios.get('/api/clients/current/clientLoans')
                .then(data => {
@@ -36,10 +46,7 @@ Vue.createApp({
                               addLoanButton.style.display = "none";
                     }
                })
-     },
-
-
-     methods:{
+          },
 
           formatearFecha(fecha){
                let date = new Date (fecha)
@@ -54,14 +61,6 @@ Vue.createApp({
                return day_month_year
           },
 
-          logout(){
-               axios.post('/api/logout')
-                    .then(response => 
-                         window.location.href = "/web/index.html",
-                         console.log('You have successfully logged out!!!'))
-                    .catch( error => error.message + "Oops! something happened, you couldn't log out" )
-               },
-
           createAccount(){
                axios.post('/api/clients/current/accounts')
                     .then(response =>
@@ -70,24 +69,24 @@ Vue.createApp({
                     .catch( error => error.message + "The account could not be created")
                },
 
-               logout(){
-                    Swal.fire({
-                         title: 'Do you want to leave the site?',
-                         text: "This will close your session",
-                         icon: 'warning',
-                         showCancelButton: true,
-                         confirmButtonColor: '#1b1c1a',
-                         cancelButtonColor: '#d33',
-                         confirmButtonText: 'Confirm!'
-                    })
-                    .then((result) => {
-                         if (result.isConfirmed) {   
-                              axios.post('/api/logout')
-                              .then(window.location.href = '/web/index.html')
-                         }
-                    })
-                    .catch( error => error.message + "Oops! something happened, you couldn't log out" )
-               },
+          logout(){
+               Swal.fire({
+                    title: 'Do you want to leave the site?',
+                    text: "This will close your session",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#1b1c1a',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Confirm!'
+               })
+               .then((result) => {
+                    if (result.isConfirmed) {   
+                         axios.post('/api/logout')
+                         .then(window.location.href = '/web/index.html')
+                    }
+               })
+               .catch( error => error.message + "Oops! something happened, you couldn't log out" )
+          },
 
      }, // Cierre de (methods)
 

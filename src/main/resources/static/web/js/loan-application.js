@@ -3,6 +3,7 @@ Vue.createApp({
 
      data() {
           return {
+               charging: true,
                // array de tipos de loans
                available_loans: [],
                // v-model capturados
@@ -32,10 +33,13 @@ Vue.createApp({
           .then(data => {
                this.currentClientAccounts = data.data
           })
+
+          setTimeout(() => { this.charging = false }, 2000)
      },
 
 
      methods:{
+
           filtro(){
                this.filtered_loan = this.available_loans.filter(prestamos => prestamos.id == this.loan_selected)
                this.loan_payments = this.filtered_loan[0].payments
