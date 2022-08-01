@@ -32,7 +32,6 @@ Vue.createApp({
                .then(data => {
                     addAccountButton = document.querySelector("#create_account_button")
                     this.currentClientAccounts = data.data.length
-                    console.log(this.currentClientAccounts)
                          if(this.currentClientAccounts == 3){
                          addAccountButton.style.visibility = "hidden";
                     }

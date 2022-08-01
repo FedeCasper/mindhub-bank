@@ -43,7 +43,14 @@
                     </a>
                     <!------------- Burguer Button ------------->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="navbar-toggler-icon"></span>
+                         <span class="navbar-toggler-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                              <line x1="4" y1="6" x2="20" y2="6" />
+                              <line x1="4" y1="12" x2="20" y2="12" />
+                              <line x1="4" y1="18" x2="20" y2="18" />
+                              </svg>
+                         </span>
                     </button>
                     <!------------- Nav Links ------------->
                     <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
@@ -61,7 +68,6 @@
                                    <a class="nav-link underline-hover-effect mx-3" href="./transfers.html">Transfers</a>
                               </li>
                          </ul>
-                         <!------------- Logout Button ------------->
                          <!------------- Logout Button ------------->
                          <button class="btn-black d-flex align-items-center gap-2" v-on:click="logout()">
                               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -98,18 +104,19 @@
                                    <tr v-for="transaction in account.transactions">
                                         <div v-if="account.transactions == 0" class="transaction-moves"> You have no movements in this account yet</div>
                                         <div v-else>
-                                             <td>{{transaction.id}}</td>
-                                             <td>{{formatearFecha(transaction.date)}}</td>
-                                             <td :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">{{transaction.type}}</td>
-                                             <td :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">${{transaction.amount}}</td>
-                                             <td>{{transaction.description}}</td>
+                                             <td v-if="charging==false" >{{transaction.id}}</td>
+                                             <td v-if="charging==false" >{{formatearFecha(transaction.date)}}</td>
+                                             <td v-if="charging==false"  :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">{{transaction.type}}</td>
+                                             <td v-if="charging==false"  :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">${{transaction.amount}}</td>
+                                             <td v-if="charging==false" >{{transaction.description}}</td>
+                                             <!------------- Mini-Loaders ------------->
+                                             <td v-if="charging==true"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></td>
                                         </div>
                               </tbody>
                          </table>
                     </div>
                     <a href="./transfers.html" class="row d-flex justify-content-center"><div class="btn-black" id="create_account_button">Create a transaction</div></a>
                </div>
-
      </main>
      
      <!-------------------------------------- Footer -------------------------------------->  
