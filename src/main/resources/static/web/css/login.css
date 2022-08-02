@@ -377,4 +377,13 @@ color: #a36ac9 !important;
     .card{
         position: unset !important;
     }
+    .text-muted{
+        font-size: small !important;
+    }
+    #form-btn {
+        margin-bottom: 1rem;
+    }
+    .bottom{
+        margin-top: 2rem !important;
+    }
 } 
