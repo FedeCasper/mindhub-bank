@@ -366,7 +366,7 @@ color: #a36ac9 !important;
         flex-direction: column !important;
         align-items: center !important;
         padding: 0px !important;
-        margin: 0px !important;
+        margin: 1rem 0 !important;
     }
     .heading{
         margin-bottom: 3rem !important;
@@ -385,5 +385,8 @@ color: #a36ac9 !important;
     }
     .bottom{
         margin-top: 2rem !important;
+    }
+    h3{
+        font-size:1.2rem;
     }
 } 

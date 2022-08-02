@@ -73,7 +73,7 @@ h1{
      flex-basis: 100%;
      flex-grow: 1;
      align-items: center;
-     padding: 1rem 0;
+     padding: 1rem 3rem;      
 }
 .nav-index{
      height: 9vh;
@@ -974,6 +974,12 @@ footer a{
           .img-fluid{
                min-width: 290px;
           }
+          .navbar-collapse {
+               padding: 1rem 1rem !important;
+          }
+          .navbar{
+               padding: 1rem 2rem !important;
+          }
           .footer {
                height: fit-content;
                display: flex;
@@ -1032,6 +1038,9 @@ footer a{
           }
           .h6{
                font-size: small;
+          }
+          #accounts_cards{
+               width: 330px;
           }
           table{
                font-size: small;
