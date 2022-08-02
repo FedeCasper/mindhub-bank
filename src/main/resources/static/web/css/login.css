@@ -321,7 +321,7 @@ color: #a36ac9 !important;
         margin: 1rem 0;
     }
     :placeholder-shown{
-        font-size: 1.5rem !important;
+        font-size: medium !important;
     }
     .btn-black{
         height: 3rem;
