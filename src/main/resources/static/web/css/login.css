@@ -323,9 +323,6 @@ color: #a36ac9 !important;
     :placeholder-shown{
         font-size: medium !important;
     }
-    .btn-black{
-        height: 3rem;
-    }
     a{
         height: fit-content;
     }
@@ -356,7 +353,7 @@ color: #a36ac9 !important;
     }
     #paragraph-container{
         width: 80% !important;
-        margin: 4rem 0 !important;
+        margin: 3rem 0 !important;
     }
 }
 
@@ -366,7 +363,7 @@ color: #a36ac9 !important;
         flex-direction: column !important;
         align-items: center !important;
         padding: 0px !important;
-        margin: 1rem 0 !important;
+        margin: 2rem 0 !important;
     }
     .heading{
         margin-bottom: 3rem !important;
@@ -385,8 +382,12 @@ color: #a36ac9 !important;
     }
     .bottom{
         margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
     }
     h3{
         font-size:1.2rem;
+    }
+    .card2{
+        display: none;
     }
 } 
