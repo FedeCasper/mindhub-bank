@@ -80,22 +80,31 @@ button, input[type="submit"], input[type="reset"] {
     background-color:#a36ac9;
     transform: scale(1.05);
 }
-
+.bold{
+    font-weight: bold;
+}
+.purple_bold{
+    color: #a36ac9;
+    font-weight: bold;
+}
 
 /*------------------------------------ Header & Nav ------------------------------------*/
-nav{
-    border-bottom: solid 3px #a36ac9; 
-}
 .header{
+    display: flex;
+    align-items: center;
     height: 9vh;
     max-height: fit-content;
+    border-bottom: solid 3px #a36ac9; 
+    background-color:#fff;
 }
 h1{
     margin-bottom: 0px;
 }
+.h4{
+    margin-bottom: 0px !important;
+}
 .navbar{
-    background-color:#fff;
-    border-bottom: solid 3px #a36ac9; 
+
     z-index: 100;
 }
 .nav-index{
@@ -125,8 +134,10 @@ h1{
     padding: 0 !important;
 }
 
-
+/*------------------------------------ Form Login ------------------------------------*/
 .login-container{
+    display: flex;
+    justify-content: center;
     padding: 3rem;
     margin: auto 5rem !important;
 }
@@ -148,24 +159,25 @@ h1{
 .card {
     border-radius: 0;
     border: none;
-
 }
-.bold{
-    font-weight: bold;
+.card1 {
+    width: 50%;
+    padding: 40px 30px 10px 30px;
 }
-.purple_bold{
-    color: #a36ac9;
-    font-weight: bold;
+.card2 {
+    color: #fff;
+    width: 50%;
+    background-color: rgba(140,69,188,0.5);
+}
+#register_form{
+    background-color: #a36ac9;
 }
 #fila4{
     height: 10%;
     background-color: #1b1c1a;
     padding: 1rem;
 }
-.card1 {
-    width: 50%;
-    padding: 40px 30px 10px 30px;
-}
+
 /*----------------------- SweetAlert Modal -----------------------*/
 .swal2-icon.swal2-warning {
     border-color: #a36ac9 !important;
@@ -191,13 +203,8 @@ h1{
 .swal2-styled.swal2-confirm{
     background-color: #1b1c1a !important;
 }
-.card2 {
-    width: 50%;
-    background: linear-gradient(310deg, rgba(140,69,188,0.5) 3%, rgba(165,218,227,0.5) 97%);
-}
-#register_form{
-background-color: #a36ac9;
-}
+
+
 #logo {
     width: 70px;
     height: 60px;
@@ -235,20 +242,6 @@ font-weight: bold;
 background-color: white;
 transition: background-color 0.5s , border 0.5s;
 }
-
-.btn-white {
-    border-radius: 50px;
-    color: #1b1c1a;
-    background-color: #fff;
-    padding: 8px 40px;
-    cursor: pointer;
-    border: 2px solid #1b1c1a !important;
-}
-.btn-white:hover {
-    color: #fff;
-    background-image: linear-gradient(to right, #FFD54F, #D500F9);
-}
-
 .bottom {
     width: 100%;
     margin-top: 50px !important;
@@ -281,6 +274,9 @@ transition: background-color 0.5s , border 0.5s;
 }
 #pwd-eye:hover{
 color: #a36ac9 !important;
+}
+#login-paragraph{
+    color: white;
 }
 
 @media screen and (max-width: 992px) {
@@ -386,6 +382,12 @@ color: #a36ac9 !important;
     }
     h3{
         font-size:1.2rem;
+    }
+    .h4{
+        margin-bottom: 0px;
+    }
+    .form-control{
+        color: #fff !important;
     }
     .card2{
         display: none;

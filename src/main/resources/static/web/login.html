@@ -24,16 +24,10 @@
                     <a class="navbar-brand" href="#">
                          <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
                     </a>
-                         <!------------- Logout Button ------------->
-                         <button class="btn-black" v-on:click="logout()">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                   <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
-                                   <path d="M13 14h-9" />
-                                   <path d="M7 11l-3 3l3 3" />
-                              </svg>
-                              Logout
-                         </button>
+                    <!------------- Go Back Button ------------->
+                    <a href="./index.html" class="btn-black" v-on:click="logout()">
+                         Go Back
+                    </a>
                </div>
           </nav>
      </header>
@@ -87,7 +81,7 @@
                          <div class="card card2">
                               <div id="paragraph-container" class="my-auto mx-md-5 px-md-5 right">
                                    <h3 class="text-white">We are more than just a company</h3>
-                                   <small id="login-paragraph" class="text-white">Since the Lincoln administration signed our national bank charter No. 24 in 1863, 
+                                   <small id="login-paragraph">Since the Lincoln administration signed our national bank charter No. 24 in 1863, 
                                         we’ve drawn on our financial strength to serve customers. This has been especially evident in times of need, 
                                         such as during the COVID-19 pandemic. Our response by the end of 2020 included a $20 million premium pay program 
                                         for our employees, relief assistance and 108,000 Small Business Administration Paycheck Protection Program (PPP) 
