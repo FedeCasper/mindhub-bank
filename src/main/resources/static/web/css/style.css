@@ -44,15 +44,17 @@ a{
 
 /*------------------------------------ Header & Nav ------------------------------------*/
 .header{
-     height: 9vh;
-     max-height: fit-content;
+     display: flex;
+     align-items: center;
+     height: fit-content;
+     max-height: fit-content !important;
+     background-color:#fff;
+     border-bottom: solid 3px #a36ac9; 
 }
 h1{
      margin-bottom: 0px;
 }
 .navbar{
-     background-color:#fff;
-     border-bottom: solid 3px #a36ac9; 
      z-index: 100;
 }
 .navbar-toggler-icon {
@@ -121,7 +123,6 @@ margin-top: 2rem;
 0% {transform: rotate(3deg);}
 100% {transform: rotate(-3deg);}
 }
-
 .nav-link{
      background-color:white;
      color: #1b1c1a;
@@ -157,9 +158,6 @@ margin-top: 2rem;
      transform: scaleX(1);
 }
 
-#fila2{
-     height: 5%;
-}
 /*------------------------------------ Accounts ------------------------------------*/
 #main-accounts{
      height: 80%;
@@ -1032,6 +1030,7 @@ footer a{
           }
           .h4-index{
                text-align: center;
+               font-size: medium;
           }
           .h4{
                font-size: medium;
@@ -1044,9 +1043,6 @@ footer a{
           }
           table{
                font-size: small;
-          }
-          .max-amount{
-               display: none;
           }
           #resume-ul{
                font-size: small;

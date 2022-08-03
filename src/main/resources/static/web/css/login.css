@@ -63,11 +63,6 @@ button, input[type="submit"], input[type="reset"] {
     cursor: pointer;
     outline: inherit;
 }
-#app{
-    height: 100vh;
-    padding: 0px;
-    width: 100%;
-}
 .btn-black{
     color: white;
     background-color: black;
