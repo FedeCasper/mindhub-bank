@@ -314,7 +314,7 @@ color: #a36ac9 !important;
     }
     label{
         font-size: medium !important;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
     }
     :placeholder-shown{
         font-size: medium !important;
