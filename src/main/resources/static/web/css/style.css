@@ -11,6 +11,7 @@
 }
 
 body{
+     min-height: 100vh;
      background-image: url('../assets/fondo_body.png');
 }
 :placeholder-shown{
@@ -44,12 +45,12 @@ a{
 
 /*------------------------------------ Header & Nav ------------------------------------*/
 .header{
+     min-height: 10vh;
      display: flex;
      align-items: center;
-     height: fit-content;
-     max-height: fit-content !important;
      background-color:#fff;
      border-bottom: solid 3px #a36ac9; 
+     
 }
 h1{
      margin-bottom: 0px;
@@ -78,7 +79,6 @@ h1{
      padding: 1rem 3rem;      
 }
 .nav-index{
-     height: 9vh;
      background-color: #fff;
      border-bottom: solid 3px #a36ac9; 
      display: flex;
@@ -91,8 +91,8 @@ h1{
      align-items: center;
 }
 .first-row{
-     min-height: 81vh;
-     height: fit-content;
+     min-height: 80vh;
+     max-height: fit-content !important;
      display: flex;
      justify-content: space-around;
      align-items: center;
@@ -223,8 +223,13 @@ margin-top: 2rem;
 }
 #loan_button{
      width: 100%;
-     transition: border 0.3s;
+     transition: all 0.3s;
      opacity: 80%;
+     padding: 0.5rem;
+}
+#loan_button:hover{
+     box-shadow: inset 0 0 0 20px #a36ac9;
+     transform: scale(0.97);
 }
 .request{
      background-color:#f1f1f172;
@@ -584,8 +589,8 @@ width: 75%;
 
 /*------------------------------------ Footer ------------------------------------*/
 .footer{
-     max-height: fit-content;
-     height: 10vh;
+     min-height: 10vh;
+     max-height: fit-content !important;
      background-color: #1b1c1a;
      padding: 1rem;
      display: flex;
@@ -925,9 +930,7 @@ footer a{
      background-color:#f1f1f100;
 }
 
-#loan_button:hover{
-     border: solid 5px #a36ac9;
-}
+
 
 
 
