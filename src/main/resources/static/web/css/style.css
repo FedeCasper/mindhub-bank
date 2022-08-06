@@ -42,6 +42,21 @@ a{
      background-color:#a36ac9;
      transform: scale(1.05);
 }
+.bold{
+     font-weight: bold;
+}
+.purple_bold{
+     color: #a36ac9;
+     font-weight: bold;
+}
+.purple_italic{
+     color: #a36ac9;
+     font-style: italic;
+}
+.white_bold{
+     color:#fff;
+     font-weight: bold;
+}
 
 /*------------------------------------ Header & Nav ------------------------------------*/
 .header{
@@ -50,7 +65,6 @@ a{
      align-items: center;
      background-color:#fff;
      border-bottom: solid 3px #a36ac9; 
-     
 }
 h1{
      margin-bottom: 0px;
@@ -79,8 +93,6 @@ h1{
      padding: 1rem 3rem;      
 }
 .nav-index{
-     background-color: #fff;
-     border-bottom: solid 3px #a36ac9; 
      display: flex;
      justify-content: space-between;
      padding: 1rem 3rem;
@@ -90,6 +102,40 @@ h1{
      display: flex;
      align-items: center;
 }
+.nav-link{
+     background-color:white;
+     color: #1b1c1a;
+     transition:  color 0.2s ;
+}
+.nav-link:hover{
+     color: #1b1c1a;
+}
+.underline-hover-effect {
+     position: relative;
+}
+.underline-hover-effect::after {
+     content: '';
+     background-color:#a36ac9;
+     position: absolute;
+     left: 0;
+     bottom: -1px;
+     height: 3px;
+     width: 100%;
+     border-radius: 2px; 
+     transform: scaleX(0);
+     transform-origin: left;
+     transition: transform ease-in-out 250ms;
+} 
+.underline-hover-effect:hover::after{
+     transform: scaleX(1);
+}
+
+
+/*------------------------------------ Login & Register ------------------------------------*/
+
+
+
+/*------------------------------------ Index ------------------------------------*/
 .first-row{
      min-height: 80vh;
      max-height: fit-content !important;
@@ -123,40 +169,11 @@ margin-top: 2rem;
 0% {transform: rotate(3deg);}
 100% {transform: rotate(-3deg);}
 }
-.nav-link{
-     background-color:white;
-     color: #1b1c1a;
-     transition:  color 0.2s ;
-}
-.nav-link:hover{
-     color: #1b1c1a;
-}
-.expired{
-     font-weight: bold;
-     color: red;
-}
 #img_login{
      height: 30vw;
 }
-.underline-hover-effect {
-     position: relative;
-}
-.underline-hover-effect::after {
-     content: '';
-     background-color:#a36ac9;
-     position: absolute;
-     left: 0;
-     bottom: -1px;
-     height: 3px;
-     width: 100%;
-     border-radius: 2px; 
-     transform: scaleX(0);
-     transform-origin: left;
-     transition: transform ease-in-out 250ms;
-} 
-.underline-hover-effect:hover::after{
-     transform: scaleX(1);
-}
+
+
 
 /*------------------------------------ Accounts ------------------------------------*/
 #main-accounts{
@@ -300,7 +317,10 @@ width: 75%;
      gap: 2rem;
      flex-wrap: wrap;
 }
-
+.expired{
+     font-weight: bold;
+     color: red;
+}
 
 /*------------------------------------ Cards Design & Behaving ------------------------------------*/
 .h4_cards{
@@ -623,10 +643,6 @@ footer a{
 .h4{
      margin-bottom: 0;
 }
-.bold{
-     font-weight: bold;
-}
-
 #columnaH{
      height: fit-content;
      border-radius: 3px;
@@ -684,18 +700,7 @@ footer a{
 .h5{
      color: #fff;
 }
-.purple_bold{
-     color: #a36ac9;
-     font-weight: bold;
-}
-.purple_italic{
-     color: #a36ac9;
-     font-style: italic;
-}
-.white_bold{
-     color:#fff;
-     font-weight: bold;
-}
+
 
 /*------------------------------------ Loader ------------------------------------*/
 .main-preloader{
@@ -1022,11 +1027,20 @@ footer a{
           #loan-app-right-container{
                width: 80%;
           }
+          .h6{
+               font-size: small;
+          }
+          .h4{
+               font-size: medium;
+          }
      }
 
      @media screen and (max-width: 441px){
           .nav-index {
                padding: 1rem 1rem;
+          }
+          .nav-link{
+               width: fit-content;
           }
           .h2-index{
                font-size: 2rem;
@@ -1055,6 +1069,9 @@ footer a{
           }
           #create-card-right-container{
                width: 80%
+          }
+          .loans-container{
+               margin-right: 0;
           }
      }
 

@@ -30,4 +30,5 @@ public class LoanServiceImp implements LoanService {
     public Loan findLoanById(Long id) {
         return loanRepository.findById(id).orElse(null);
     }
+
 }

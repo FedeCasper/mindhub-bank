@@ -6,13 +6,8 @@
     box-sizing:border-box;
     color: #1b1c1a;
 }
-
 :root{
     --poppins: 'Poppins', sans-serif;
-    --darkBlue: #264E86;
-    --cyan: #74DBEF;
-    --gray: #EFF0F4;
-    --red: #FF5959;
 }
 
 body {
@@ -85,12 +80,11 @@ button, input[type="submit"], input[type="reset"] {
 
 /*------------------------------------ Header & Nav ------------------------------------*/
 .header{
+    min-height: 10vh;
     display: flex;
     align-items: center;
-    height: 9vh;
-    max-height: fit-content;
-    border-bottom: solid 3px #a36ac9; 
     background-color:#fff;
+    border-bottom: solid 3px #a36ac9; 
 }
 h1{
     margin-bottom: 0px;
@@ -99,13 +93,9 @@ h1{
     margin-bottom: 0px !important;
 }
 .navbar{
-
     z-index: 100;
 }
 .nav-index{
-    height: 9vh;
-    background-color: #fff;
-    border-bottom: solid 3px #a36ac9; 
     display: flex;
     justify-content: space-between;
     padding: 1rem 3rem;
@@ -321,6 +311,9 @@ color: #a36ac9 !important;
         display: flex;
         align-items: center;
     }
+    .navbar{
+        padding: 1rem 2rem !important;
+    }
     #login-form-container{
         display: flex;
         flex-direction: column;
@@ -387,4 +380,7 @@ color: #a36ac9 !important;
     .card2{
         display: none;
     }
+    .h4{
+        font-size: medium;
+   }
 } 

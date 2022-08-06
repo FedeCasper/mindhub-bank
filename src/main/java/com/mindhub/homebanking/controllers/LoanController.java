@@ -1,5 +1,6 @@
 package com.mindhub.homebanking.controllers;
 
+import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;
 import com.mindhub.homebanking.models.*;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.mindhub.homebanking.models.TransactionType.CREDITO;
 
@@ -39,7 +42,7 @@ public class LoanController {
 
     @Transactional
     @PostMapping("/loans")
-    public ResponseEntity<Object> createTransaction(@RequestBody LoanApplicationDTO loanApplicationDTO, Authentication authentication){
+    public ResponseEntity<Object> createLoan(@RequestBody LoanApplicationDTO loanApplicationDTO, Authentication authentication){
         Loan loan =  loanService.findLoanById(loanApplicationDTO.getId());
         Account account = accountService.getAccountByNumber(loanApplicationDTO.getDestinationAccountNumber());
         Client client = clientService.getClientCurrent(authentication);
@@ -67,6 +70,7 @@ public class LoanController {
         if(!client.getAccounts().contains(account)){
             return new ResponseEntity<>("The destination account does not belong to the client", HttpStatus.FORBIDDEN);
         }
+
 
         ClientLoan clientLoan = new ClientLoan( loanApplicationDTO.getAmount() * 1.20 , loanApplicationDTO.getPayment(), client, loan);
         clientLoanService.saveClientLoan(clientLoan);

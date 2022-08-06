@@ -109,6 +109,7 @@
                                         <input type="radio" name="loan_type" :value="loan.id" v-model="loan_selected" v-on:change="filtro()">
                                         <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small fst-italic max-amount">(*Max. permited ${{loan.maxAmount}})</span></label>
                                    </div>
+                                   {{loan_selected}}
                                    <!------------- Automotive Checkbox ------------->  
                                    <div v-if="loan.name == 'Automotive'">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -174,7 +175,7 @@
                <p class="h4 mb-4">Resume of your current loan.</p>
                     <!------------- Resume ------------->
                          <ul id="resume-ul">
-                              <li>Loan type: <span class="purple_italic">ID# {{loan_selected}}</span></li>
+                              <li>Loan type: <span class="purple_italic">{{loan_selected}}</span></li>
                               <li>Payments selected: <span class="purple_italic">{{payment_selected}}</span></li> 
                               <li>Amount requested: <span class="purple_italic">US$ {{amount}}</span></li> 
                               <li>Account selected: <span class="purple_italic">{{destination_account}}</span></li> 

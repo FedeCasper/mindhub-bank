@@ -18,6 +18,7 @@ Vue.createApp({
                loan_payments:[],
 
                currentClientAccounts:[],
+               currentClientLoansRequested: [],
                taxes: 0,
           }
      },
@@ -27,7 +28,15 @@ Vue.createApp({
           axios.get('/api/loans')
           .then(data => {
                this.available_loans = data.data
+               
           }),
+
+          axios.get('/api/clients/current')
+          .then(data => {
+               this.currentClientLoansRequested = data.data.clientLoans.map(loan => loan.id)
+               this.currentClientLoansRequestedByName = data.data.clientLoans.map(loan => loan.name)
+               console.log(this.currentClientLoansRequestedByName)
+          })
 
           axios.get('/api/clients/current/accounts')
           .then(data => {
@@ -35,6 +44,8 @@ Vue.createApp({
           })
 
           setTimeout(() => { this.charging = false }, 2000)
+
+          
      },
 
 
@@ -58,8 +69,13 @@ Vue.createApp({
                          title: 'Oops...',
                          text: 'The amount cannot be less than or equal to 0!',
                     })
-               }
-               else{
+               }else if(this.currentClientLoansRequested.includes(this.loan_selected)){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'This type of laon has alredy been requested',
+                    })
+               }else{
                     // defino el objeto que le paso a mi método post
                     let requested_loan = {
                          id: this.loan_selected,
@@ -89,9 +105,11 @@ Vue.createApp({
                          'success'
                          )
                          }
+                         location.reload()
                     })
-               }
 
+               }
+               
           },
 
           calculateTaxes(){
