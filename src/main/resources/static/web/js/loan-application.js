@@ -28,14 +28,11 @@ Vue.createApp({
           axios.get('/api/loans')
           .then(data => {
                this.available_loans = data.data
-               
           }),
 
           axios.get('/api/clients/current')
           .then(data => {
-               this.currentClientLoansRequested = data.data.clientLoans.map(loan => loan.id)
-               this.currentClientLoansRequestedByName = data.data.clientLoans.map(loan => loan.name)
-               console.log(this.currentClientLoansRequestedByName)
+               this.currentClientLoansRequested = data.data.clientLoans.map(loan => loan.loanId)
           })
 
           axios.get('/api/clients/current/accounts')
@@ -54,6 +51,7 @@ Vue.createApp({
           filtro(){
                this.filtered_loan = this.available_loans.filter(prestamos => prestamos.id == this.loan_selected)
                this.loan_payments = this.filtered_loan[0].payments
+
           },
 
           confirmLoan(){
@@ -69,13 +67,22 @@ Vue.createApp({
                          title: 'Oops...',
                          text: 'The amount cannot be less than or equal to 0!',
                     })
-               }else if(this.currentClientLoansRequested.includes(this.loan_selected)){
+               }
+               else if(this.currentClientLoansRequested.includes(this.loan_selected)){
                     Swal.fire({
                          icon: 'error',
                          title: 'Oops...',
-                         text: 'This type of laon has alredy been requested',
+                         text: 'This type of laon has alredy been requested.',
                     })
-               }else{
+               }
+               else if(this.amount > this.filtered_loan[0].maxAmount){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'The amount requested is greater than the amount allowed for this loan.',
+                    })
+               }
+               else{
                     // defino el objeto que le paso a mi método post
                     let requested_loan = {
                          id: this.loan_selected,
@@ -99,17 +106,56 @@ Vue.createApp({
                               .then(console.log("Loan has been created SUCCESFULLY!"))
                               .catch(error => error.message ) 
                          // disparo el menu confirmado
-                         Swal.fire(
-                         'Requested!',
-                         'Thanks for trusting us',
-                         'success'
-                         )
+                         Swal.fire({
+                              title: 'Loan requested!',
+                              text: "You can now find it in your Loans Storage",
+                              icon: 'success',
+                              showCancelButton: false,
+                              confirmButtonColor: '#1b1c1a',
+                              confirmButtonText: 'Confirm!'
+                         // al confirmar se ejecuta el método post
+                         })
+                         .then((result) => {
+                              if (result.isConfirmed) {setTimeout(() => { document.location.reload() }, 2000)}
+                         })
                          }
-                         location.reload()
+                         
                     })
 
                }
                
+          },
+
+          loanIdFormat(id){
+               if(id === 1){
+                    id = "Mortgage"
+               }else if(id === 2){
+                    id = "Personal"
+               }else if(id === 3){
+                    id = "Automotive"
+               }else{
+                    return "None"
+               }
+               return id
+          },
+
+          amountFormat(amount){
+               if(amount > 999 && amount < 1000000){
+                    let amountSelected = this.amount
+                    let newNumber = Array.from(amountSelected.toString())
+                    newNumber.splice(-3, 0, '.');
+                    let finalNumber = newNumber.join("")
+                    return finalNumber
+               }else if(amount > 999999){
+                    let amountSelected = this.amount
+                    let newNumber = Array.from(amountSelected.toString())
+                    let firstPoint = newNumber.splice(-3, 0, '.');
+                    firstPoint = newNumber.splice(-7, 0, '.');
+                    let finalNumber = newNumber.join("")
+                    return finalNumber
+               }else{
+                    return this.amount
+               }
           },
 
           calculateTaxes(){

@@ -39,6 +39,18 @@ Vue.createApp({
                }else{
                axios.post('/api/clients',`firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`,
                {headers:{'content-type':'application/x-www-form-urlencoded'}})
+               .then(
+                    Swal.fire({
+                         position: 'center',
+                         icon: 'success',
+                         title: 'User created',
+                         showConfirmButton: true,
+                    })
+               .then((result) => {
+                    if (result.isConfirmed) {   
+                         this.login()
+                    }
+               }))
                .then(response => 
                     console.log("Registered!"))
                .catch(function(error){
@@ -58,18 +70,6 @@ Vue.createApp({
                          console.log('Error', error.message);
                     }
                })
-               .then(
-                    Swal.fire({
-                         position: 'center',
-                         icon: 'success',
-                         title: 'User created',
-                         showConfirmButton: true,
-                    })
-               .then((result) => {
-                    if (result.isConfirmed) {   
-                         this.login()
-                    }
-               }))
           }
           },
 

@@ -71,6 +71,9 @@ public class LoanController {
             return new ResponseEntity<>("The destination account does not belong to the client", HttpStatus.FORBIDDEN);
         }
 
+        if(client.getLoans().contains(loan)){
+            return new ResponseEntity<>("This kind of loan has alredy been requested", HttpStatus.FORBIDDEN);
+        }
 
         ClientLoan clientLoan = new ClientLoan( loanApplicationDTO.getAmount() * 1.20 , loanApplicationDTO.getPayment(), client, loan);
         clientLoanService.saveClientLoan(clientLoan);

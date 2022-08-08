@@ -101,7 +101,7 @@
                                    <th>Description</th>
                               </thead>
                               <tbody>
-                                   <tr v-for="transaction in account.transactions">
+                                   <tr v-for="transaction in account.transactions.sort((a, b) => {return a.id - b.id;})">
                                         <div v-if="account.transactions == 0" class="transaction-moves"> You have no movements in this account yet</div>
                                         <div v-else>
                                              <td v-if="charging==false" >{{transaction.id}}</td>

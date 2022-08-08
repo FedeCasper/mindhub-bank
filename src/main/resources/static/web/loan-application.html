@@ -109,7 +109,6 @@
                                         <input type="radio" name="loan_type" :value="loan.id" v-model="loan_selected" v-on:change="filtro()">
                                         <label for="html" class="mx-2"><span class="bold">{{loan.name}}</span> <span class="small fst-italic max-amount">(*Max. permited ${{loan.maxAmount}})</span></label>
                                    </div>
-                                   {{loan_selected}}
                                    <!------------- Automotive Checkbox ------------->  
                                    <div v-if="loan.name == 'Automotive'">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-car me-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -136,20 +135,20 @@
                               <!------------- Payments Select ------------->
                               <div>
                                    <label class="pt-3">Enter the number of payments.<span class="text-danger">*</span></label>
-                                   <select class="w-100 mt-1" v-model="payment_selected">
-                                        <option value="" selected>Payments Available</option>
-                                        <option v-for="payment in loan_payments" required>{{payment}}</option>
+                                   <select class="w-100 mt-1" v-model="payment_selected" required>
+                                        <option selected>None</option>
+                                        <option v-for="payment in loan_payments" selected>{{payment}}</option>
                                    </select>
                               </div>
                               <!------------- Amount Input ------------->
                               <label class="pt-3">Enter the desired amount.<span class="text-danger">*</span></label>
-                              <input type="number" name="" id=""  class="w-100 mt-1" placeholder="$100.000" v-model="amount" required>
+                              <input type="number" class="w-100 mt-1" placeholder="$100.000" v-model="amount" step="1000" min="0" max="1000000" required></input>
                               <!------------- Destination Select ------------->
                               <div>
                                    <label class="pt-3">Destination Account.<span class="text-danger">*</span></label>
                                    <select class="w-100 mt-1" v-model="destination_account">
                                         <option value="" selected>Destination Account</option>
-                                        <option v-for="account in currentClientAccounts">{{account.number}}</option>
+                                        <option v-for="account in currentClientAccounts.sort((a, b) => {return a.id - b.id;})">{{account.number}}</option>
                                    </select>
                               </div>
                               <!------------- Description Input ------------->
@@ -175,9 +174,9 @@
                <p class="h4 mb-4">Resume of your current loan.</p>
                     <!------------- Resume ------------->
                          <ul id="resume-ul">
-                              <li>Loan type: <span class="purple_italic">{{loan_selected}}</span></li>
+                              <li>Loan type: <span class="purple_italic">{{loanIdFormat(loan_selected)}}</span></li>
                               <li>Payments selected: <span class="purple_italic">{{payment_selected}}</span></li> 
-                              <li>Amount requested: <span class="purple_italic">US$ {{amount}}</span></li> 
+                              <li>Amount requested: <span class="purple_italic">US$ {{amountFormat(amount)}}</span></li> 
                               <li>Account selected: <span class="purple_italic">{{destination_account}}</span></li> 
                               <li>Payments p/month: <span class="purple_italic">${{taxes}}</span></li>
                          </ul>
@@ -252,9 +251,6 @@
           </div>
      </footer>
 </div>        
-
-          
-
           
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <!--Etiqueta Bootstrap-->
      <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!--Etiqueta Axios-->

@@ -41,11 +41,17 @@ Vue.createApp({
           },
 
           create_own_transfer(){
-               if(this.ownSourceAccountNumber == 0 || this.ownDestinationAccountNumber == 0 || this.ownAmount == 0 || this.ownDescription == 0){
+               if(this.ownSourceAccountNumber == 0 || this.ownDestinationAccountNumber == 0 || this.ownDescription == 0){
                     Swal.fire({
                          icon: 'error',
                          title: 'Oops...',
                          text: 'There are incomplete fields!',
+                    })
+               }else if(this.ownAmount <= 0){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'The amount cannot be less than or equal to 0!',
                     })
                }else{
                axios.post(`/api/transactions`,
@@ -69,11 +75,17 @@ Vue.createApp({
           },
 
           create_else_transfer(){
-               if(this.elseSourceAccountNumber == 0 || this.elseDestinationAccountNumber == 0 || this.elseAmount == 0 || this.elseDescription == 0){
+               if(this.elseSourceAccountNumber == 0 || this.elseDestinationAccountNumber == 0 || this.elseDescription == 0){
                     Swal.fire({
                          icon: 'error',
                          title: 'Oops...',
                          text: 'There are incomplete fields!',
+                    })
+               }else if(this.elseAmount <= 0){
+                    Swal.fire({
+                         icon: 'error',
+                         title: 'Oops...',
+                         text: 'The amount cannot be less than or equal to 0!',
                     })
                }else{
                axios.post(`/api/transactions`,
@@ -89,7 +101,7 @@ Vue.createApp({
                .then((result) => {
                     if (result.isConfirmed) {   
                          console.log("transfer has been realized!")
-                         document.location.reload()
+                         setTimeout(() => { document.location.reload() }, 2000)
                     }
                }))   
                .catch( error => error.message + "Oops! something happened, you couldn't make the transfer" )

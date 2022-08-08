@@ -114,7 +114,7 @@
                                                             <path d="M4 18h17" />
                                                             <path d="M18 15l3 3l-3 3" />
                                                        </svg>
-                                                       Source Account
+                                                       Source Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <select v-model="ownSourceAccountNumber" class="select-input">
                                                        <option v-for="account in client_accounts" :disabled="ownDestinationAccountNumber == account.number"> {{account.number}} </option>
@@ -127,7 +127,7 @@
                                                             <path d="M20 18h-17" />
                                                             <path d="M6 15l-3 3l3 3" />
                                                        </svg>
-                                                       Destination Account
+                                                       Destination Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <select v-model="ownDestinationAccountNumber" class="select-input">
                                                        <option v-for="account in client_accounts" :disabled="ownSourceAccountNumber == account.number"> {{account.number}} </option>
@@ -140,7 +140,7 @@
                                                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
                                                             <path d="M12 6v2m0 8v2" />
                                                        </svg>
-                                                       Choose the amount desired
+                                                       Choose the amount desired<span class="text-danger"> *</span>
                                                   </label>
                                                   <input type="number" v-model="ownAmount" class="select-input">
                                                   <!-- Description Input-->
@@ -150,7 +150,7 @@
                                                             <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
                                                             <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
                                                        </svg>
-                                                       Enter a small description
+                                                       Enter a small description<span class="text-danger"> *</span>
                                                   </label>
                                                   <input type="text" name="" id="" v-model="ownDescription" class="select-input" placeholder="food & fruits">
                                                   <!-- Button Make Transfer-->
@@ -177,7 +177,7 @@
                                                             <path d="M4 18h17" />
                                                             <path d="M18 15l3 3l-3 3" />
                                                        </svg>
-                                                       Source Account
+                                                       Source Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <select v-model="elseSourceAccountNumber" class="select-input">
                                                        <option v-for="account in client_accounts">{{account.number}}</option>
@@ -190,7 +190,7 @@
                                                             <path d="M20 18h-17" />
                                                             <path d="M6 15l-3 3l3 3" />
                                                        </svg>
-                                                       Destination Account
+                                                       Destination Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <input class="select-input" type="text" v-model="elseDestinationAccountNumber">
                                                   <!-- Amount Input-->
@@ -201,7 +201,7 @@
                                                             <path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
                                                             <path d="M12 6v2m0 8v2" />
                                                        </svg>
-                                                       Choose the amount desired
+                                                       Choose the amount desired<span class="text-danger"> *</span>
                                                   </label>
                                                   <input type="number" v-model="elseAmount" class="select-input" required>
                                                   <!-- Description Input-->
@@ -211,7 +211,7 @@
                                                             <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
                                                             <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
                                                        </svg>
-                                                       Enter a small description
+                                                       Enter a small description<span class="text-danger"> *</span>
                                                   </label>
                                                   <input type="text" name="" id="" v-model="elseDescription" class="select-input" placeholder="food & fruits">
                                                   <!-- Button Make Transfer-->
@@ -223,6 +223,7 @@
                                    </div>
                               </div>
                          </form>
+                         <span class="text-danger mt-2 small">Fields marked with (*) are required</span>
                     </div>
                </div>
                <!------------- Right Container ------------->      
@@ -257,7 +258,7 @@
                          <th scope="col">Description</th>
                          </tr>
                     </thead>
-                    <tbody v-for="transaction in account.transactions">
+                    <tbody v-for="transaction in account.transactions.sort((a, b) => {return a.id - b.id;})">
                          <tr>
                          <th scope="row">{{transaction.id}}</th>
                          <td>{{formatearFecha(transaction.date)}}</td>
