@@ -17,6 +17,7 @@ Vue.createApp({
           axios.get(`/api/clients/current`)
                .then(datos => {
                     this.client = datos.data
+                    console.log(this.client)
                     this.accounts = datos.data.accounts.sort((a, b) => {return a.id - b.id;})
                     this.loans = datos.data.clientLoans
                }),
@@ -26,26 +27,6 @@ Vue.createApp({
 
 
      methods:{
-
-          checkButtons(){
-               axios.get('/api/clients/current/accounts')
-               .then(data => {
-                    addAccountButton = document.querySelector("#create_account_button")
-                    this.currentClientAccounts = data.data.length
-                         if(this.currentClientAccounts == 3){
-                         addAccountButton.style.visibility = "hidden";
-                    }
-               })
-
-               axios.get('/api/clients/current/clientLoans')
-               .then(data => {
-                    addLoanButton = document.querySelector("#create_loan")
-                    this.currentClientLoans = data.data.length
-                         if(this.currentClientLoans >= 3){
-                              addLoanButton.style.display = "none";
-                    }
-               })
-          },
 
           formatearFecha(fecha){
                let date = new Date (fecha)

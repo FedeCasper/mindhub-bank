@@ -16,6 +16,7 @@
 
 <div id="app">
 
+     <!------------- Preloader ------------->
      <div v-if="charging==true" class="main-preloader container">
           <div class="row">
                <div id="loader">
@@ -32,7 +33,7 @@
           </div>
      </div>
 
-     <!------------------------------- HEADER ------------------------------->
+     <!-------------------------------------- Header -------------------------------------->
      <header v-if="charging==false" class="header">
           <nav class="navbar navbar-expand-lg px-5 col-12">
                <div class="container-fluid px-0">
@@ -82,22 +83,22 @@
           </nav>
      </header>
 
-
-     <!------------------------------- MAIN ------------------------------->
+     <!-------------------------------------- Main --------------------------------------> 
      <main v-if="charging==false">
           <!------------- Credit Card Wallet ------------->  
           <div class="stripe-header">
                <h3>These are your</h3>
                <h3><span class="bold">Credit</span> cards</h3>
           </div>
-
           <div id="credit-cards-stripe">  
                <div class="cards-stripe-header">
                     <p class="h4 text-center"><span class="bold">Credit</span> cards wallet.</p>
+                    <p v-if="client_debit_cards.length === 0" class="h6 text-center"> You don't have credit cards in this moment.</p>
                     <p class="h6 text-center">You can request a new card or cancel an old one.</p>
                </div>
 
                <div class="cards-container">
+                    <img v-if="client_credit_cards.length === 0" src="./assets/no-cards.png" class="empty-wallet">
                     <div v-for="card in client_credit_cards" class="row_card">
                          <!------------- CARD GOLD ------------->
                          <div v-if="card.color === 'GOLD' && card.type === 'CREDIT'" class="card" id="div_card">
@@ -188,7 +189,7 @@
                          <!------------- Button Delete Card ------------->
                          <div class="row ">
                               <a href="#">
-                                   <button type="button" class="btn btn-primary mt-2 btn-sm d-flex justify-content-center gap-2" id="createCardButton" v-on:click="deleteCard(card.id)">
+                                   <button type="button" class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2" id="createCardButton" v-on:click="deleteCard(card.id)">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                              <line x1="4" y1="7" x2="20" y2="7" />
@@ -218,10 +219,12 @@
                
                <div class="cards-stripe-header">
                     <p class="h4 text-center"><span class="bold">Debit</span> cards wallet.</p>
-                    <p class="h6 text-center">You can request a new card or cancel an old one.</p>
+                    <p v-if="client_debit_cards.length === 0" class="h6 text-center">You don't have debit cards in this moment.</p>
+                    <p v-else class="h6 text-center">You can request a new card or cancel an old one.</p>
                </div>
 
                <div class="cards-container">
+                    <img v-if="client_debit_cards.length === 0" src="./assets/no-cards.png" class="empty-wallet">
                     <div v-for="card in client_debit_cards" class="row_card">
                          <!------------- CARD GOLD ------------->
                          <div v-if="card.color === 'GOLD' && card.type === 'DEBIT'" class="card" id="div_card">
@@ -312,7 +315,7 @@
                          <!------------- Button Delete Card ------------->
                          <div class="row ">
                               <a href="#">
-                                   <button type="button" class="btn btn-primary mt-2 btn-sm d-flex justify-content-center gap-2" id="createCardButton" v-on:click="deleteCard(card.id)">
+                                   <button type="button" class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2" id="createCardButton" v-on:click="deleteCard(card.id)">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                              <line x1="4" y1="7" x2="20" y2="7" />
@@ -335,7 +338,6 @@
                
      </main>
      
-
      <!-------------------------------------- Footer -------------------------------------->  
      <footer v-if="charging==false" class="footer">
           <!-- Logo Footer -->

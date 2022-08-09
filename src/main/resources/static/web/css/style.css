@@ -110,6 +110,11 @@ h1{
 .nav-link:hover{
      color: #1b1c1a;
 }
+#pushed{
+     font-size: larger;
+     color: #a36ac9;
+     font-weight: bold;
+}
 .underline-hover-effect {
      position: relative;
 }
@@ -172,8 +177,10 @@ margin-top: 2rem;
 #img_login{
      height: 30vw;
 }
-
-
+#index_mind{
+     font-weight: bold;
+     color: #a36ac9;
+}
 
 /*------------------------------------ Accounts ------------------------------------*/
 #main-accounts{
@@ -185,10 +192,11 @@ margin-top: 2rem;
      display: flex;
      flex-direction: column;
      justify-content: flex-start;
-     padding: 0 0 0 2rem;
+     padding: 0 0 0 2.5rem;
      margin: 3rem 0 1rem 0;
 }
 #accounts-cards-container{
+     min-height: 15rem;
      width: 100%;
      display: flex;
      flex-direction: column;
@@ -260,6 +268,10 @@ margin-top: 2rem;
 .automotriz{
      background-image: url(./assets/prestamo_automotriz.png);
 }
+.card-header {
+     color: #1b1c1a;
+     font-weight: bold;
+}
 
 /*------------------------------------ Transfers ------------------------------------*/
 .transfers-stripe{
@@ -286,7 +298,10 @@ width: 75%;
 .accordion-body{
      background: linear-gradient(145deg, rgba(140, 69, 188, 0.244) 8%, rgba(165, 218, 227, 0.244) 91%);
 } 
-
+.accordion-button:not(.collapsed){
+     color: #fff;
+     background-color: #a36ac9;
+} 
 
 /*------------------------------------ Cards ------------------------------------*/
 #credit-cards-stripe{
@@ -320,6 +335,17 @@ width: 75%;
 .expired{
      font-weight: bold;
      color: red;
+}
+.empty-wallet{
+          animation: 1.5s linear 0.9s normal none infinite running balanceo;
+}
+@keyframes balanceo {
+     0%{transform:rotate(5deg)}
+     50%{transform:rotate(-5deg)}
+     100%{transform:rotate(5deg)}
+     }
+.row_card{
+     width: fit-content;
 }
 
 /*------------------------------------ Cards Design & Behaving ------------------------------------*/
@@ -605,16 +631,18 @@ width: 75%;
 .requirements{
      font-size: small;
 }
-
+.card-title {
+     color: var(--darkBlue);
+}
 
 /*------------------------------------ Footer ------------------------------------*/
 .footer{
      min-height: 10vh;
      max-height: fit-content !important;
      background-color: #1b1c1a;
-     padding: 1rem;
+     padding: 1rem 2.5rem;
      display: flex;
-     justify-content: space-around;
+     justify-content: space-between;
      align-items: center;
 }
 .footer-column-center{
@@ -633,69 +661,24 @@ footer a{
 .footer-links:hover{
      color: #a36ac9;
 }
+.footer-column-right{
+     display: flex;
+     gap: 1rem;
+}
 .icon{
      transition: all 300ms;
 }
 .icon:hover{
      transform: translateY(-25%);
 }
-
 .h4{
      margin-bottom: 0;
-}
-#columnaH{
-     height: fit-content;
-     border-radius: 3px;
-}
-
-.display-1{
-     font-size: 12vh;
-     margin-bottom: 0 !important;
-     width: fit-content;
-}
-.btn-primary{
-     color:#fff;
-     background-color:#1b1c1a;
-     border: none !important;
-     transition: background-color 0.5s;
-}
-.btn-primary:hover{
-     color: #fff;
-     background-color:#a36ac9;
 }
 ::marker {
      color: #a36ac9;
 }
 
 
-.card-title {
-     color: var(--darkBlue);
-}
-
-.card-header {
-     color: #1b1c1a;
-     font-weight: bold;
-}
-.row_card{
-     width: fit-content;
-}
-
-#index_mind{
-     font-weight: bold;
-     color: #a36ac9;
-}
-.accordion-button:not(.collapsed){
-     color: #fff;
-     background-color: #a36ac9;
-} 
-#index_business{
-     font-weight:500;
-}
-#pushed{
-     font-size: larger;
-     color: #a36ac9;
-     font-weight: bold;
-}
 
 .h5{
      color: #fff;

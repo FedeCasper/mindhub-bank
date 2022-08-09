@@ -38,7 +38,7 @@
                <div class="container-fluid px-0">
                     <!------------- Brand Nav ------------->
                     <a class="navbar-brand" href="#">
-                         <p class="h4"><span class="bold">Mind</span>Hub Bank</p>
+                         <p class="h4"><span class="purple_bold">Mind</span>Hub Bank</p>
                     </a>
                     <!------------- Burguer Button ------------->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +55,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
                               <li class="nav-item">
-                                   <a class="nav-link underline-hover-effect mx-3" href="./accounts.html">Home</a>
+                                   <a class="nav-link underline-hover-effect mx-3" href="./accounts.html">Hi {{client.first_name}} {{client.last_name}}!</a>
                               </li>
                               <li class="nav-item">
                                    <a class="nav-link mx-3" href="./accounts.html" id="pushed">Accounts & Loans</a>
@@ -84,7 +84,7 @@
 
      <!-------------------------------------- MAIN -------------------------------------->
      <main v-if="charging==false" id="main-accounts">
-          {{checkButtons()}}
+
           <!------------- Accounts Heading ------------->
           <div class="stripe-header">
                <h3>These are your</h3>
@@ -119,8 +119,8 @@
                </div>
                
                <!------------- Accounts Create Button ------------->
-               <div class="row">
-                    <button class="btn-black" id="create_account_button" v-on:click="createAccount()">Button Create Account</button>
+               <div v-if="accounts.length < 3" class="row">
+                    <button class="btn-black mb-4" v-on:click="createAccount()">Button Create Account</button>
                </div>
           </div>
 
@@ -170,7 +170,7 @@
                               </div>
                          </div>
                          <!------------- Empty Loan ------------->
-                         <div class="card loan-card request px-0" id="create_loan">
+                         <div v-if="loans.length < 3" class="card loan-card request px-0" id="create_loan">
                               <a href="./loan-application.html">
                                    <img id="loan_button" src="./assets/loan_request-01-03.png" class="card-img-top" alt="...">
                               </a>
