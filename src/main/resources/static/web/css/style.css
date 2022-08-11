@@ -60,11 +60,15 @@ a{
 
 /*------------------------------------ Header & Nav ------------------------------------*/
 .header{
+     top: 0;
      min-height: 10vh;
      display: flex;
      align-items: center;
      background-color:#fff;
      border-bottom: solid 3px #a36ac9; 
+     box-shadow: 0px 16px 14px -6px rgba(0,0,0,0.08);
+     position: sticky;
+     z-index: 1000;
 }
 h1{
      margin-bottom: 0px;
@@ -134,7 +138,17 @@ h1{
 .underline-hover-effect:hover::after{
      transform: scaleX(1);
 }
-
+.user-name{
+     display: flex;
+     align-items: center;
+     gap: 1rem;
+     margin: 0;
+     padding-left: 1rem;
+     background: linear-gradient(145deg, rgba(140, 69, 188, 0.244) 8%, rgba(165, 218, 227, 0.244) 91%);
+     border-radius: 5px;
+     font-weight: 500;
+     box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.16) inset;
+}
 
 /*------------------------------------ Login & Register ------------------------------------*/
 
@@ -302,7 +316,22 @@ width: 75%;
      color: #fff;
      background-color: #a36ac9;
 } 
-
+.transfer-table-container{
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 2rem 0;
+}
+.transfer-table-title{
+     width: 75%;
+     height: 2rem;
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     padding-left: 1rem;
+     margin-bottom: 1rem;
+     background: linear-gradient(145deg, rgba(140, 69, 188, 0.244) 8%, rgba(165, 218, 227, 0.244) 91%);
+}
 /*------------------------------------ Cards ------------------------------------*/
 #credit-cards-stripe{
      display: flex;
@@ -665,10 +694,10 @@ footer a{
      display: flex;
      gap: 1rem;
 }
-.icon{
+.icon-footer{
      transition: all 300ms;
 }
-.icon:hover{
+.icon-footer:hover{
      transform: translateY(-25%);
 }
 .h4{
@@ -1055,6 +1084,9 @@ footer a{
           }
           .loans-container{
                margin-right: 0;
+          }
+          .transfer-table-title{
+               width: 90%;
           }
      }
 

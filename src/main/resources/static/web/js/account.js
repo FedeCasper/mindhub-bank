@@ -1,7 +1,7 @@
 Vue.createApp({
      data() {
           return {
-     
+               client: [],
                charging: true,
                account_vin001: [],
                transactions_vin001: [],
@@ -13,6 +13,11 @@ Vue.createApp({
           const urlParams = new URLSearchParams(window.location.search);
           const id = urlParams.get('id');
           console.log(id)
+
+          axios.get(`/api/clients/current`)
+               .then(datos => {
+                    this.client = datos.data
+               }),
 
           axios.get('/api/clients/current/accounts')
                .then(data => {

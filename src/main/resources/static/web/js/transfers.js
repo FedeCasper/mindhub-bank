@@ -20,7 +20,14 @@ Vue.createApp({
           axios.get('/api/clients/current/accounts')
           .then(data => {
                this.client_accounts = data.data.sort((a, b) => {return a.id - b.id})
-          })
+               }),
+
+          axios.get(`/api/clients/current`)
+               .then(datos => {
+                    this.client = datos.data
+                    this.accounts = datos.data.accounts.sort((a, b) => {return a.id - b.id;})
+                    this.loans = datos.data.clientLoans
+               }),
 
           setTimeout(() => { this.charging = false }, 2000)
      },
@@ -125,7 +132,7 @@ Vue.createApp({
                     }
                })
                .catch( error => error.message + "Oops! something happened, you couldn't log out" )
-          },
+          }
 
      },
 

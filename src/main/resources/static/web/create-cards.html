@@ -53,13 +53,10 @@
                          </span>
                     </button>
                     <!------------- Nav Links ------------->
-                    <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
                               <li class="nav-item">
-                                   <a class="nav-link underline-hover-effect mx-3" href="./accounts.html">Home</a>
-                              </li>
-                              <li class="nav-item">
-                                   <a class="nav-link underline-hover-effect mx-3" href="./accounts.html">Accounts & Loans</a>
+                                   <a class="nav-link mx-3" href="./accounts.html">Accounts & Loans</a>
                               </li>
                               <li class="nav-item">
                                    <a class="nav-link underline-hover-effect mx-3" href="./cards.html">Cards</a>
@@ -69,15 +66,11 @@
                               </li>
                          </ul>
                          <!------------- Logout Button ------------->
+                         <p class="user-name">Hi {{client.first_name}} {{client.last_name}}!
                          <button class="btn-black d-flex align-items-center gap-2" v-on:click="logout()">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-transfer-out" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                   <path d="M4 19v2h16v-14l-8 -4l-8 4v2" />
-                                   <path d="M13 14h-9" />
-                                   <path d="M7 11l-3 3l3 3" />
-                              </svg>
-                              Logout
+                              Logout?
                          </button>
+                         </p>
                     </div>
                </div>
           </nav>
@@ -155,7 +148,7 @@
           <!-- Social Footer -->
           <div class="footer-column-right">
                <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <rect x="3" y="5" width="18" height="14" rx="2" />
                          <polyline points="3 7 12 13 21 7" />
@@ -163,14 +156,14 @@
                </a>
                <!------------- Btn Facebook ------------->
                <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
                     </svg>
                </a>
                <!------------- Btn Instagram ------------->
                <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <rect x="4" y="4" width="16" height="16" rx="4" />
                          <circle cx="12" cy="12" r="3" />
@@ -179,7 +172,7 @@
                </a>
                <!------------- Btn Whatsapp ------------->
                <a class="footer-icons" href="https://web.whatsapp.com/">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                          <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
                          <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />

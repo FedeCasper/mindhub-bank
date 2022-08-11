@@ -17,7 +17,6 @@ Vue.createApp({
           axios.get(`/api/clients/current`)
                .then(datos => {
                     this.client = datos.data
-                    console.log(this.client)
                     this.accounts = datos.data.accounts.sort((a, b) => {return a.id - b.id;})
                     this.loans = datos.data.clientLoans
                }),

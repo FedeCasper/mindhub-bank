@@ -2,6 +2,7 @@ Vue.createApp({
 
      data() {
           return {
+          client: [],
           charging: true,
           cardType:'',
           cardColor: '',
@@ -11,6 +12,11 @@ Vue.createApp({
 
 
      created(){
+          axios.get(`/api/clients/current`)
+               .then(datos => {
+                    this.client = datos.data
+               }),
+
           axios.get('/api/clients/current/cards')
           .then(data => {
                this.currentClient_Cards = data.data

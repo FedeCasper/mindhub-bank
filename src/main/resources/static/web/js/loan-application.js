@@ -3,6 +3,7 @@ Vue.createApp({
 
      data() {
           return {
+               client: [],
                charging: true,
                // array de tipos de loans
                available_loans: [],
@@ -32,6 +33,7 @@ Vue.createApp({
 
           axios.get('/api/clients/current')
           .then(data => {
+               this.client = data.data
                this.currentClientLoansRequested = data.data.clientLoans.map(loan => loan.loanId)
           })
 
