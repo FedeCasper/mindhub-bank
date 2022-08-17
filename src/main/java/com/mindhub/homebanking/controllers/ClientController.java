@@ -65,7 +65,7 @@ public class ClientController {
 
         Account account = new Account("VIN" + getRandomAccountNumber(10000000,99999999), LocalDateTime.now(), 0, client );
         accountService.saveAccount(account);
-        return new ResponseEntity<>("The client has been created succesfully", HttpStatus.CREATED);
+        return new ResponseEntity<>(client, HttpStatus.CREATED);
     }
 
 

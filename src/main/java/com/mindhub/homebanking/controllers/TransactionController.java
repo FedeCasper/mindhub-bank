@@ -44,10 +44,15 @@ public class TransactionController {
 
     @Transactional
     @PostMapping("/transactions")
-    public ResponseEntity<Object> createTransaction (@RequestParam double amount, @RequestParam String description, @RequestParam String sourceAccount, @RequestParam String destinationAccount, Authentication authentication ){
+    public ResponseEntity<Object> createTransaction (
+            @RequestParam double amount, @RequestParam String description,
+            @RequestParam String sourceAccount, @RequestParam String destinationAccount,
+            Authentication authentication ){
+
         Client client = clientService.getClientCurrent(authentication);
         Account accountSource = accountService.getAccountByNumber(sourceAccount);
         Account accountDestination = accountService.getAccountByNumber(destinationAccount);
+
         if (amount == 0 || description.isEmpty() || sourceAccount.isEmpty() || destinationAccount.isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
@@ -64,7 +69,7 @@ public class TransactionController {
             return new ResponseEntity<>("Destination account does not exist", HttpStatus.FORBIDDEN);
         }
         if( amount > accountSource.getBalance()){
-            return new ResponseEntity<>("Destination account does not exist", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("You do not have sufficient funds for this operation", HttpStatus.FORBIDDEN);
         }
         Transaction debitTransaction = new Transaction( -amount, description, DEBITO, LocalDateTime.now(), accountSource);
         transactionService.saveTransaction(debitTransaction);
