@@ -76,14 +76,6 @@ public class TransactionController {
         Transaction creditTransaction = new Transaction( amount, description, CREDITO, LocalDateTime.now().plusMonths(1), accountDestination);
         transactionService.saveTransaction(creditTransaction);
 
-        if(debitTransaction.getType() == DEBITO){
-            accountSource.setBalance(accountSource.getBalance() - (-amount));
-            accountService.saveAccount(accountSource);
-        } else if (debitTransaction.getType() == CREDITO) {
-            accountSource.setBalance(accountSource.getBalance() - amount);
-            accountService.saveAccount(accountSource);
-        }
-
         accountSource.setBalance(accountSource.getBalance() - amount);
         accountService.saveAccount(accountSource);
 

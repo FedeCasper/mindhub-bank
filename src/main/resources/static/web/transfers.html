@@ -110,7 +110,7 @@
                                                        Source Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <select v-model="ownSourceAccountNumber" class="select-input">
-                                                       <option v-for="account in client_accounts" :disabled="ownDestinationAccountNumber == account.number"> {{account.number}} </option>
+                                                       <option v-for="account in client_accounts" :disabled="ownDestinationAccountNumber == account.number"> {{account.number}} <small>(Balance ${{account.balance}})</span></option>
                                                   </select>
                                                   <!-- Destination Account Select-->
                                                   <label class="pt-2">
@@ -123,7 +123,7 @@
                                                        Destination Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <select v-model="ownDestinationAccountNumber" class="select-input">
-                                                       <option v-for="account in client_accounts" :disabled="ownSourceAccountNumber == account.number"> {{account.number}} </option>
+                                                       <option v-for="account in client_accounts" :disabled="ownSourceAccountNumber == account.number"> {{account.number}} <small>(Balance ${{account.balance}})</span></option>
                                                   </select>
                                                   <!-- Amount Input-->
                                                   <label class="pt-2">
@@ -173,7 +173,7 @@
                                                        Source Account<span class="text-danger"> *</span>
                                                   </label>
                                                   <select v-model="elseSourceAccountNumber" class="select-input">
-                                                       <option v-for="account in client_accounts">{{account.number}}</option>
+                                                       <option v-for="account in client_accounts">{{account.number}} <small>(Balance ${{account.balance}})</span></option>
                                                   </select>
                                                   <!-- Destination Account Select-->
                                                   <label class="pt-2" id="destination_label">
