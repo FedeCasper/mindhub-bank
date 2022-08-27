@@ -39,6 +39,13 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
 
         http.logout().logoutUrl("/api/logout");
 
+        http.sessionManagement()
+                .invalidSessionUrl("/web/index.html")
+                .maximumSessions(3)
+                .maxSessionsPreventsLogin(true)
+                .expiredUrl("/web/index.html")
+                .expiredSessionStrategy();
+
         // desactivar la comprobación de tokens CSRF
         http.csrf().disable();
 

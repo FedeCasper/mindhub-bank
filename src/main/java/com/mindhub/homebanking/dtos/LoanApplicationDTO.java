@@ -3,9 +3,9 @@ package com.mindhub.homebanking.dtos;
 public class LoanApplicationDTO {
 
     private long id;
-    private double amount;
-    private int payment;
-    private String destinationAccountNumber;
+    private double amount; // Viene de Loans
+    private int payment; // Viene de Loans
+    private String destinationAccountNumber; // Viene de Account
 
     public LoanApplicationDTO(){}
 
