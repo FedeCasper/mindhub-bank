@@ -37,8 +37,7 @@ Vue.createApp({
                          text: 'Please check the email!',
                     })
                }else{
-               axios.post('/api/clients',`firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`,
-               {headers:{'content-type':'application/x-www-form-urlencoded'}})
+               axios.post('/api/clients',`firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`)
                .then(
                     Swal.fire({
                          position: 'center',
@@ -74,14 +73,14 @@ Vue.createApp({
           },
 
           login(){
-               axios.post('/api/login',`email=${this.email}&password=${this.password}`,
-                    {headers:{'content-type':'application/x-www-form-urlencoded'}})
+               axios.post('/api/login',`email=${this.email}&password=${this.password}`)
                     .then(response => 
                          window.location.href = "/web/accounts.html",
                          console.log('signed in!!!'))
-                    .catch(function(error){
+                    .catch(error => {
                          window.alert("El correo no pertenece a un usuario del banco", error.message)
-                    })
+                    }
+               )
           },
 
           show(){

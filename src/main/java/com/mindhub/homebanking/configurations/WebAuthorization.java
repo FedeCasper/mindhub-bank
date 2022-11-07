@@ -43,8 +43,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                 .invalidSessionUrl("/web/index.html")
                 .maximumSessions(3)
                 .maxSessionsPreventsLogin(true)
-                .expiredUrl("/web/index.html")
-                .expiredSessionStrategy();
+                .expiredUrl("/web/index.html");
 
         // desactivar la comprobación de tokens CSRF
         http.csrf().disable();
@@ -62,9 +61,7 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
         // si el cierre de sesión es exitoso, simplemente envíe una respuesta exitosa
-        http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());// turn off checking for CSRF tokens
-
-        http.csrf().disable();
+        http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
 
     }
 

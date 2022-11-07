@@ -1,7 +1,9 @@
 package com.mindhub.homebanking;
 
+import com.mindhub.homebanking.controllers.CardController;
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
+import com.mindhub.homebanking.services.CardService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -27,17 +29,52 @@ public class RepositoriesTest {
     CardRepository cardRepository;
     @Autowired
     TransactionRepository transactionRepository;
+    @Autowired
+    CardService cardService;
+    @Autowired
+    CardController cardController;
 
+
+    // Loan Repository -------------------------------------------------------------------------//
     @Test
     public void existLoans(){
         List<Loan> loans = loanRepository.findAll();
         assertThat(loans,is(not(empty())));
     }
     @Test
-    public void existPersonalLoan(){
+    public void existPropertyPersonal(){
         List<Loan> loans = loanRepository.findAll();
         assertThat(loans, hasItem(hasProperty("name", is("Personal"))));
     }
+    @Test
+    public void existPropertyAutomotive(){
+        List<Loan> loans = loanRepository.findAll();
+        assertThat(loans, hasItem(hasProperty("name", is("Automotive"))));
+    }
+    @Test
+    public void existPropertyMortgage(){
+        List<Loan> loans = loanRepository.findAll();
+        assertThat(loans, hasItem(hasProperty("name", is("Mortgage"))));
+    }
+    @Test
+    public void PropertyTypeAutomotive(){
+        List<Loan> loans = loanRepository.findAll();
+        assertThat(loans, hasItem(hasProperty("name", isA(String.class))));
+    }
+    @Test
+    public void PropertyTypeMaxAmount(){
+        List<Loan> loans = loanRepository.findAll();
+        assertThat(loans, hasItem(hasProperty("maxAmount", isA(int.class))));
+    }
+    @Test
+    public void PropertyTypePayments(){
+        List<Loan> loans = loanRepository.findAll();
+        assertThat(loans, hasItem(hasProperty("payments", isA(List.class))));
+    }
+
+
+
+
     @Test
     public void existAccounts(){
         List<Account> accounts = accountRepository.findAll();
@@ -53,11 +90,11 @@ public class RepositoriesTest {
         List<Card> cards = cardRepository.findAll();
         assertThat(cards,is(not(empty())));
     }
-    @Test
+    /*@Test
     public void existCVV (){
         List<Card> cards = cardRepository.findAll();
         assertThat(cards,hasItem(hasProperty("cvv", is(117))));
-    }
+    }*/
     @Test
     public void existeSilverCard(){
         List<Card> cards = cardRepository.findAll();
@@ -87,6 +124,19 @@ public class RepositoriesTest {
     public void existTransaction (){
         List<Transaction> transactions = transactionRepository.findAll();
         assertThat(transactions,is(not(empty())));
+    }
+
+    @Test
+    void deleteClient2(){
+        cardController.deleteCard(2L);
+    }
+    @Test
+    void deleteClient3(){
+        cardController.deleteCard(3L);
+    }
+    @Test
+    void deleteClient4(){
+        cardController.deleteCard(4L);
     }
 
 }
