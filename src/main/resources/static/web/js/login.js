@@ -2,12 +2,12 @@ Vue.createApp({
      
      data() {
           return {
-          
                email:'',
                password:'',
                error:'',
                firstName: '',
                lastName: '',
+               role:[],
           }
      },
 
@@ -73,15 +73,30 @@ Vue.createApp({
           },
 
           login(){
-               axios.post('/api/login',`email=${this.email}&password=${this.password}`)
+                    axios.post('/api/login',`email=${this.email}&password=${this.password}`)
+                    .then(() => {
+                         console.log('signed in!!!')} 
+                         )
                     .then(response => 
-                         window.location.href = "/web/accounts.html",
-                         console.log('signed in!!!'))
+                         this.roleChecker()
+                         )
                     .catch(error => {
-                         window.alert("El correo no pertenece a un usuario del banco", error.message)
+                         window.alert(error.message)
                     }
                )
           },
+
+          roleChecker(){
+               axios.get('/api/clients/current')
+               .then((datos) => {
+                    this.role = datos.data.role
+                    console.log(this.role)
+                    if(this.role == 'CLIENT'){
+                         window.location.href = '/web/accounts.html'
+                    }else if(this.role == 'ADMIN'){
+                         window.location.href = '/web/admin-panel.html'
+                    }
+          })},
 
           show(){
                document.querySelector('.form-group span').addEventListener('click', e => {

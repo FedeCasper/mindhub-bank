@@ -19,6 +19,7 @@ Vue.createApp({
                     this.client = datos.data
                     this.accounts = datos.data.accounts.sort((a, b) => {return a.id - b.id;})
                     this.loans = datos.data.clientLoans
+                    console.log(this.client)
                }),
 
           setTimeout(() => { this.charging = false }, 2000)

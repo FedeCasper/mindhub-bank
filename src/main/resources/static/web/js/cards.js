@@ -30,6 +30,7 @@ Vue.createApp({
                .then(datos => {
                     this.client = datos.data
                     this.cards = this.client.cards.sort((a, b) => {return a.id - b.id;})
+                    console.log(this.cards)
                     this.card_color = this.cards.map(card => card.color)
 
                })
