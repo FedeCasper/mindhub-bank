@@ -16,14 +16,16 @@ public class Client {
 
     // Propiedades -------------------------------------------------------------------------//
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Column(nullable = false)
     private long id;
 
     private String first_name;
     private String last_name;
     private String email;
     private String password;
+    private Role role;
 
 
     // Relaciones ---------------------------------------------------------------------------//
@@ -42,11 +44,12 @@ public class Client {
 
     public Client (){}
 
-    public Client(String first_name, String last_name, String email, String password) {
+    public Client(String first_name, String last_name, String email, String password, Role role) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
 
@@ -83,4 +86,7 @@ public class Client {
 
     public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
+
+    public Role getRole() {return role;}
+    public void setRole(Role role) {this.role = role;}
 }

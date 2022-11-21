@@ -6,6 +6,7 @@ import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.models.Role;
 import com.mindhub.homebanking.services.AccountService;
 import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -59,15 +61,19 @@ public class ClientController {
         if(password.length() >= 15){
             return new ResponseEntity<>("The password is too long", HttpStatus.BAD_REQUEST);
         }
+        if (firstName.equalsIgnoreCase("admin") && email.toLowerCase().contains("@admin.com")){
+            Client admin = new Client(firstName, lastName, email, passwordEncoder.encode(password), Role.ADMIN);
+            clientService.saveCLient(admin);
+            return new ResponseEntity<>("Admin has been created succesfully", HttpStatus.CREATED);
+        }else{
+            Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), Role.CLIENT);
+            clientService.saveCLient(client);
 
-        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password));
-        clientService.saveCLient(client);
-
-        Account account = new Account("VIN" + getRandomAccountNumber(10000000,99999999), LocalDateTime.now(), 0, client );
-        accountService.saveAccount(account);
-        return new ResponseEntity<>(client, HttpStatus.CREATED);
+            Account account = new Account("VIN" + getRandomAccountNumber(10000000,99999999), LocalDateTime.now(), 0, client );
+            accountService.saveAccount(account);
+            return new ResponseEntity<>(client, HttpStatus.CREATED);
+        }
     }
-
 
     @GetMapping("/clients/current")
     public ClientDTO getClientCurrent (Authentication authentication) {

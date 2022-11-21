@@ -52,7 +52,7 @@ public class CardController {
         String cardNumber = getRandomCardNumber();
         int cvv = CardUtils.getRandonNumberCVV();
 
-        Card card = new Card(type, color, cardNumber, LocalDate.now(), LocalDate.now().plusYears(5),cvv, client);
+        Card card = new Card(type, color, cardNumber, LocalDate.now(), LocalDate.now().plusYears(5),cvv, client, true);
         cardService.saveCard(card);
         return new ResponseEntity<>("Card created succesfully", HttpStatus.CREATED);
 
@@ -64,9 +64,7 @@ public class CardController {
     }
 
     @DeleteMapping("/clients/current/cards/{id}")
-    public ResponseEntity<Long> deleteCard (@PathVariable (value = "id") Long id){
-        Card card = cardService.getCardById(id);
-        cardService.deleteCard(card);
-        return ResponseEntity.ok(id);
+    public void deleteCard (@PathVariable (value = "id") Long id){
+        cardService.deleteCard(id);
     }
 }

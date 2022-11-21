@@ -13,8 +13,8 @@ import java.util.Set;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
     long id;
 
     private String cardHolder;
@@ -24,6 +24,7 @@ public class Card {
     private LocalDate fromDate;
     private LocalDate truDate;
     private int cvv;
+    private boolean isActive;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -33,7 +34,7 @@ public class Card {
 
     public Card() {}
 
-    public Card(CardType type, CardColor color, String number, LocalDate fromDate, LocalDate truDate, int cvv, Client client) {
+    public Card(CardType type, CardColor color, String number, LocalDate fromDate, LocalDate truDate, int cvv, Client client, boolean isActive) {
         this.cardHolder = client.getFirst_name() + " " + client.getLast_name();
         this.type = type;
         this.color = color;
@@ -42,6 +43,7 @@ public class Card {
         this.truDate = truDate;
         this.cvv = cvv;
         this.client = client;
+        this.isActive = isActive;
     }
 
     public long getId() {return id;}
@@ -69,4 +71,7 @@ public class Card {
 
     public Client getClient() {return client;}
     public void setClient(Client client) {this.client = client;}
+
+    public boolean isActive() {return isActive;}
+    public void setActive(boolean active) {isActive = active;}
 }

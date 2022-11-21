@@ -24,7 +24,7 @@ public class HomebankingApplication {
 		SpringApplication.run(HomebankingApplication.class, args);
 
 		System.out.println("<==================================>");
-		System.out.println("MindHub Bank Home banking Application");
+		System.out.println("MindHub Bank con PostgreSQL has started!!!");
 		System.out.println("<==================================>");
 
 	}
@@ -33,10 +33,10 @@ public class HomebankingApplication {
 		public CommandLineRunner initData(ClientRepository clientRepository , AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
 			return (args) -> {
 
-				Client cliente1 = new Client("Melba","Morel", "melba@mindhub.com", passwordEncoder.encode("123456")); clientRepository.save(cliente1);
-				Client cliente2 = new Client( "Federico","Rouyere", "federicorouyere@gmail.com", passwordEncoder.encode("123456")); clientRepository.save(cliente2);
-				Client clientAdmin = new Client("admin", "admin", "admin@mindhub.com", passwordEncoder.encode("123456")); clientRepository.save(clientAdmin);
-				Client cliente4 = new Client("Federica", "Risso Patron", "federicarp@gmail.com", passwordEncoder.encode("123456")); clientRepository.save(cliente4);
+				Client cliente1 = new Client("Melba","Morel", "melba@mindhub.com", passwordEncoder.encode("123456"), Role.CLIENT); clientRepository.save(cliente1);
+				Client cliente2 = new Client( "Federico","Rouyere", "federicorouyere@gmail.com", passwordEncoder.encode("123456"), Role.CLIENT); clientRepository.save(cliente2);
+				Client clientAdmin = new Client("admin", "admin", "admin@mindhub.com", passwordEncoder.encode("123456"), Role.ADMIN); clientRepository.save(clientAdmin);
+				Client cliente4 = new Client("Federica", "Risso Patron", "federicarp@gmail.com", passwordEncoder.encode("123456"), Role.CLIENT); clientRepository.save(cliente4);
 
 				Account account1 = new Account("VIN001", LocalDateTime.now() , 270725.2 , cliente1); accountRepository.save(account1);
 				Account account2 = new Account("VIN002" , LocalDateTime.now().plusDays(1) , 7500.0 , cliente1); accountRepository.save(account2);
@@ -64,23 +64,22 @@ public class HomebankingApplication {
 				ClientLoan clientLoan3 = new ClientLoan(100000, 24, cliente2, loan2); clientLoanRepository.save(clientLoan3);
 				ClientLoan clientLoan4 = new ClientLoan(20000, 36, cliente2, loan3); clientLoanRepository.save(clientLoan4);
 
-				/*Card card1 = new Card(CardType.DEBIT, CardColor.GOLD, "1234-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),117, cliente1);
-				cardRepository.save(card1);*/
-				Card card2 = new Card(CardType.CREDIT, CardColor.TITANIUM, "3445-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),753, cliente1);
+				Card card1 = new Card(CardType.DEBIT, CardColor.GOLD, "1234-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),117, cliente1, true);
+				cardRepository.save(card1);
+				Card card2 = new Card(CardType.CREDIT, CardColor.TITANIUM, "3445-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),753, cliente1, true);
 				cardRepository.save(card2);
-				Card expCard = new Card(CardType.CREDIT, CardColor.SILVER,  "4767-6324-1491-2718", LocalDate.now(), LocalDate.of(2020, 05, 22),394, cliente1);
+				Card expCard = new Card(CardType.CREDIT, CardColor.SILVER,  "4767-6324-1491-2718", LocalDate.now(), LocalDate.of(2020, 05, 22),394, cliente1, false);
 				cardRepository.save(expCard);
-				Card card3 = new Card(CardType.CREDIT, CardColor.SILVER,  "4547-6534-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),394, cliente2);
+				Card card3 = new Card(CardType.CREDIT, CardColor.SILVER,  "4547-6534-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),394, cliente2, true);
 				cardRepository.save(card3);
 
 
-				Card card4 = new Card(CardType.DEBIT, CardColor.GOLD, "5631-4678-9876-6571", LocalDate.now(), LocalDate.now().plusYears(5),132, cliente4); cardRepository.save(card4);
-				Card card5 = new Card(CardType.DEBIT, CardColor.TITANIUM, "5109-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),564, cliente4); cardRepository.save(card5);
-				Card card6 = new Card(CardType.DEBIT, CardColor.SILVER,  "2190-3513-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),902, cliente4); cardRepository.save(card6);
-				Card card7 = new Card(CardType.CREDIT, CardColor.GOLD, "6059-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),230, cliente4); cardRepository.save(card7);
-				Card card8 = new Card(CardType.CREDIT, CardColor.TITANIUM, "7358-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),465, cliente4); cardRepository.save(card8);
-				Card card9 = new Card(CardType.CREDIT, CardColor.SILVER,  "3620-9250-6510-2795", LocalDate.now(), LocalDate.now().plusYears(5),354, cliente4); cardRepository.save(card9);
-
+				Card card4 = new Card(CardType.DEBIT, CardColor.GOLD, "5631-4678-9876-6571", LocalDate.now(), LocalDate.now().plusYears(5),132, cliente4, true); cardRepository.save(card4);
+				Card card5 = new Card(CardType.DEBIT, CardColor.TITANIUM, "5109-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),564, cliente4, true); cardRepository.save(card5);
+				Card card6 = new Card(CardType.DEBIT, CardColor.SILVER,  "2190-3513-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),902, cliente4, true); cardRepository.save(card6);
+				Card card7 = new Card(CardType.CREDIT, CardColor.GOLD, "6059-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),230, cliente4, true); cardRepository.save(card7);
+				Card card8 = new Card(CardType.CREDIT, CardColor.TITANIUM, "7358-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),465, cliente4, true); cardRepository.save(card8);
+				Card card9 = new Card(CardType.CREDIT, CardColor.SILVER,  "3620-9250-6510-2795", LocalDate.now(), LocalDate.now().plusYears(5),354, cliente4, true); cardRepository.save(card9);
 
 			};
 		}

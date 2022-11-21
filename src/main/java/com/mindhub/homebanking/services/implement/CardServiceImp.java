@@ -31,7 +31,8 @@ public class CardServiceImp implements CardService {
     }
 
     @Override
-    public void deleteCard (Card card){
-        cardRepository.delete(card);
+    public void deleteCard (long id){
+        Card card = cardRepository.findById(id);
+        card.setActive(false);
     }
 }

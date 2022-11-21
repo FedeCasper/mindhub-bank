@@ -25,6 +25,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	// Hace que los JSON se vean como XML
 	//implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+	//implementation 'org.postgresql:postgresql'
 }
 
 tasks.named('test') {
