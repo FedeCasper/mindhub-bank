@@ -28,7 +28,7 @@ public class HomebankingApplication {
 			return (args) -> {
 
 				System.out.println("<==================================>");
-				System.out.println("MindHub Bank has started!!!");
+				System.out.println("MindHub Bank has just started!!!");
 				System.out.println("<==================================>");
 
 				Client cliente1 = new Client("Melba","Morel", "melba@mindhub.com", passwordEncoder.encode("123456"), Role.CLIENT);
