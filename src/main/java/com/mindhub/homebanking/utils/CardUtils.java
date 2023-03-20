@@ -14,8 +14,8 @@ public final class CardUtils {
         return cardNumber;
     }
 
-    public static int getRandonNumberCVV(){
-        return getRandomAccountNumber(100,999);
+    public static int getRandomCvvNumber(){
+        return (int) ((Math.random() * (999 - 100)) + 100);
     }
 
 }

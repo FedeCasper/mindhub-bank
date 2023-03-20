@@ -1,6 +1,7 @@
 package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.AccountDTO;
+import com.mindhub.homebanking.errors.MiExcepcionVerificada;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.services.AccountService;
@@ -39,7 +40,7 @@ public class AccountController {
     }
 
     @PostMapping("/clients/current/accounts")
-    public ResponseEntity<Object> createAccount (Authentication authentication ) {
+    public ResponseEntity<Object> createAccount (Authentication authentication ) throws MiExcepcionVerificada {
         Client client = clientService.getClientCurrent(authentication);
         if (client.getAccounts().size() >= 3){
             return new ResponseEntity<>("The maximum number of accounts has been reached", HttpStatus.FORBIDDEN);

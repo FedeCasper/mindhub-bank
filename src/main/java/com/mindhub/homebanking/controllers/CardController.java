@@ -23,7 +23,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.mindhub.homebanking.utils.CardUtils.getRandomCardNumber;
-import static com.mindhub.homebanking.utils.CardUtils.getRandonNumberCVV;
+import static com.mindhub.homebanking.utils.CardUtils.getRandomCvvNumber;
+
 
 @RestController
 @RequestMapping("/api")
@@ -50,7 +51,7 @@ public class CardController {
             return new ResponseEntity<>("The maximum cards has been reached", HttpStatus.FORBIDDEN);}
 
         String cardNumber = getRandomCardNumber();
-        int cvv = getRandonNumberCVV();
+        int cvv = getRandomCvvNumber();
 
         Card card = new Card(type, color, cardNumber, LocalDate.now(), LocalDate.now().plusYears(5),cvv, client, true);
         cardService.saveCard(card);

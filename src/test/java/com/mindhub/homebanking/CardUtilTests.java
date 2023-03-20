@@ -23,7 +23,7 @@ public class CardUtilTests {
     }
     @Test
     public void cvvNumberIsCreated(){
-        int cvv = CardUtils.getRandonNumberCVV();
+        int cvv = CardUtils.getRandomCvvNumber();
         assertThat(cvv,is(not(nullValue())));
     }
 

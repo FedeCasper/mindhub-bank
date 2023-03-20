@@ -4,6 +4,7 @@ import com.mindhub.homebanking.dtos.AccountDTO;
 import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.dtos.ClientLoanDTO;
+import com.mindhub.homebanking.errors.MiExcepcionVerificada;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.models.Role;
@@ -42,9 +43,10 @@ public class ClientController {
     }
 
     @PostMapping("/clients")
-    public ResponseEntity<Object> register (
-            @RequestParam String firstName, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<Object> register (@RequestParam String firstName,
+                                            @RequestParam String lastName,
+                                            @RequestParam String email,
+                                            @RequestParam String password) throws MiExcepcionVerificada {
 
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
