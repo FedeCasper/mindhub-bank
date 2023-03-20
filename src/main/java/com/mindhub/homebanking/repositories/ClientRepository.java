@@ -9,7 +9,7 @@ import java.util.List;
 @RepositoryRestResource
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    Client findByEmail (String email); // Método Abstracto, busca un cliente por el mail
+Client findByEmail (String email);
 
 }
 

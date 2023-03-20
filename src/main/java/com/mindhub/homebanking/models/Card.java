@@ -13,7 +13,8 @@ import java.util.Set;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @SequenceGenerator(name = "native")
 
     long id;
 
@@ -43,7 +44,7 @@ public class Card {
         this.truDate = truDate;
         this.cvv = cvv;
         this.client = client;
-        this.isActive = isActive;
+        //this.isActive = isActive;
     }
 
     public long getId() {return id;}
@@ -72,6 +73,6 @@ public class Card {
     public Client getClient() {return client;}
     public void setClient(Client client) {this.client = client;}
 
-    public boolean isActive() {return isActive;}
-    public void setActive(boolean active) {isActive = active;}
+    //public boolean isActive() {return isActive;}
+    //public void setActive(boolean active) {isActive = active;}
 }

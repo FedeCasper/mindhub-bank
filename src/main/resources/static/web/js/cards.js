@@ -31,6 +31,7 @@ Vue.createApp({
                     this.client = datos.data
                     this.cards = this.client.cards.sort((a, b) => {return a.id - b.id;})
                     console.log(this.cards)
+                    console.log(this.cards.active)
                     this.card_color = this.cards.map(card => card.color)
 
                })
@@ -107,7 +108,7 @@ Vue.createApp({
                })
                .then((result) => {
                     if (result.isConfirmed) {   
-                         axios.delete(`/api/clients/current/cards/` + id)
+                         axios.patch(`/api/clients/current/cards/` + id)
                          Swal.fire(
                          'Card Canceled!',
                          'We remove this card from your wallet',

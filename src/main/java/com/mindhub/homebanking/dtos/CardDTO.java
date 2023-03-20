@@ -33,7 +33,7 @@ public class CardDTO {
         this.fromDate = card.getFromDate();
         this.truDate = card.getTruDate();
         this.cvv = card.getCvv();
-        this.isActive = card.isActive();
+        //this.isActive = card.isActive();
     }
 
     public long getId() {return id;}

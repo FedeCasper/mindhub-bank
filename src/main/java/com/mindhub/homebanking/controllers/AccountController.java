@@ -19,6 +19,7 @@ import static com.mindhub.homebanking.utils.AccountUtils.getRandomAccountNumber;
 
 @RestController
 @RequestMapping("/api")
+@SuppressWarnings("unused")
 public class AccountController {
 
     @Autowired

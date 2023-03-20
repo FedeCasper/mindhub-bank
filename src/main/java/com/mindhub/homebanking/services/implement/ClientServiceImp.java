@@ -33,6 +33,11 @@ public class ClientServiceImp implements ClientService {
     }
 
     @Override
+    public Client findClientById(Long id){
+        return clientRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public void saveCLient(Client client) {
         clientRepository.save(client);
     }

@@ -19,7 +19,7 @@ Vue.createApp({
 
 
      created(){
-          axios.get(`http://localhost:8080/clients`)
+          axios.get(`http://localhost:8080/rest/clients`)
                .then(datos => {
                     this.jsonClientes = datos.data
                     this.clientes = datos.data._embedded.clients
@@ -31,7 +31,7 @@ Vue.createApp({
      methods:{
 
           agregar_cliente(){
-               axios.post(`http://localhost:8080/clients` , {
+               axios.post(`http://localhost:8080/rest/clients` , {
                     first_name: this.nombre,
                     last_name: this.apellido,
                     email: this.email,

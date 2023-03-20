@@ -10,6 +10,6 @@ public interface CardService {
     Set<CardDTO> getCardsDTO();
     void saveCard (Card card);
     Card getCardById(Long id);
-    void deleteCard (long id);
+    //void deleteCard (long id);
 
 }

@@ -19,8 +19,10 @@ import java.util.stream.Collectors;
 
 import static com.mindhub.homebanking.models.TransactionType.CREDITO;
 
+
 @RestController
 @RequestMapping("/api")
+@SuppressWarnings("unused")
 public class LoanController {
 
     @Autowired

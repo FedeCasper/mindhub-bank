@@ -18,9 +18,7 @@ Vue.createApp({
      created(){
 
           axios.get('/api/clients/current/accounts')
-          .then(data => {
-               this.client_accounts = data.data.sort((a, b) => {return a.id - b.id})
-               }),
+          .then(data => {this.client_accounts = data.data.sort((a, b) => {return a.id - b.id})}),
 
           axios.get(`/api/clients/current`)
                .then(datos => {
@@ -61,22 +59,22 @@ Vue.createApp({
                          text: 'The amount cannot be less than or equal to 0!',
                     })
                }else{
-               axios.post(`/api/transactions`,
-               `amount=${this.ownAmount}&description=${this.ownDescription}&sourceAccount=${this.ownSourceAccountNumber}&destinationAccount=${this.ownDestinationAccountNumber}`,
-               {headers:{'content-type':'application/x-www-form-urlencoded'}})
-               .then(
-                    Swal.fire({
-                         position: 'center',
-                         icon: 'success',
-                         title: 'Transaction realized!',
-                         showConfirmButton: true,
-                    })
-               .then((result) => {
-                    if (result.isConfirmed) {   
-                         console.log("transfer has been realized!")
-                         document.location.reload()
-                    }
-               }))   
+                    axios.post('/api/transactions',
+                    `amount=${this.ownAmount}&description=${this.ownDescription}&sourceAccount=${this.ownSourceAccountNumber}&destinationAccount=${this.ownDestinationAccountNumber}`)
+                    .then(
+                         Swal.fire({
+                              position: 'center',
+                              icon: 'success',
+                              title: 'Transaction realized!',
+                              showConfirmButton: true,
+                         })
+                         .then((result) => {
+                              if (result.isConfirmed) {   
+                                   console.log("transfer has been realized!")
+                                   document.location.reload()
+                              }
+                         })
+                    )   
                .catch( error => error.message + "Oops! something happened, you couldn't make the transfer" )
           }
           },
@@ -95,9 +93,8 @@ Vue.createApp({
                          text: 'The amount cannot be less than or equal to 0!',
                     })
                }else{
-               axios.post(`/api/transactions`,
-               `amount=${this.elseAmount}&description=${this.elseDescription}&sourceAccount=${this.elseSourceAccountNumber}&destinationAccount=${this.elseDestinationAccountNumber}`,
-               {headers:{'content-type':'application/x-www-form-urlencoded'}})
+               axios.post('/api/transactions',
+               `amount=${this.elseAmount}&description=${this.elseDescription}&sourceAccount=${this.elseSourceAccountNumber}&destinationAccount=${this.elseDestinationAccountNumber}`)
                .then(
                     Swal.fire({
                          position: 'center',

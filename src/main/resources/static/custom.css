@@ -20,7 +20,7 @@
      padding-left: 1rem;
 }
 body{
-     background-image: url('./assets/fondo_body.png');
+     background-image: url('./web/assets/fondo_body.png');
 }
 .h4{
      color: var(--darkBlue);

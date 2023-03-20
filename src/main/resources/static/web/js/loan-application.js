@@ -21,6 +21,7 @@ Vue.createApp({
                currentClientAccounts:[],
                currentClientLoansRequested: [],
                taxes: 0,
+               loan:[]
           }
      },
 
@@ -34,12 +35,19 @@ Vue.createApp({
           axios.get('/api/clients/current')
           .then(data => {
                this.client = data.data
+               console.log(this.client)
                this.currentClientLoansRequested = data.data.clientLoans.map(loan => loan.loanId)
           })
 
           axios.get('/api/clients/current/accounts')
           .then(data => {
                this.currentClientAccounts = data.data
+          })
+
+          axios.get('/api/clients/current/cards/colors')
+          .then(data => {
+               this.loan = data.data
+               console.log(this.loan)
           })
 
           setTimeout(() => { this.charging = false }, 2000)

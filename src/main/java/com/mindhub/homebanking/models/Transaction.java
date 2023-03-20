@@ -10,7 +10,8 @@ public class Transaction {
 
     // Propiedades -------------------------------------------------------------------------//
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @SequenceGenerator(name = "native")
 
     private long id;
 

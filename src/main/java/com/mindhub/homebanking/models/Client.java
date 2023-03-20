@@ -1,6 +1,10 @@
 package com.mindhub.homebanking.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mindhub.homebanking.anotations.CustomUnused;
+import com.mindhub.homebanking.enums.AnotationsType;
+import com.mindhub.homebanking.enums.State;
+import net.bytebuddy.asm.Advice;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,13 +18,11 @@ import java.util.stream.Collectors;
 @Entity
 public class Client {
 
-    // Propiedades -------------------------------------------------------------------------//
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
+    @SequenceGenerator(name = "native")
 
-    @Column(nullable = false)
     private long id;
-
     private String first_name;
     private String last_name;
     private String email;
@@ -52,7 +54,6 @@ public class Client {
         this.role = role;
     }
 
-
     // Getter y Setters -------------------------------------------------------------------------//
 
     public long getId() {return id;}
@@ -67,16 +68,20 @@ public class Client {
     public void setEmail(String email){this.email = email;}
 
     public Set<Account> getAccounts(){return accounts;}
+
     public void addAccount(Account account) {
         account.setClient(this);
         accounts.add(account);
     }
 
     public Set<ClientLoan> getClientLoans(){return clientLoans;}
-    public void addClientLoan(ClientLoan clientLoan) {
+
+    @CustomUnused(anotationsType = AnotationsType.METHODS, state = State.UNUSED)
+    /*public void addClientLoan(ClientLoan clientLoan) {
         clientLoan.setClient(this);
         clientLoans.add(clientLoan);
-    }
+    }*/
+
     @JsonIgnore
     public List<Loan> getLoans (){
         return clientLoans.stream().map(clientLoan -> clientLoan.getLoan()).collect(Collectors.toList());
@@ -89,4 +94,20 @@ public class Client {
 
     public Role getRole() {return role;}
     public void setRole(Role role) {this.role = role;}
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", accounts=" + accounts +
+                ", clientLoans=" + clientLoans +
+                ", cards=" + cards +
+                '}';
+    }
+
 }

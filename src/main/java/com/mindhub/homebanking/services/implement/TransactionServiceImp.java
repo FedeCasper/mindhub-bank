@@ -23,7 +23,7 @@ public class TransactionServiceImp implements TransactionService {
 
     @Override
     public TransactionDTO getTransactionById(Long id) {
-        return transactionRepository.findById(id).map(TransactionDTO::new).orElse(null);
+        return transactionRepository.findById(id).map(transaction -> new TransactionDTO(transaction)).orElse(null);
     }
 
     @Override

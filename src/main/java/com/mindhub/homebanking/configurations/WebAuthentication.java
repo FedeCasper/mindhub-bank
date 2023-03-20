@@ -14,6 +14,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
+//GlobalAuthenticationConfigurerAdapter se enfoca en la configuración de los proveedores de autenticación en particular.
 public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
 
     @Autowired
@@ -24,7 +25,7 @@ public class WebAuthentication extends GlobalAuthenticationConfigurerAdapter {
         auth.userDetailsService(inputName-> {
             Client client = clientRepository.findByEmail(inputName);
             if (client != null) {
-                if (client.getFirst_name().toLowerCase() == "admin" && client.getEmail().toLowerCase().contains("@admin")) {
+                if (client.getFirst_name().equalsIgnoreCase("admin") && client.getEmail().toLowerCase().contains("@admin")) {
                     return new User(client.getEmail(), client.getPassword(),
                             AuthorityUtils.createAuthorityList("ADMIN"));
                 }

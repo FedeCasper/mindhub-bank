@@ -1,394 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-     <link rel=stylesheet href="./css/style.css" type="text/css">
-     <link rel="icon" href="./assets/favicon.png">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap"
+          rel="stylesheet" />
+     <link rel="stylesheet" href="./css/style.css" type="text/css" />
+     <link rel="icon" href="./assets/favicon.png" />
      <title>My Cards</title>
 </head>
+
 <body>
-
-<div id="app">
-
-     <!------------- Preloader ------------->
-     <div v-if="charging==true" class="main-preloader container">
-          <div class="row">
-               <div id="loader">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="lading"></div>
-               </div>
-          </div>
-     </div>
-
-     <!------------------------------- HEADER ------------------------------->
-     <header v-if="charging==false" class="header">
-          <nav class="navbar navbar-expand-lg px-5 col-12">
-               <div class="container-fluid px-0">
-                    <!------------- Brand Nav ------------->
-                    <a class="navbar-brand" href="#">
-                         <p class="h4"><span class="purple_bold">Mind</span>Hub Bank</p>
-                    </a>
-                    <!------------- Burguer Button ------------->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                         <span class="navbar-toggler-icon">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                              <line x1="4" y1="6" x2="20" y2="6" />
-                              <line x1="4" y1="12" x2="20" y2="12" />
-                              <line x1="4" y1="18" x2="20" y2="18" />
-                              </svg>
-                         </span>
-                    </button>
-                    <!------------- Nav Links ------------->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
-                              <li class="nav-item">
-                                   <a class="nav-link mx-3" href="./accounts.html">Accounts & Loans</a>
-                              </li>
-                              <li class="nav-item">
-                                   <a class="nav-link underline-hover-effect mx-3" href="./cards.html" id="pushed">Cards</a>
-                              </li>
-                              <li class="nav-item">
-                                   <a class="nav-link underline-hover-effect mx-3" href="./transfers.html">Transfers</a>
-                              </li>
-                         </ul>
-                         <!------------- Logout Button ------------->
-                         <p class="user-name">Hi {{client.first_name}} {{client.last_name}}!
-                         <button class="btn-black d-flex align-items-center gap-2" v-on:click="logout()">
-                              Logout?
-                         </button>
-                         </p>
+     <div id="app">
+          <!------------- Preloader ------------->
+          <div v-if="charging==true" class="main-preloader container">
+               <div class="row">
+                    <div id="loader">
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="dot"></div>
+                         <div class="lading"></div>
                     </div>
                </div>
-          </nav>
-     </header>
-
-     <!-------------------------------------- Main --------------------------------------> 
-     <main v-if="charging==false">
-          <!------------- Credit Card Wallet ------------->  
-          <div class="stripe-header">
-               <h3>These are your</h3>
-               <h3><span class="bold">Credit</span> cards</h3>
           </div>
-          <div id="credit-cards-stripe">  
-               <div class="cards-stripe-header">
-                    <p class="h4 text-center"><span class="bold">Credit</span> cards wallet.</p>
-                    <p v-if="client_debit_cards.length === 0" class="h6 text-center"> You don't have credit cards in this moment.</p>
-                    <p class="h6 text-center">You can request a new card or cancel an old one.</p>
-               </div>
 
-               <div class="cards-container">
-                    <img v-if="client_credit_cards.length === 0" src="./assets/no-cards.png" class="empty-wallet">
-                    <div v-for="card in client_credit_cards" class="row_card">
-                         <!------------- CARD GOLD ------------->
-                         <div v-if="card.color === 'GOLD' && card.type === 'CREDIT'" class="card" id="div_card">
-                              <div id="card_gold" class="card__front card__part">
-                                   <span class="card__info"><span class="white_bold">Mind</span>Hub Bank ({{card.type}})</span>
-                                   <p class="card_numer">{{card.number}}</p>
-                                   <div class="card__space-75">
-                                        <span class="card__label">Card holder</span>
-                                        <p class="card__info">{{client.first_name}} {{client.last_name}}</p>
-                                   </div>
-                                   <div class="card__space-25">
-                                        <span class="card__label">Valid</span>
-                                        <p class="card__info">{{ formatearFecha(card.fromDate)}}</p>
-                                   </div>
-                                   <div class="card__space-25_2">
-                                        <span class="card__label">Until</span>
-                                        <p class="card__info">{{formatearFecha(card.truDate)}}</p>
-                                   </div>
-                              </div>
-                              <div class="card__back card__part">
-                                   <div class="card__black-line"></div>
-                                   <div class="card__back-content"><span class="card__info">{{client.first_name}} {{client.last_name}}</span>
-                                        <div class="card__secret">
-                                             <p class="card__secret--last">{{card.cvv}}</p>
-                                        </div>
-                                   </div>
-                              </div>
-                              
-                         </div> <!--Cierre V-IF-->
-
-                         <!------------- CARD SILVER ------------->
-                         <div v-if="card.color === 'SILVER' && card.type === 'CREDIT'" class="card">
-                              <div id="card_silver" class="card__front card__part">
-                                   <span class="card__info"><span class="white_bold">Mind</span>Hub Bank ({{card.type}})</span>
-                                   <p class="card_numer">{{card.number}}</p>
-                                   <div class="card__space-75">
-                                        <span class="card__label">Card holder</span>
-                                        <p class="card__info">{{client.first_name}} {{client.last_name}}</p>
-                                   </div>
-                                   <div class="card__space-25">
-                                        <span class="card__label">Valid</span>
-                                        <p class="card__info">{{formatearFecha(card.fromDate)}}</p>
-                                   </div>
-                                   <div class="card__space-25_2">
-                                        <span class="card__label">Until</span>
-                                        <p class="card__info" v-if="compareDates(card.truDate) == true "> <span class="expired">EXP</span></p>
-                                        <p class="card__info" v-if="compareDates(card.truDate) == false ">{{formatearFecha(card.truDate)}}</p>
-                                   </div>
-                              </div>
-                              <div class="card__back card__part">
-                                   <div class="card__black-line"></div>
-                                   <div class="card__back-content"><span class="card__info">{{client.first_name}} {{client.last_name}}</span>
-                                        <div class="card__secret">
-                                             <p class="card__secret--last">{{card.cvv}}</p>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div> <!--Cierre V-IF-->
-
-                         <!------------- CARD TITANIUM ------------->
-                         <div v-if="card.color === 'TITANIUM' && card.type === 'CREDIT'" class="card">
-                              <div id="card_titanium" class="card__front card__part">
-                                   <span class="card__info"><span class="white_bold">Mind</span>Hub Bank ({{card.type}})</span>
-                                   <p class="card_numer">{{card.number}}</p>
-                                   <div class="card__space-75">
-                                        <span class="card__label">Card holder</span>
-                                        <p class="card__info">{{client.first_name}} {{client.last_name}}</p>
-                                   </div>
-                                   <div class="card__space-25">
-                                        <span class="card__label">Valid</span>
-                                        <p class="card__info">{{formatearFecha(card.fromDate)}}</p>
-                                   </div>
-                                   <div class="card__space-25_2">
-                                        <span class="card__label">Until</span>
-                                        <p class="card__info">{{formatearFecha(card.truDate)}}</p>
-                                   </div>
-                              </div>
-                              <div class="card__back card__part">
-                                   <div class="card__black-line"></div>
-                                   <div class="card__back-content"><span class="card__info">{{client.first_name}} {{client.last_name}}</span>
-                                        <div class="card__secret">
-                                             <p class="card__secret--last">{{card.cvv}}</p>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div> <!--Cierre V-IF-->
-
-                         <!------------- Button Delete Card ------------->
-                         <div class="row ">
-                              <a href="#">
-                                   <button type="button" class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2" id="createCardButton" v-on:click="deleteCard(card.id)">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                             <line x1="4" y1="7" x2="20" y2="7" />
-                                             <line x1="10" y1="11" x2="10" y2="17" />
-                                             <line x1="14" y1="11" x2="14" y2="17" />
-                                             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                             <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                        </svg>     
+          <!------------------------------- HEADER ------------------------------->
+          <header v-if="charging==false" class="header">
+               <nav class="navbar navbar-expand-lg px-5 col-12">
+                    <div class="container-fluid px-0">
+                         <!------------- Brand Nav ------------->
+                         <a class="navbar-brand" href="#">
+                              <p class="h4"><span class="purple_bold">Mind</span>Hub Bank</p>
+                         </a>
+                         <!------------- Burguer Button ------------->
+                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                              aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2"
+                                        width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#a36ac9"
+                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <line x1="4" y1="6" x2="20" y2="6" />
+                                        <line x1="4" y1="12" x2="20" y2="12" />
+                                        <line x1="4" y1="18" x2="20" y2="18" />
+                                   </svg>
+                              </span>
+                         </button>
+                         <!------------- Nav Links ------------->
+                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-5">
+                                   <li class="nav-item">
+                                        <a class="nav-link mx-3" href="./accounts.html">Accounts & Loans</a>
+                                   </li>
+                                   <li class="nav-item">
+                                        <a class="nav-link underline-hover-effect mx-3" href="./cards.html"
+                                             id="pushed">Cards</a>
+                                   </li>
+                                   <li class="nav-item">
+                                        <a class="nav-link underline-hover-effect mx-3"
+                                             href="./transfers.html">Transfers</a>
+                                   </li>
+                              </ul>
+                              <!------------- Logout Button ------------->
+                              <p class="user-name">
+                                   Hi {{client.first_name}} {{client.last_name}}!
+                                   <button class="btn-black d-flex align-items-center gap-2" v-on:click="logout()">
+                                        Logout?
                                    </button>
-                              </a>
+                              </p>
                          </div>
-                    </div> <!--Cierre V-FOR-->
+                    </div>
+               </nav>
+          </header>
+
+          <!-------------------------------------- Main -------------------------------------->
+          <main v-if="charging==false">
+               <!------------- Credit Card Wallet ------------->
+               <div class="stripe-header">
+                    <h3>These are your</h3>
+                    <h3><span class="bold">Credit</span> cards</h3>
                </div>
+               <div id="credit-cards-stripe">
+                    <div class="cards-stripe-header">
+                         <p class="h4 text-center">
+                              <span class="bold">Credit</span> cards wallet.
+                         </p>
+                         <p v-if="client_debit_cards.length === 0" class="h6 text-center">
+                              You don't have credit cards in this moment.
+                         </p>
+                         <p class="h6 text-center">
+                              You can request a new card or cancel an old one.
+                         </p>
+                    </div>
 
-               <!------------- Button Request Card ------------->  
-               <a href="./create-cards.html">
-                    <button type="button" class="btn-black mb-3" id="createCardButton">Request a NEW card</button>
-               </a>
-          </div>
-
-          <!------------- Debit Card Wallet ------------->  
-          <div class="stripe-header">
-               <h3>These are your</h3>
-               <h3><span class="bold">Debit</span> cards</h3>
-          </div>
-          <div id="debit-cards-stripe">  
-               
-               <div class="cards-stripe-header">
-                    <p class="h4 text-center"><span class="bold">Debit</span> cards wallet.</p>
-                    <p v-if="client_debit_cards.length === 0" class="h6 text-center">You don't have debit cards in this moment.</p>
-                    <p v-else class="h6 text-center">You can request a new card or cancel an old one.</p>
-               </div>
-
-               <div class="cards-container">
-                    <img v-if="client_debit_cards.length === 0" src="./assets/no-cards.png" class="empty-wallet">
-                    <div v-for="card in client_debit_cards" class="row_card">
-                         <!------------- CARD GOLD ------------->
-                         <div v-if="card.color === 'GOLD' && card.type === 'DEBIT'" class="card" id="div_card">
-                              <div id="card_gold" class="card__front card__part">
-                                   <span class="card__info"><span class="white_bold">Mind</span>Hub Bank ({{card.type}})</span>
-                                   <p class="card_numer">{{card.number}}</p>
-                                   <div class="card__space-75">
-                                        <span class="card__label">Card holder</span>
-                                        <p class="card__info">{{client.first_name}} {{client.last_name}}</p>
-                                   </div>
-                                   <div class="card__space-25">
-                                        <span class="card__label">Valid</span>
-                                        <p class="card__info">{{ formatearFecha(card.fromDate)}}</p>
-                                   </div>
-                                   <div class="card__space-25_2">
-                                        <span class="card__label">Until</span>
-                                        <p class="card__info">{{formatearFecha(card.truDate)}}</p>
-                                   </div>
-                              </div>
-                              <div class="card__back card__part">
-                                   <div class="card__black-line"></div>
-                                   <div class="card__back-content"><span class="card__info">{{client.first_name}} {{client.last_name}}</span>
-                                        <div class="card__secret">
-                                             <p class="card__secret--last">{{card.cvv}}</p>
+                    <div class="cards-container">
+                         <img v-if="client_credit_cards.length === 0" src="./assets/no-cards.png"
+                              class="empty-wallet" />
+                         <div v-for="card in client_credit_cards" class="row_card">
+                              <div v-if="card.active == true">
+                                   <!------------- CARD GOLD ------------->
+                                   <div v-if="card.color === 'GOLD' && card.type === 'CREDIT'" class="card"
+                                        id="div_card">
+                                        <div id="card_gold" class="card__front card__part">
+                                             <span class="card__info"><span class="white_bold">Mind</span>Hub Bank
+                                                  ({{card.type}})</span>
+                                             <p class="card_numer">{{card.number}}</p>
+                                             <div class="card__space-75">
+                                                  <span class="card__label">Card holder</span>
+                                                  <p class="card__info">
+                                                       {{client.first_name}} {{client.last_name}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25">
+                                                  <span class="card__label">Valid</span>
+                                                  <p class="card__info">
+                                                       {{ formatearFecha(card.fromDate)}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25_2">
+                                                  <span class="card__label">Until</span>
+                                                  <p class="card__info">{{formatearFecha(card.truDate)}}</p>
+                                             </div>
+                                        </div>
+                                        <div class="card__back card__part">
+                                             <div class="card__black-line"></div>
+                                             <div class="card__back-content">
+                                                  <span class="card__info">{{client.first_name}}
+                                                       {{client.last_name}}</span>
+                                                  <div class="card__secret">
+                                                       <p class="card__secret--last">{{card.cvv}}</p>
+                                                  </div>
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                              
-                         </div> <!--Cierre V-IF-->
+                                   <!--Cierre V-IF-->
 
-                         <!------------- CARD SILVER ------------->
-                         <div v-if="card.color === 'SILVER' && card.type === 'DEBIT'" class="card">
-                              <div id="card_silver" class="card__front card__part">
-                                   <span class="card__info"><span class="white_bold">Mind</span>Hub Bank ({{card.type}})</span>
-                                   <p class="card_numer">{{card.number}}</p>
-                                   <div class="card__space-75">
-                                        <span class="card__label">Card holder</span>
-                                        <p class="card__info">{{client.first_name}} {{client.last_name}}</p>
-                                   </div>
-                                   <div class="card__space-25">
-                                        <span class="card__label">Valid</span>
-                                        <p class="card__info">{{formatearFecha(card.fromDate)}}</p>
-                                   </div>
-                                   <div class="card__space-25_2">
-                                        <span class="card__label">Until</span>
-                                        <p class="card__info" v-if="compareDates(card.truDate) == true "> <span class="expired">EXP</span></p>
-                                        <p class="card__info" v-if="compareDates(card.truDate) == false ">{{formatearFecha(card.truDate)}}</p>
-                                   </div>
-                              </div>
-                              <div class="card__back card__part">
-                                   <div class="card__black-line"></div>
-                                   <div class="card__back-content"><span class="card__info">{{client.first_name}} {{client.last_name}}</span>
-                                        <div class="card__secret">
-                                             <p class="card__secret--last">{{card.cvv}}</p>
+                                   <!------------- CARD SILVER ------------->
+                                   <div v-if="card.color === 'SILVER' && card.type === 'CREDIT'" class="card">
+                                        <div id="card_silver" class="card__front card__part">
+                                             <span class="card__info"><span class="white_bold">Mind</span>Hub Bank
+                                                  ({{card.type}})</span>
+                                             <p class="card_numer">{{card.number}}</p>
+                                             <div class="card__space-75">
+                                                  <span class="card__label">Card holder</span>
+                                                  <p class="card__info">
+                                                       {{client.first_name}} {{client.last_name}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25">
+                                                  <span class="card__label">Valid</span>
+                                                  <p class="card__info">
+                                                       {{formatearFecha(card.fromDate)}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25_2">
+                                                  <span class="card__label">Until</span>
+                                                  <p class="card__info" v-if="compareDates(card.truDate) == true ">
+                                                       <span class="expired">EXP</span>
+                                                  </p>
+                                                  <p class="card__info" v-if="compareDates(card.truDate) == false ">
+                                                       {{formatearFecha(card.truDate)}}
+                                                  </p>
+                                             </div>
+                                        </div>
+                                        <div class="card__back card__part">
+                                             <div class="card__black-line"></div>
+                                             <div class="card__back-content">
+                                                  <span class="card__info">{{client.first_name}}
+                                                       {{client.last_name}}</span>
+                                                  <div class="card__secret">
+                                                       <p class="card__secret--last">{{card.cvv}}</p>
+                                                  </div>
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                         </div> <!--Cierre V-IF-->
+                                   <!--Cierre V-IF-->
 
-                         <!------------- CARD TITANIUM ------------->
-                         <div v-if="card.color === 'TITANIUM' && card.type === 'DEBIT'" class="card">
-                              <div id="card_titanium" class="card__front card__part">
-                                   <span class="card__info"><span class="white_bold">Mind</span>Hub Bank ({{card.type}})</span>
-                                   <p class="card_numer">{{card.number}}</p>
-                                   <div class="card__space-75">
-                                        <span class="card__label">Card holder</span>
-                                        <p class="card__info">{{client.first_name}} {{client.last_name}}</p>
-                                   </div>
-                                   <div class="card__space-25">
-                                        <span class="card__label">Valid</span>
-                                        <p class="card__info">{{formatearFecha(card.fromDate)}}</p>
-                                   </div>
-                                   <div class="card__space-25_2">
-                                        <span class="card__label">Until</span>
-                                        <p class="card__info">{{formatearFecha(card.truDate)}}</p>
-                                   </div>
-                              </div>
-                              <div class="card__back card__part">
-                                   <div class="card__black-line"></div>
-                                   <div class="card__back-content"><span class="card__info">{{client.first_name}} {{client.last_name}}</span>
-                                        <div class="card__secret">
-                                             <p class="card__secret--last">{{card.cvv}}</p>
+                                   <!------------- CARD TITANIUM ------------->
+                                   <div v-if="card.color === 'TITANIUM' && card.type === 'CREDIT'" class="card">
+                                        <div id="card_titanium" class="card__front card__part">
+                                             <span class="card__info"><span class="white_bold">Mind</span>Hub Bank
+                                                  ({{card.type}})</span>
+                                             <p class="card_numer">{{card.number}}</p>
+                                             <div class="card__space-75">
+                                                  <span class="card__label">Card holder</span>
+                                                  <p class="card__info">
+                                                       {{client.first_name}} {{client.last_name}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25">
+                                                  <span class="card__label">Valid</span>
+                                                  <p class="card__info">
+                                                       {{formatearFecha(card.fromDate)}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25_2">
+                                                  <span class="card__label">Until</span>
+                                                  <p class="card__info">{{formatearFecha(card.truDate)}}</p>
+                                             </div>
+                                        </div>
+                                        <div class="card__back card__part">
+                                             <div class="card__black-line"></div>
+                                             <div class="card__back-content">
+                                                  <span class="card__info">{{client.first_name}}
+                                                       {{client.last_name}}</span>
+                                                  <div class="card__secret">
+                                                       <p class="card__secret--last">{{card.cvv}}</p>
+                                                  </div>
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                         </div> <!--Cierre V-IF-->
+                                   <!--Cierre V-IF-->
 
-                         <!------------- Button Delete Card ------------->
-                         <div class="row ">
-                              <a href="#">
-                                   <button type="button" class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2" id="createCardButton" v-on:click="deleteCard(card.id)">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                             <line x1="4" y1="7" x2="20" y2="7" />
-                                             <line x1="10" y1="11" x2="10" y2="17" />
-                                             <line x1="14" y1="11" x2="14" y2="17" />
-                                             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                             <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                        </svg>     
-                                   </button>
-                              </a>
+                                   <!------------- Button Delete Card ------------->
+                                   <div class="row">
+                                        <a href="#">
+                                             <button type="button"
+                                                  class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2"
+                                                  id="createCardButton" v-on:click="deleteCard(card.id)">
+                                                  <svg xmlns="http://www.w3.org/2000/svg"
+                                                       class="icon icon-tabler icon-tabler-trash" width="16" height="16"
+                                                       viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+                                                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                       <line x1="4" y1="7" x2="20" y2="7" />
+                                                       <line x1="10" y1="11" x2="10" y2="17" />
+                                                       <line x1="14" y1="11" x2="14" y2="17" />
+                                                       <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                  </svg>
+                                             </button>
+                                        </a>
+                                   </div>
+                              </div>
                          </div>
-                    </div> <!--Cierre V-FOR-->
+                         <!--Cierre V-FOR-->
+                    </div>
+
+                    <!------------- Button Request Card ------------->
+                    <a href="./create-cards.html">
+                         <button type="button" class="btn-black mb-3" id="createCardButton">
+                              Request a NEW card
+                         </button>
+                    </a>
                </div>
 
-               <!------------- Button Request Card ------------->  
-               <a href="./create-cards.html">
-                    <button type="button" class="btn-black mb-3" id="createCardButton">Request a NEW card</button>
-               </a>
-          </div>
-               
-     </main>
-     
-     <!-------------------------------------- Footer -------------------------------------->  
-     <footer v-if="charging==false" class="footer">
-          <!-- Logo Footer -->
-          <div class="footer-column-left">
-               <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
-          </div>
-          <!-- Links Footer -->
-          <div class="footer-column-center">
-               <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
-               <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
-               <a class="footer-links col-12 col-xl-3" href="#">Security</a>
-               <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
-          </div>
-          <!-- Social Footer -->
-          <div class="footer-column-right">
-               <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                         <rect x="3" y="5" width="18" height="14" rx="2" />
-                         <polyline points="3 7 12 13 21 7" />
-                    </svg>
-               </a>
-               <!------------- Btn Facebook ------------->
-               <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                         <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                    </svg>
-               </a>
-               <!------------- Btn Instagram ------------->
-               <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                         <rect x="4" y="4" width="16" height="16" rx="4" />
-                         <circle cx="12" cy="12" r="3" />
-                         <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-                    </svg>
-               </a>
-               <!------------- Btn Whatsapp ------------->
-               <a class="footer-icons" href="https://web.whatsapp.com/">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp icon-footer" width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                         <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
-                         <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
-                    </svg>
-               </a>
-          </div>
-     </footer>
-</div>        
+               <!------------- Debit Card Wallet ------------->
+               <div class="stripe-header">
+                    <h3>These are your</h3>
+                    <h3><span class="bold">Debit</span> cards</h3>
+               </div>
+               <div id="debit-cards-stripe">
+                    <div class="cards-stripe-header">
+                         <p class="h4 text-center">
+                              <span class="bold">Debit</span> cards wallet.
+                         </p>
+                         <p v-if="client_debit_cards.length === 0" class="h6 text-center">
+                              You don't have debit cards in this moment.
+                         </p>
+                         <p v-else class="h6 text-center">
+                              You can request a new card or cancel an old one.
+                         </p>
+                    </div>
 
-          
+                    <div class="cards-container">
+                         <img v-if="client_debit_cards.length === 0" src="./assets/no-cards.png" class="empty-wallet" />
 
-          
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <!--Etiqueta Bootstrap-->
-     <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!--Etiqueta Axios-->
-     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!--Sweet Alert 2-->
-     <script src="https://unpkg.com/vue@3"></script> <!--Etiqueta Vue-->
-     <script src="./js/cards.js"></script> <!--Etiqueta js-->
+                         <div v-for="card in client_debit_cards" class="row_card">
+                              <div v-if="card.active == true">
+                                   <!------------- CARD GOLD ------------->
+                                   <div v-if="card.active == true">
+                                        <div v-if="card.color === 'GOLD' && card.type === 'DEBIT'" class="card"
+                                             id="div_card">
+                                             <div id="card_gold" class="card__front card__part">
+                                                  <span class="card__info"><span class="white_bold">Mind</span>Hub Bank
+                                                       ({{card.type}})</span>
+                                                  <p class="card_numer">{{card.number}}</p>
+                                                  <div class="card__space-75">
+                                                       <span class="card__label">Card holder</span>
+                                                       <p class="card__info">
+                                                            {{client.first_name}} {{client.last_name}}
+                                                       </p>
+                                                  </div>
+                                                  <div class="card__space-25">
+                                                       <span class="card__label">Valid</span>
+                                                       <p class="card__info">
+                                                            {{ formatearFecha(card.fromDate)}}
+                                                       </p>
+                                                  </div>
+                                                  <div class="card__space-25_2">
+                                                       <span class="card__label">Until</span>
+                                                       <p class="card__info">
+                                                            {{formatearFecha(card.truDate)}}
+                                                       </p>
+                                                  </div>
+                                             </div>
+                                             <div class="card__back card__part">
+                                                  <div class="card__black-line"></div>
+                                                  <div class="card__back-content">
+                                                       <span class="card__info">{{client.first_name}}
+                                                            {{client.last_name}}</span>
+                                                       <div class="card__secret">
+                                                            <p class="card__secret--last">{{card.cvv}}</p>
+                                                       </div>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                        <!--Cierre V-IF-->
+                                   </div>
 
+                                   <!------------- CARD SILVER ------------->
+                                   <div v-if="card.color === 'SILVER' && card.type === 'DEBIT'" class="card">
+                                        <div id="card_silver" class="card__front card__part">
+                                             <span class="card__info"><span class="white_bold">Mind</span>Hub Bank
+                                                  ({{card.type}})</span>
+                                             <p class="card_numer">{{card.number}}</p>
+                                             <div class="card__space-75">
+                                                  <span class="card__label">Card holder</span>
+                                                  <p class="card__info">
+                                                       {{client.first_name}} {{client.last_name}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25">
+                                                  <span class="card__label">Valid</span>
+                                                  <p class="card__info">
+                                                       {{formatearFecha(card.fromDate)}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25_2">
+                                                  <span class="card__label">Until</span>
+                                                  <p class="card__info" v-if="compareDates(card.truDate) == true ">
+                                                       <span class="expired">EXP</span>
+                                                  </p>
+                                                  <p class="card__info" v-if="compareDates(card.truDate) == false ">
+                                                       {{formatearFecha(card.truDate)}}
+                                                  </p>
+                                             </div>
+                                        </div>
+                                        <div class="card__back card__part">
+                                             <div class="card__black-line"></div>
+                                             <div class="card__back-content">
+                                                  <span class="card__info">{{client.first_name}}
+                                                       {{client.last_name}}</span>
+                                                  <div class="card__secret">
+                                                       <p class="card__secret--last">{{card.cvv}}</p>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <!--Cierre V-IF-->
+
+                                   <!------------- CARD TITANIUM ------------->
+                                   <div v-if="card.color === 'TITANIUM' && card.type === 'DEBIT'" class="card">
+                                        <div id="card_titanium" class="card__front card__part">
+                                             <span class="card__info"><span class="white_bold">Mind</span>Hub Bank
+                                                  ({{card.type}})</span>
+                                             <p class="card_numer">{{card.number}}</p>
+                                             <div class="card__space-75">
+                                                  <span class="card__label">Card holder</span>
+                                                  <p class="card__info">
+                                                       {{client.first_name}} {{client.last_name}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25">
+                                                  <span class="card__label">Valid</span>
+                                                  <p class="card__info">
+                                                       {{formatearFecha(card.fromDate)}}
+                                                  </p>
+                                             </div>
+                                             <div class="card__space-25_2">
+                                                  <span class="card__label">Until</span>
+                                                  <p class="card__info">{{formatearFecha(card.truDate)}}</p>
+                                             </div>
+                                        </div>
+                                        <div class="card__back card__part">
+                                             <div class="card__black-line"></div>
+                                             <div class="card__back-content">
+                                                  <span class="card__info">{{client.first_name}}
+                                                       {{client.last_name}}</span>
+                                                  <div class="card__secret">
+                                                       <p class="card__secret--last">{{card.cvv}}</p>
+                                                  </div>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <!--Cierre V-IF-->
+
+                                   <!------------- Button Delete Card ------------->
+                                   <div class="row">
+                                        <a href="#">
+                                             <button type="button"
+                                                  class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2"
+                                                  id="createCardButton" v-on:click="deleteCard(card.id)">
+                                                  <svg xmlns="http://www.w3.org/2000/svg"
+                                                       class="icon icon-tabler icon-tabler-trash" width="16" height="16"
+                                                       viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff"
+                                                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                       <line x1="4" y1="7" x2="20" y2="7" />
+                                                       <line x1="10" y1="11" x2="10" y2="17" />
+                                                       <line x1="14" y1="11" x2="14" y2="17" />
+                                                       <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                       <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                  </svg>
+                                             </button>
+                                        </a>
+                                   </div>
+                              </div>
+                         </div>
+                         <!--Cierre V-FOR-->
+                    </div>
+
+                    <!------------- Button Request Card ------------->
+                    <a href="./create-cards.html">
+                         <button type="button" class="btn-black mb-3" id="createCardButton">
+                              Request a NEW card
+                         </button>
+                    </a>
+               </div>
+          </main>
+
+          <!-------------------------------------- Footer -------------------------------------->
+          <footer v-if="charging==false" class="footer">
+               <!-- Logo Footer -->
+               <div class="footer-column-left">
+                    <p class="h5"><span class="purple_bold">Mind</span>Hub Bank</p>
+               </div>
+               <!-- Links Footer -->
+               <div class="footer-column-center">
+                    <a class="footer-links col-12 col-xl-3" href="#">Legal</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">Navigators</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">Security</a>
+                    <a class="footer-links col-12 col-xl-3" href="#">About Us</a>
+               </div>
+               <!-- Social Footer -->
+               <div class="footer-column-right">
+                    <a class="footer-icons" href="mailto:mindhubbank@gmail.com">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail icon-footer"
+                              width="28" height="28" viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <rect x="3" y="5" width="18" height="14" rx="2" />
+                              <polyline points="3 7 12 13 21 7" />
+                         </svg>
+                    </a>
+                    <!------------- Btn Facebook ------------->
+                    <a class="footer-icons" href="https://www.facebook.com/?ref=logo">
+                         <svg xmlns="http://www.w3.org/2000/svg"
+                              class="icon icon-tabler icon-tabler-brand-facebook icon-footer" width="28" height="28"
+                              viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                         </svg>
+                    </a>
+                    <!------------- Btn Instagram ------------->
+                    <a class="footer-icons" href="https://www.instagram.com/?hl=es-la">
+                         <svg xmlns="http://www.w3.org/2000/svg"
+                              class="icon icon-tabler icon-tabler-brand-instagram icon-footer" width="28" height="28"
+                              viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <rect x="4" y="4" width="16" height="16" rx="4" />
+                              <circle cx="12" cy="12" r="3" />
+                              <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                         </svg>
+                    </a>
+                    <!------------- Btn Whatsapp ------------->
+                    <a class="footer-icons" href="https://web.whatsapp.com/">
+                         <svg xmlns="http://www.w3.org/2000/svg"
+                              class="icon icon-tabler icon-tabler-brand-whatsapp icon-footer" width="28" height="28"
+                              viewBox="0 0 24 24" stroke-width="1" stroke="#a36ac9" fill="none" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                              <path
+                                   d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1" />
+                         </svg>
+                    </a>
+               </div>
+          </footer>
+     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+          crossorigin="anonymous"></script>
+     <!--Etiqueta Bootstrap-->
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     <!--Etiqueta Axios-->
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <!--Sweet Alert 2-->
+     <script src="https://unpkg.com/vue@3"></script>
+     <!--Etiqueta Vue-->
+     <script src="./js/cards.js"></script>
+     <!--Etiqueta js-->
 </body>
+
 </html>

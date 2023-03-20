@@ -26,6 +26,7 @@ import static com.mindhub.homebanking.utils.AccountUtils.getRandomAccountNumber;
 
 @RestController
 @RequestMapping("/api")
+@SuppressWarnings("unused")
 public class ClientController {
 
     @Autowired
@@ -41,7 +42,6 @@ public class ClientController {
     }
 
     @PostMapping("/clients")
-
     public ResponseEntity<Object> register (
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password) {
@@ -75,7 +75,7 @@ public class ClientController {
         }
     }
 
-    @GetMapping("/clients/current")
+    @RequestMapping("/clients/current")
     public ClientDTO getClientCurrent (Authentication authentication) {
         return new ClientDTO(clientService.getClientCurrent(authentication));
     }

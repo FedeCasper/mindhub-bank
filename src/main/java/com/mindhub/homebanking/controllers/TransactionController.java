@@ -22,6 +22,7 @@ import static com.mindhub.homebanking.models.TransactionType.DEBITO;
 
 @RestController
 @RequestMapping("/api")
+@SuppressWarnings("unused")
 public class TransactionController {
 
     @Autowired
@@ -45,15 +46,17 @@ public class TransactionController {
     @Transactional
     @PostMapping("/transactions")
     public ResponseEntity<Object> createTransaction (
-            @RequestParam double amount, @RequestParam String description,
-            @RequestParam String sourceAccount, @RequestParam String destinationAccount,
+            @RequestParam(required = false) Double amount,
+            @RequestParam String description,
+            @RequestParam String sourceAccount,
+            @RequestParam String destinationAccount,
             Authentication authentication ){
 
         Client client = clientService.getClientCurrent(authentication);
         Account accountSource = accountService.getAccountByNumber(sourceAccount);
         Account accountDestination = accountService.getAccountByNumber(destinationAccount);
 
-        if (amount == 0 || description.isEmpty() || sourceAccount.isEmpty() || destinationAccount.isEmpty()) {
+        if (amount == null || description.isEmpty() || sourceAccount.isEmpty() || destinationAccount.isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
         if (sourceAccount.equals(destinationAccount)) {

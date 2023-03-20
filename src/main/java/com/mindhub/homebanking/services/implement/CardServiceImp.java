@@ -2,6 +2,7 @@ package com.mindhub.homebanking.services.implement;
 
 import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.models.Card;
+import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.CardRepository;
 import com.mindhub.homebanking.services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,12 @@ public class CardServiceImp implements CardService {
         return cardRepository.findById(id).orElse(null);
     }
 
-    @Override
+
+
+    /*@Override
     public void deleteCard (long id){
         Card card = cardRepository.findById(id);
         card.setActive(false);
-    }
+        cardRepository.save(card);
+    }*/
 }

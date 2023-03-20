@@ -11,6 +11,7 @@ public interface ClientService {
     List<ClientDTO> getClientsDTO();
     Client getClientCurrent(Authentication authentication);
     ClientDTO getClientDTO(Long id);
+    Client findClientById (Long id);
     void saveCLient (Client client);
     Client getClientByEmail(String email);
 
