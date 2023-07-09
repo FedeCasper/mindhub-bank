@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.List;
 
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class HomebankingApplication {
 
 	public static void main(String[] args) {
@@ -66,22 +68,22 @@ public class HomebankingApplication {
 				ClientLoan clientLoan3 = new ClientLoan(100000, 24, cliente2, loan2); clientLoanRepository.save(clientLoan3);
 				ClientLoan clientLoan4 = new ClientLoan(20000, 36, cliente2, loan3); clientLoanRepository.save(clientLoan4);
 
-				Card card1 = new Card(CardType.DEBIT, CardColor.GOLD, "1234-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),117, cliente1, true);
+				Card card1 = new Card(CardType.DEBIT, CardColor.GOLD, "1234-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),117, cliente1);
 				cardRepository.save(card1);
-				Card card2 = new Card(CardType.CREDIT, CardColor.TITANIUM, "3445-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),753, cliente1, true);
+				Card card2 = new Card(CardType.CREDIT, CardColor.TITANIUM, "3445-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),753, cliente1);
 				cardRepository.save(card2);
-				Card expCard = new Card(CardType.CREDIT, CardColor.SILVER,  "4767-6324-1491-2718", LocalDate.now(), LocalDate.of(2020, 05, 22),394, cliente1, false);
+				Card expCard = new Card(CardType.CREDIT, CardColor.SILVER,  "4767-6324-1491-2718", LocalDate.now(), LocalDate.of(2020, 05, 22),394, cliente1);
 				cardRepository.save(expCard);
-				Card card3 = new Card(CardType.CREDIT, CardColor.SILVER,  "4547-6534-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),394, cliente2, true);
+				Card card3 = new Card(CardType.CREDIT, CardColor.SILVER,  "4547-6534-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),394, cliente2);
 				cardRepository.save(card3);
 
 
-				Card card4 = new Card(CardType.DEBIT, CardColor.GOLD, "5631-4678-9876-6571", LocalDate.now(), LocalDate.now().plusYears(5),132, cliente4, true); cardRepository.save(card4);
-				Card card5 = new Card(CardType.DEBIT, CardColor.TITANIUM, "5109-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),564, cliente4, true); cardRepository.save(card5);
-				Card card6 = new Card(CardType.DEBIT, CardColor.SILVER,  "2190-3513-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),902, cliente4, true); cardRepository.save(card6);
-				Card card7 = new Card(CardType.CREDIT, CardColor.GOLD, "6059-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),230, cliente4, true); cardRepository.save(card7);
-				Card card8 = new Card(CardType.CREDIT, CardColor.TITANIUM, "7358-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),465, cliente4, true); cardRepository.save(card8);
-				Card card9 = new Card(CardType.CREDIT, CardColor.SILVER,  "3620-9250-6510-2795", LocalDate.now(), LocalDate.now().plusYears(5),354, cliente4, true); cardRepository.save(card9);
+				Card card4 = new Card(CardType.DEBIT, CardColor.GOLD, "5631-4678-9876-6571", LocalDate.now(), LocalDate.now().plusYears(5),132, cliente4); cardRepository.save(card4);
+				Card card5 = new Card(CardType.DEBIT, CardColor.TITANIUM, "5109-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),564, cliente4); cardRepository.save(card5);
+				Card card6 = new Card(CardType.DEBIT, CardColor.SILVER,  "2190-3513-4391-2795", LocalDate.now(), LocalDate.now().plusYears(5),902, cliente4); cardRepository.save(card6);
+				Card card7 = new Card(CardType.CREDIT, CardColor.GOLD, "6059-4678-9876-5432", LocalDate.now(), LocalDate.now().plusYears(5),230, cliente4); cardRepository.save(card7);
+				Card card8 = new Card(CardType.CREDIT, CardColor.TITANIUM, "7358-4454-7588-9234", LocalDate.now(), LocalDate.now().plusYears(5),465, cliente4); cardRepository.save(card8);
+				Card card9 = new Card(CardType.CREDIT, CardColor.SILVER,  "3620-9250-6510-2795", LocalDate.now(), LocalDate.now().plusYears(5),354, cliente4); cardRepository.save(card9);
 
 
 

@@ -14,16 +14,16 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 
 @Entity
+@Table(name = "account")
 public class Account {
 
     // Propiedades -------------------------------------------------------------------------//
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @SequenceGenerator(name = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private long id;
 
-    private String number;
+    private String accountNumber;
     private LocalDateTime creationDate;
     private double balance;
 
@@ -34,13 +34,13 @@ public class Account {
     private Client client;
 
     @OneToMany(mappedBy="account", fetch=FetchType.EAGER)
-    Set<Transaction> transactions = new HashSet<>();
+    Set<Transaction> setOfTransactions = new HashSet<>();
 
     // Constructores -------------------------------------------------------------------------//
     public Account(){}
 
-    public Account(String number, LocalDateTime creationDate, double balance, Client client) {
-        this.number = number;
+    public Account(String accountNumber, LocalDateTime creationDate, double balance, Client client) {
+        this.accountNumber = accountNumber;
         this.creationDate = creationDate;
         this.balance = balance;
         this.client = client;
@@ -50,8 +50,8 @@ public class Account {
     // Getters y Setters -------------------------------------------------------------------------//
     public long getId() {return id;}
 
-    public String getNumber() {return number;}
-    public void setNumber(String number) {this.number = number;}
+    public String getAccountNumber() {return accountNumber;}
+    public void setAcountNumber(String number) {this.accountNumber = number;}
 
     public LocalDateTime getCreationDate() {return creationDate;}
     public void setCreationDate(LocalDateTime creationDate) {this.creationDate = creationDate;}
@@ -63,9 +63,5 @@ public class Account {
     public Client getClient() {return client;}
     public void setClient(Client client) {this.client = client;}
 
-    public Set<Transaction> getTransactions() {return transactions;}
-    public void addTransaction (Transaction transaction){
-        transaction.setAccount(this);
-        transactions.add(transaction);
-    }
+    public Set<Transaction> getTransactions() {return setOfTransactions;}
 }

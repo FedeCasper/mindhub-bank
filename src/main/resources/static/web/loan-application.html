@@ -141,7 +141,7 @@
                                    <label class="pt-3">Destination Account.<span class="text-danger">*</span></label>
                                    <select class="w-100 mt-1" v-model="destination_account">
                                         <option value="" selected>Destination Account</option>
-                                        <option v-for="account in currentClientAccounts.sort((a, b) => {return a.id - b.id;})">{{account.number}}</option>
+                                        <option v-for="account in currentClientAccounts.sort((a, b) => {return a.id - b.id;})">{{account.accountNumber}}</option>
                                    </select>
                               </div>
                               <!------------- Description Input ------------->

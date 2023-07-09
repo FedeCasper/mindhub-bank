@@ -84,7 +84,7 @@
           </div>
                <div class="transaction-stripe">
                     <div v-for="account in client_accounts" id="transaction-table-container">
-                         <h5 class="mb-3">Account number <span class="bold">{{account.number}}</span></h5>
+                         <h5 class="mb-3">Account number <span class="bold">{{account.accountNumber}}</span></h5>
                          <h6 class="balance mb-3">Current balance <span class="bold">${{account.balance}}</span></h6>
                          <table class="table table-striped table-hover">
                               <thead v-if="account.transactions != 0">
@@ -99,8 +99,8 @@
                                         <div v-if="account.transactions == 0" class="transaction-moves"> You have no movements in this account yet</div>
                                         <div v-else>
                                              <td v-if="charging==false" >{{transaction.id}}</td>
-                                             <td v-if="charging==false" >{{formatearFecha(transaction.date)}}</td>
-                                             <td v-if="charging==false"  :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">{{transaction.type}}</td>
+                                             <td v-if="charging==false" >{{formatearFecha(transaction.creationDate)}}</td>
+                                             <td v-if="charging==false"  :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">{{transaction.transactionType}}</td>
                                              <td v-if="charging==false"  :class="{'text-danger': transaction.type == 'DEBITO', 'text-success' : transaction.type != 'DEBITO' }">${{transaction.amount}}</td>
                                              <td v-if="charging==false" >{{transaction.description}}</td>
                                              <!------------- Mini-Loaders ------------->

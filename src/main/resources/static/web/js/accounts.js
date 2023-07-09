@@ -18,6 +18,7 @@ Vue.createApp({
                .then(datos => {
                     this.client = datos.data
                     this.accounts = datos.data.accounts.sort((a, b) => {return a.id - b.id;})
+                    console.log(this.accounts);
                     this.loans = datos.data.clientLoans
                     console.log(this.client)
                }),

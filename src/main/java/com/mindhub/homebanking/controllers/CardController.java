@@ -53,7 +53,7 @@ public class CardController {
         String cardNumber = getRandomCardNumber();
         int cvv = getRandomCvvNumber();
 
-        Card card = new Card(type, color, cardNumber, LocalDate.now(), LocalDate.now().plusYears(5),cvv, client, true);
+        Card card = new Card(type, color, cardNumber, LocalDate.now(), LocalDate.now().plusYears(5),cvv, client);
         cardService.saveCard(card);
         return new ResponseEntity<>("Card created successfully", HttpStatus.CREATED);
 

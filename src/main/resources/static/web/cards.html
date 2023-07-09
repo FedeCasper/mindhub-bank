@@ -109,7 +109,7 @@
                          <img v-if="client_credit_cards.length === 0" src="./assets/no-cards.png"
                               class="empty-wallet" />
                          <div v-for="card in client_credit_cards" class="row_card">
-                              <div v-if="card.active == true">
+                              <div>
                                    <!------------- CARD GOLD ------------->
                                    <div v-if="card.color === 'GOLD' && card.type === 'CREDIT'" class="card"
                                         id="div_card">
@@ -226,7 +226,7 @@
 
                                    <!------------- Button Delete Card ------------->
                                    <div class="row">
-                                        <a href="#">
+                                        <a href="#" title="Delete Card">
                                              <button type="button"
                                                   class="btn-black mt-2 btn-sm d-flex justify-content-center gap-2"
                                                   id="createCardButton" v-on:click="deleteCard(card.id)">
@@ -279,7 +279,7 @@
                          <img v-if="client_debit_cards.length === 0" src="./assets/no-cards.png" class="empty-wallet" />
 
                          <div v-for="card in client_debit_cards" class="row_card">
-                              <div v-if="card.active == true">
+                              <div>
                                    <!------------- CARD GOLD ------------->
                                    <div v-if="card.active == true">
                                         <div v-if="card.color === 'GOLD' && card.type === 'DEBIT'" class="card"

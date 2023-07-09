@@ -6,19 +6,22 @@ import java.time.LocalDateTime;
 
 
 @Entity
+@Table(name = "transferencias")
 public class Transaction {
 
     // Propiedades -------------------------------------------------------------------------//
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @SequenceGenerator(name = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private long id;
 
     private double amount;
+    @Column(length = 255)
     private String description;
-    private TransactionType type;
-    private LocalDateTime date;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "transaction_type", length = 255)
+    private TransactionType transactionType;
+    private LocalDateTime creationDate;
 
 
     // Relaciones -------------------------------------------------------------------------//
@@ -30,11 +33,11 @@ public class Transaction {
     // Constructores -------------------------------------------------------------------------//
     public Transaction(){}
 
-    public Transaction(double amount, String description, TransactionType type, LocalDateTime date, Account account) {
+    public Transaction(double amount, String description, TransactionType transactionType, LocalDateTime creationDate, Account account) {
         this.amount = amount;
         this.description = description;
-        this.type = type;
-        this.date = date;
+        this.transactionType = transactionType;
+        this.creationDate = creationDate;
         this.account = account;
     }
 
@@ -48,11 +51,11 @@ public class Transaction {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    public TransactionType getType() {return type;}
-    public void setType(TransactionType type) {this.type = type;}
+    public TransactionType getTransactionType() {return transactionType;}
+    public void setTransactionType(TransactionType transactionType) {this.transactionType = transactionType;}
 
-    public LocalDateTime getDate() {return date;}
-    public void setDate(LocalDateTime date) {this.date = date;}
+    public LocalDateTime getCreationDate() {return creationDate;}
+    public void setCreationDate(LocalDateTime date) {this.creationDate = date;}
 
     public Account getAccount() {return account;}
     public void setAccount(Account account) {this.account = account;}

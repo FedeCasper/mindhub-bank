@@ -16,11 +16,11 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @Entity
+@Table(name = "CLIENT")
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @SequenceGenerator(name = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private long id;
     private String first_name;

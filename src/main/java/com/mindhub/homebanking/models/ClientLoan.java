@@ -11,8 +11,7 @@ public class ClientLoan {
 
     // Propiedades -------------------------------------------------------------------------//
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @SequenceGenerator(name = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private long id;
 

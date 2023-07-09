@@ -31,7 +31,6 @@ Vue.createApp({
                     this.client = datos.data
                     this.cards = this.client.cards.sort((a, b) => {return a.id - b.id;})
                     console.log(this.cards)
-                    console.log(this.cards.active)
                     this.card_color = this.cards.map(card => card.color)
 
                })
@@ -40,9 +39,12 @@ Vue.createApp({
                .then(data => {
                     addCardsButton = document.querySelector("#createCardButton")
                     this.currentClient_Cards = data.data
+                    console.log(this.currentClient_Cards);
                     this.currentClient_Cards_Length = data.data.length
                     this.client_credit_cards = this.currentClient_Cards.filter(card => card.type === 'CREDIT')
+                    console.log( this.client_credit_cards);
                     this.client_debit_cards = this.currentClient_Cards.filter(card => card.type === 'DEBIT')
+                    console.log( this.client_debit_cards);
                     this.currentClient_Cards_Type_Length = this.currentClient_Cards.map(card => card.type).length
                          if(this.currentClient_Cards_Type_Length >= 6){
                          addCardsButton.style.display = "none";}

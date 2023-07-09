@@ -91,7 +91,7 @@
                </div>
                <div class="accounts-container">
                     <div v-for="account in accounts" class="card" id="accounts_cards">
-                         <div class="card-header">{{account.number}}</div>
+                         <div class="card-header">{{account.accountNumber}}</div>
                          <ul class="list-group list-group-flush">
                               <li class="list-group-item">Balance: {{"$" + account.balance}}</li>
                               <li class="list-group-item">Creation Date: {{formatearFecha(account.creationDate)}}</li>

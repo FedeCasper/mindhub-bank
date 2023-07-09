@@ -12,10 +12,10 @@ public class AccountDTO { // Nunca se usan las anotaciones (@) en un DTO
 
     // Propiedades -------------------------------------------------------------------------//
     private long id;
-    private String number;
+    private String accountNumber;
     private LocalDateTime creationDate;
     private double balance;
-    private Set<TransactionDTO> transactions = new HashSet<>();
+    private Set<TransactionDTO> setOfTransactions = new HashSet<>();
 
 
     // Constructores -------------------------------------------------------------------------//
@@ -24,10 +24,10 @@ public class AccountDTO { // Nunca se usan las anotaciones (@) en un DTO
     // En un DTO siempre se usa el objeto de tipo originario para capturar la info de la clase que vayamos a usar en un futuro
     public AccountDTO(Account account) {
         this.id = account.getId();
-        this.number = account.getNumber();
+        this.accountNumber = account.getAccountNumber();
         this.creationDate = account.getCreationDate();
         this.balance = account.getBalance();
-        this.transactions = account.getTransactions().stream().map(transaction -> new TransactionDTO(transaction)).collect(Collectors.toSet());
+        this.setOfTransactions = account.getTransactions().stream().map(transaction -> new TransactionDTO(transaction)).collect(Collectors.toSet());
     }
 
 
@@ -35,22 +35,17 @@ public class AccountDTO { // Nunca se usan las anotaciones (@) en un DTO
 
     public long getId() {return id;}
 
-    public String getNumber() {
-        return number;
+    public String getAccountNumber() {
+        return accountNumber;
     }
-    public void setNumber(String number) {this.number = number;}
 
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
-    public void setCreationDate(LocalDateTime creationDate) {this.creationDate = creationDate;}
 
     public double getBalance() {
         return balance;
     }
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 
-    public Set<TransactionDTO> getTransactions() {return transactions;}
+    public Set<TransactionDTO> getTransactions() {return setOfTransactions;}
 }

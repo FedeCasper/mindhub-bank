@@ -30,6 +30,6 @@ public class AccountServiceImp implements AccountService {
     }
     @Override
     public Account getAccountByNumber(String number) {
-        return accountRepository.findByNumber(number);
+        return accountRepository.findByAccountNumber(number);
     }
 }

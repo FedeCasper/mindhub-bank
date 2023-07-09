@@ -13,19 +13,18 @@ import java.util.Set;
 public class Card {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "native")
-    @SequenceGenerator(name = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     long id;
 
     private String cardHolder;
     private CardType type;
     private CardColor color;
-    private String number;
+    private String cardNumber;
     private LocalDate fromDate;
     private LocalDate truDate;
     private int cvv;
-    private boolean isActive;
+    //private boolean isActive;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,11 +34,11 @@ public class Card {
 
     public Card() {}
 
-    public Card(CardType type, CardColor color, String number, LocalDate fromDate, LocalDate truDate, int cvv, Client client, boolean isActive) {
+    public Card(CardType type, CardColor color, String cardNumber, LocalDate fromDate, LocalDate truDate, int cvv, Client client) {
         this.cardHolder = client.getFirst_name() + " " + client.getLast_name();
         this.type = type;
         this.color = color;
-        this.number = number;
+        this.cardNumber = cardNumber;
         this.fromDate = fromDate;
         this.truDate = truDate;
         this.cvv = cvv;
@@ -58,8 +57,8 @@ public class Card {
     public CardColor getColor() {return color;}
     public void setColor(CardColor color) {this.color = color;}
 
-    public String  getNumber() {return number;}
-    public void setNumber(String number) {this.number = number;}
+    public String  getCardNumber() {return cardNumber;}
+    public void setCardNumber(String number) {this.cardNumber = cardNumber;}
 
     public LocalDate getFromDate() {return fromDate;}
     public void setFromDate(LocalDate fromDate) {this.fromDate = fromDate;}

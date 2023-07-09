@@ -46,6 +46,7 @@ Vue.createApp({
           },
 
           create_own_transfer(){
+               console.log(this.ownSourceAccountNumber, this.ownDestinationAccountNumber, this.ownDescription == 0);
                if(this.ownSourceAccountNumber == 0 || this.ownDestinationAccountNumber == 0 || this.ownDescription == 0){
                     Swal.fire({
                          icon: 'error',
